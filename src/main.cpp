@@ -1,4 +1,6 @@
 // #include "Telemetrix4Arduino.h"
+// #include <Cpp_Standard_Library.h>
+#include "config.hpp"
 #include "Telemetrix4Arduino.h"
 #include "commands.hpp"
 #include "i2c.hpp"
@@ -8,7 +10,7 @@
 #include <Servo.h>
 #include <Wire.h>
 #include <dhtnew.h>
-#include <vector>
+// #include <vector>
 /*
   Copyright (c) 2020 Alan Yorinks All rights reserved.
 
@@ -31,9 +33,8 @@
 // here as well.
 #include "main.hpp"
 
-#include <array>
-template <size_t T> void send_message(const std::array<uint8_t, T> &message);
-
+// #include <array>
+template <size_t N> void send_message(const uint8_t (&message)[N]);
 // uncomment out the next line to create a 2nd i2c port
 //#define SECOND_I2C_PORT
 
@@ -75,53 +76,54 @@ auto set_format_spi = nullptr;
 auto spi_cs_control = nullptr;
 auto set_scan_delay = nullptr;
 auto sensor_new = nullptr;
-auto ping = nullptr;
+// auto ping = nullptr;
 auto module_new = nullptr;
 auto module_data = nullptr;
 auto get_id = nullptr;
 auto set_id = nullptr;
 // If you add new commands, make sure to extend the siz of this
 // array.
-std::vector<command_descriptor> command_table = {
-    {&serial_loopback},      // 0
-    {&set_pin_mode},         // 1
-    {&digital_write},        // 2, checked
-    {pwm_write},             // 3
-    {&modify_reporting},     // 4, checked
-    {&get_firmware_version}, // 5, checked
-    {&get_unique_id},        // 6, checked
-    {&servo_attach},         // 7
-    {&servo_write},          // 8
-    {&servo_detach},         // 9
-    {&i2c_begin},
-    {&i2c_read},
-    {&i2c_write},
-    {&sonar_new}, // 13, checked
-    {&dht_new},
-    {&stop_all_reports},   // 15, checked
-    {&enable_all_reports}, // 16, checked
-    {&reset_data},
-    {reset_board},
-    {init_neo_pixels},
-    {show_neo_pixels},
-    {set_neo_pixel},
-    {clear_all_neo_pixels},
-    {fill_neo_pixels},
-    {init_spi},
-    {write_blocking_spi},
-    {read_blocking_spi},
-    {set_format_spi},
-    {spi_cs_control},
-    {set_scan_delay},
-    {encoder_new}, // 30, checked
-    {sensor_new},
-    {ping}, // 32,  checked, not impelemented
-    {module_new},
-    {module_data},
-    {get_id},
-    {set_id},
-    {&feature_detection}};
-
+constexpr command_descriptor command_table[] = {
+    &serial_loopback,      // 0
+    &set_pin_mode,         // 1
+    &digital_write,        // 2, checked
+    pwm_write,             // 3
+    &modify_reporting,     // 4, checked
+    &get_firmware_version, // 5, checked
+    &get_unique_id,        // 6, checked
+    &servo_attach,         // 7
+    &servo_write,          // 8
+    &servo_detach,         // 9
+    &i2c_begin,
+    &i2c_read,
+    &i2c_write,
+    &sonar_new, // 13, checked
+    &dht_new,
+    &stop_all_reports,   // 15, checked
+    &enable_all_reports, // 16, checked
+    &reset_data,
+    reset_board,
+    init_neo_pixels,
+    show_neo_pixels,
+    set_neo_pixel,
+    clear_all_neo_pixels,
+    fill_neo_pixels,
+    init_spi,
+    write_blocking_spi,
+    read_blocking_spi,
+    set_format_spi,
+    spi_cs_control,
+    set_scan_delay,
+    &encoder_new, // 30, checked
+    sensor_new,
+    ping, // 32,  checked, not impelemented
+    module_new,
+    module_data,
+    get_id,
+    set_id,
+    &feature_detection};
+const size_t command_table_size =
+    sizeof(command_table) / sizeof(command_descriptor);
 // Input pin reporting control sub commands (modify_reporting)
 #define REPORTING_DISABLE_ALL 0
 #define REPORTING_ANALOG_ENABLE 1
@@ -324,17 +326,22 @@ uint8_t command_buffer[MAX_COMMAND_LENGTH];
 
 // A method to send debug data across the serial link
 void send_debug_info(byte id, int value) {
-  byte debug_buffer[5] = {(byte)4, (byte)DEBUG_PRINT, 0, 0, 0};
-  debug_buffer[2] = id;
-  debug_buffer[3] = highByte(value);
-  debug_buffer[4] = lowByte(value);
-  Serial.write(debug_buffer, 5);
+  byte debug_buffer[] = {(byte)DEBUG_PRINT, 0, 0, 0};
+  debug_buffer[1] = id;
+  debug_buffer[2] = highByte(value);
+  debug_buffer[3] = lowByte(value);
+  // while(Serial.availableForWrite() < 5) {
+  //   delay(1);
+  // }
+  // Serial.write(debug_buffer, 5);
+  send_message(debug_buffer);
 }
 
 // command functions
 void serial_loopback() {
-  byte loop_back_buffer[3] = {2, (byte)SERIAL_LOOP_BACK, command_buffer[0]};
-  Serial.write(loop_back_buffer, 3);
+  byte loop_back_buffer[] = {(byte)SERIAL_LOOP_BACK, command_buffer[0]};
+  // Serial.write(loop_back_buffer, 3);
+  send_message(loop_back_buffer);
 }
 
 void set_pin_mode() {
@@ -452,8 +459,9 @@ void modify_reporting() {
 }
 
 void get_firmware_version() {
-  byte report_message[4] = {3, FIRMWARE_REPORT, FIRMWARE_MAJOR, FIRMWARE_MINOR};
-  Serial.write(report_message, 4);
+  byte report_message[] = { FIRMWARE_REPORT, FIRMWARE_MAJOR, FIRMWARE_MINOR};
+  // Serial.write(report_message, 4);
+  send_message(report_message);
 }
 
 // void are_you_there() {
@@ -492,8 +500,9 @@ void servo_attach() {
     servos[servo_found].attach(pin, minpulse, maxpulse);
   } else {
     // no open servos available, send a report back to client
-    byte report_message[2] = {SERVO_UNAVAILABLE, pin};
-    Serial.write(report_message, 2);
+    byte report_message[] = {SERVO_UNAVAILABLE, pin};
+    // Serial.write(report_message, 2);
+    send_message(report_message);
   }
 }
 
@@ -555,7 +564,7 @@ void dht_new() {
   // 4 - error value
 
   // pre-build an error report in case of a read error
-  byte report_message[5] = {4, (byte)DHT_REPORT, (byte)DHT_READ_ERROR, (byte)0,
+  byte report_message[] = { (byte)DHT_REPORT, (byte)DHT_READ_ERROR, (byte)0,
                             (byte)0};
 
   dhts[dht_index].dht_sensor = new DHTNEW((uint8_t)command_buffer[0]);
@@ -571,9 +580,10 @@ void dht_new() {
     // error found
     // send report and release the dht object
 
-    report_message[3] = command_buffer[0]; // pin number
-    report_message[4] = d_read;
-    Serial.write(report_message, 5);
+    report_message[2] = command_buffer[0]; // pin number
+    report_message[3] = d_read;
+    // Serial.write(report_message, 5);
+    send_message(report_message);
     delete (dhts[dht_index].dht_sensor);
   }
 }
@@ -628,7 +638,7 @@ void get_next_command() {
   // get the command byte
   command = (byte)Serial.read();
 
-  if (command >= command_table.size()) { // discard the command
+  if (command >= command_table_size) { // discard the command
     for (auto i = 0; i < packet_length - 1; i++) {
       while (!Serial.available()) {
         delay(1);
@@ -662,7 +672,7 @@ void scan_digital_inputs() {
 
   // [DIGITAL_REPORT = 2, pin, value]
 
-  byte report_message[4] = {3, DIGITAL_REPORT, 0, 0};
+  byte report_message[4] = {DIGITAL_REPORT, 0, 0};
 
   for (int i = 0; i < MAX_DIGITAL_PINS_SUPPORTED; i++) {
     if (the_digital_pins[i].pin_mode == INPUT_MODE ||
@@ -673,9 +683,10 @@ void scan_digital_inputs() {
         value = (byte)digitalRead(the_digital_pins[i].pin_number);
         if (value != the_digital_pins[i].last_value) {
           the_digital_pins[i].last_value = value;
-          report_message[2] = (byte)i;
-          report_message[3] = value;
-          Serial.write(report_message, 4);
+          report_message[1] = (byte)i;
+          report_message[2] = value;
+          // Serial.write(report_message, 4);
+          send_message(report_message);
         }
       }
     }
@@ -694,7 +705,7 @@ void scan_analog_inputs() {
   // byte 4 = low order byte of value
   // [ANALOG_REPORT = 3, adc_pin, value_high, value_low]
 
-  byte report_message[5] = {4, ANALOG_REPORT, 0, 0, 0};
+  byte report_message[] = {ANALOG_REPORT, 0, 0, 0};
   uint8_t adjusted_pin_number;
   int differential;
 
@@ -713,10 +724,11 @@ void scan_analog_inputs() {
             // trigger value achieved, send out the report
             the_analog_pins[i].last_value = value;
             // input_message[1] = the_analog_pins[i].pin_number;
-            report_message[2] = (byte)i;
-            report_message[3] = highByte(value); // get high order byte
-            report_message[4] = lowByte(value);
-            Serial.write(report_message, 5);
+            report_message[1] = (byte)i;
+            report_message[2] = highByte(value); // get high order byte
+            report_message[3] = lowByte(value);
+            // Serial.write(report_message, 5);
+            send_message(report_message);
             delay(1);
           }
         }
@@ -738,10 +750,11 @@ void scan_sonars() {
 
         // [SONAR_REPORT = 11, trigger_pin, distance_m, distance_cm]
 
-        byte report_message[5] = {
-            4, SONAR_DISTANCE, sonars[last_sonar_visited].trigger_pin,
+        byte report_message[] = {
+            SONAR_DISTANCE, sonars[last_sonar_visited].trigger_pin,
             (byte)(distance / 100), (byte)(distance % 100)};
-        Serial.write(report_message, 5);
+        // Serial.write(report_message, 5);
+        send_message(report_message);
       }
       last_sonar_visited++;
       if (last_sonar_visited == sonars_index) {
@@ -770,7 +783,7 @@ void scan_dhts() {
   // byte 9 = temperature byte 2
   // byte 10 = temperature byte 3
   // byte 11 = temperature byte 4
-  byte report_message[12] = {11, DHT_REPORT, DHT_DATA, 0, 0, 0,
+  byte report_message[] = {DHT_REPORT, DHT_DATA, 0, 0, 0,
                              0,  0,          0,        0, 0, 0};
 
   byte d_read;
@@ -787,16 +800,17 @@ void scan_dhts() {
 
       // read and report all the dht sensors
       for (int i = 0; i < dht_index; i++) {
-        report_message[3] = dhts[i].pin;
+        report_message[2] = dhts[i].pin;
         // get humidity
         dht_data = dhts[i].dht_sensor->getHumidity();
-        memcpy(&report_message[4], &dht_data, sizeof dht_data);
+        memcpy(&report_message[3], &dht_data, sizeof dht_data);
 
         // get temperature
         dht_data = dhts[i].dht_sensor->getTemperature();
-        memcpy(&report_message[8], &dht_data, sizeof dht_data);
+        memcpy(&report_message[6], &dht_data, sizeof dht_data);
 
-        Serial.write(report_message, 12);
+        // Serial.write(report_message, 12);
+        send_message(report_message);
 
         // now read do a read for this device for next go around
         d_read = dhts[i].dht_sensor->read();
@@ -805,12 +819,13 @@ void scan_dhts() {
           // error found
           // send report
           // send_debug_info(1, 1);
-          report_message[0] = 4;
-          report_message[1] = DHT_REPORT;
-          report_message[2] = DHT_READ_ERROR;
-          report_message[3] = dhts[i].pin; // pin number
-          report_message[4] = d_read;
-          Serial.write(report_message, 5);
+          // report_message[0] = 4;
+          // report_message[1] = DHT_REPORT;
+          report_message[1] = DHT_READ_ERROR;
+          report_message[2] = dhts[i].pin; // pin number
+          report_message[3] = d_read;
+          // Serial.write(report_message, 5);
+          send_message(report_message);
         }
       }
     }
@@ -820,7 +835,7 @@ void scan_dhts() {
 void scan_encoders() {
   // [ENCODER_REPORT = 14, pin_A, steps]
 
-  byte report_message[4] = {3, ENCODER_REPORT, 0, 0};
+  byte report_message[] = {ENCODER_REPORT, 0, 0};
 
   long optEnc_return_val = 0;
 
@@ -832,10 +847,11 @@ void scan_encoders() {
 
       if (optEnc_return_val != 0) {
         enc->resetPosition();
-        report_message[2] = optEnc[i].pin;
-        report_message[3] = optEnc_return_val & 0xFF;
+        report_message[1] = optEnc[i].pin;
+        report_message[2] = optEnc_return_val & 0xFF;
 
-        Serial.write(report_message, 4);
+        // Serial.write(report_message, 4);
+        send_message(report_message);
       }
     }
   }
@@ -906,7 +922,12 @@ void init_pin_structures() {
 void setup() {
   // initialize the servo allocation map table
   init_pin_structures();
-
+  for(int i = 0; i < 5; i++) {
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(100);
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(100);
+  }
   Serial.begin(115200);
 }
 
@@ -928,35 +949,92 @@ void loop() {
   }
 }
 
+static_assert(
+    sizeof(command_buffer) == MAX_COMMAND_LENGTH,
+    "command_buffer size must be equal to MAX_COMMAND_LENGTH");
+static_assert( command_table[37] == &feature_detection,
+               "command_table[37] must be feature_detection");
+
 void feature_detection() {
   // in message: [FEATURE_CHECK = 37, message_type_to_check]
   // out message: [3, FEATURE_CHECK, 0/1]
-  std::array<uint8_t, 3> report_message = {FEATURE_CHECK, 0};
+  uint8_t report_message[] = {FEATURE_CHECK, 0, 0,0,0,0,0};
   // byte report_message[3] = {2, FEATURE_CHECK, 0};
   auto message_type = command_buffer[0];
-  if (command_table.size() <= message_type) {
+  report_message[1] = message_type;
+  if (command_table_size <= message_type) {
     report_message[2] = 0;
   } else {
-    if (command_table[message_type] != nullptr) {
+    auto cmd = command_table[message_type];
+    if (cmd != nullptr) {
       report_message[2] = 1;
-    } else {
-      report_message[2] = 0;
-    }
+      if(cmd == &encoder_new) {
+        report_message[3] = MAX_ENCODERS; // encoder
+        report_message[4] = 1; // single encoder
+      }else if (cmd == &sonar_new) {
+        report_message[3] = MAX_SONARS; // sonar
+      }
+    } 
   }
   send_message(report_message);
 }
 
-template <size_t N> void send_message(const std::array<uint8_t, N> &message) {
-  Serial.write(message.data(), N); // send msg len
-  for (auto i = 0u; i < N; i++) {
-    Serial.write(message[i]);
+template <size_t N> void send_message(const uint8_t (&message)[N]) {
+  while(Serial.availableForWrite() < (int)N+3) {
+    delay(1);
   }
+  Serial.write((uint8_t)N); // send msg len
+  Serial.write(message, N); // send message
 }
 
 void get_unique_id() {
   // in message: [GET_UNIQUE_ID = 6]
   // out message: [REPORT_UNIQUE_ID = 6, id[0], id[1], id[2],
   // id[3],id[4],id[5],id[6],id[7] ]
-  std::array<uint8_t, 6> report_message = {GET_UNIQUE_ID, 0}; // TODO: implement
+  uint8_t report_message[] = {GET_UNIQUE_ID, 0}; // TODO: implement
   send_message(report_message);
+}
+
+#if ENABLE_ADAFRUIT_WATCHDOG
+#include <Adafruit_SleepyDog.h>
+#define ENABLE_WATCHDOG 1
+#endif
+// TODO: other watchdog implementations
+
+#if ENABLE_WATCHDOG==0
+#warning "Watchdog not enabled, please enable it in the code"
+#endif
+bool watchdog_enabled = false;
+uint32_t last_ping = 0;
+void ping() {
+  static uint8_t random = -1;
+
+  auto special_num = command_buffer[0];
+  send_debug_info(0, special_num);
+  if (!watchdog_enabled) {
+  #if ENABLE_ADAFRUIT_WATCHDOG
+
+    Watchdog.enable(4000);
+#endif
+    // watchdog_enable(WATCHDOG_TIME,
+                    // 1); // Add watchdog requiring trigger every 5s
+    watchdog_enabled = true;
+    srand(millis());
+    random = rand() % 100; // create some random number to let computer side
+                            // know it is the same run
+    random = 0x1B;
+  }
+  uint8_t out[] = {
+                              PONG_REPORT, // write type
+                              special_num, random,0,0,0,0};
+  // out[0] = out.size() - 1; // dont count the packet length
+  send_message(out);
+  if (true) {
+    // watchdog_update();
+  #if ENABLE_ADAFRUIT_WATCHDOG
+    Watchdog.reset();
+  #endif
+
+    last_ping = millis();
+  }
 }

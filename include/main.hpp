@@ -41,6 +41,8 @@ extern void reset_data();
 
 extern void init_pin_structures();
 
+void ping();
+
 void feature_detection();
 
 enum PIN_MODES : uint8_t {
