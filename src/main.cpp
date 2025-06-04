@@ -7,7 +7,9 @@
 #include <Arduino.h>
 #include <NewPing.h>
 #include <OpticalEncoder.h>
+#if MAX_SERVOS > 0
 #include <Servo.h>
+#endif
 #include <Wire.h>
 #include <dhtnew.h>
 // #include <vector>
@@ -140,9 +142,6 @@ const size_t command_table_size =
 // #define AT_ANALOG 3
 // #define NOT_SET 255
 
-// maximum number of pins supported
-#define MAX_DIGITAL_PINS_SUPPORTED 100
-#define MAX_ANALOG_PINS_SUPPORTED 15
 
 // Reports - sent from this sketch
 // #define DIGITAL_REPORT DIGITAL_WRITE
@@ -178,48 +177,30 @@ bool stop_reports = false; // a flag to stop sending all report messages
 // we need to define those pin numbers to allow
 // the program to compile, even though the
 // pins may not exist for the board in use.
-
-#ifndef A7
-#define A7 2047
-#endif
-
-#ifndef A8
-#define A8 2047
-#endif
-
-#ifndef A9
-#define A9 2047
-#endif
-
-#ifndef A10
-#define A10 2047
-#endif
-
-#ifndef PIN_A11
-#define A11 2047
-#endif
-
-#ifndef PIN_A12
-#define A12 2047
-#endif
-
-#ifndef PIN_A13
-#define A13 2047
-#endif
-
-#ifndef PIN_A14
-#define A14 2047
-#endif
-
-#ifndef PIN_A15
-#define A15 2047
-#endif
-
+// The boards header file defines the analog pins that are not available
 // To translate a pin number from an integer value to its analog pin number
 // equivalent, this array is used to look up the value to use for the pin.
-int analog_read_pins[20] = {A0, A1, A2,  A3,  A4,  A5,  A6,  A7,
-                            A8, A9, A10, A11, A12, A13, A14, A15};
+constexpr int analog_read_pins[20] = {A0, A1, A2,  A3,  A4,  A5,  A6,  A7,
+                            A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19
+                          };
+constexpr int ANALOG_PIN_OFFSET = A0;
+constexpr int get_total_pins_not(const int *pins, int size, int not_value) {
+  return size > 0 ? (pins[size - 1] != not_value
+                          ? get_total_pins_not(pins, size - 1, not_value) + 1
+                          : get_total_pins_not(pins, size - 1, not_value))
+                   : 0;
+}
+// constexpr int get_total_pins_c(const int *pins, int size, int not_value, int c) {
+//   return c<size ? (pins[c] !=not_value ? get_total_pins_c(pins, size, not_value, c+1) + c : 0) : 0;
+// }
 
+constexpr auto MAX_ANALOG_PINS_SUPPORTED = get_total_pins_not(analog_read_pins,
+                                                      sizeof(analog_read_pins)/sizeof(int),
+                                                      2047);
+
+// maximum number of pins supported
+constexpr auto MAX_DIGITAL_PINS_SUPPORTED = NUM_DIGITAL_PINS;
+// #define  
 // a descriptor for digital pins
 struct pin_descriptor {
   byte pin_number;
@@ -248,14 +229,14 @@ unsigned long current_millis;  // for analog input loop
 unsigned long previous_millis; // for analog input loop
 uint8_t analog_sampling_interval = 19;
 
+#if MAX_SERVOS > 0
 // servo management
-Servo servos[MAX_SERVOS];
+Servo servos[MAX_SERVOS]; // max set by servo library
 // this array allows us to retrieve the servo object
 // associated with a specific pin number
 byte pin_to_servo_index_map[MAX_SERVOS];
-
+#endif
 // HC-SR04 Sonar Management
-#define MAX_SONARS 6
 
 struct Sonar {
   uint8_t trigger_pin;
@@ -304,7 +285,7 @@ struct OptEncoder {
   OpticalEncoder *optEnc_sensor;
 };
 
-#define MAX_ENCODERS 4
+#define MAX_ENCODERS 2
 
 OptEncoder optEnc[MAX_ENCODERS];
 uint8_t optEncoder_ix = 0; // number of Optical Encoders attached
@@ -314,8 +295,9 @@ typedef void (*intCB)(void); // lambda definition for interrupt callback
 intCB interruptMap[MAX_ENCODERS] = {
     [] { optEnc[0].optEnc_sensor->handleInterrupt(); },
     [] { optEnc[1].optEnc_sensor->handleInterrupt(); },
-    [] { optEnc[2].optEnc_sensor->handleInterrupt(); },
-    [] { optEnc[3].optEnc_sensor->handleInterrupt(); }};
+    // [] { optEnc[2].optEnc_sensor->handleInterrupt(); },
+    // [] { optEnc[3].optEnc_sensor->handleInterrupt(); }
+  };
 
 unsigned long optenc_current_millis;   // for analog input loop
 unsigned long optenc_previous_millis;  // for analog input loop
@@ -384,6 +366,7 @@ void set_pin_mode() {
         (command_buffer[2] << 8) + command_buffer[3];
     the_analog_pins[pin].reporting_enabled = command_buffer[4];
     the_analog_pins[pin].last_value = -1;
+    send_debug_info(pin, the_analog_pins[pin].differential);
     break;
   case PWM:
 
@@ -476,6 +459,7 @@ void get_firmware_version() {
 // Find the first servo that is not attached to a pin
 // This is a helper function not called directly via the API
 int find_servo() {
+  #if MAX_SERVOS > 0
   int index = -1;
   for (int i = 0; i < MAX_SERVOS; i++) {
     if (servos[i].attached() == false) {
@@ -484,9 +468,13 @@ int find_servo() {
     }
   }
   return index;
+  #else
+  return -1; // no servos supported
+  #endif
 }
 
 void servo_attach() {
+  #if MAX_SERVOS > 0
   byte pin = command_buffer[0];
   int servo_found = -1;
 
@@ -504,10 +492,12 @@ void servo_attach() {
     // Serial.write(report_message, 2);
     send_message(report_message);
   }
+  #endif
 }
 
 // set a servo to a given angle
 void servo_write() {
+  #if MAX_SERVOS > 0
   byte pin = command_buffer[0];
   int angle = command_buffer[1];
   // find the servo object for the pin
@@ -518,10 +508,12 @@ void servo_write() {
       return;
     }
   }
+  #endif
 }
 
 // detach a servo and make it available for future use
 void servo_detach() {
+  #if MAX_SERVOS > 0
   byte pin = command_buffer[0];
 
   // find the servo object for the pin
@@ -532,6 +524,7 @@ void servo_detach() {
       servos[i].detach();
     }
   }
+  #endif
 }
 
 /***********************************
@@ -630,11 +623,13 @@ void get_next_command() {
   }
   // get the packet length
   packet_length = (byte)Serial.read();
-
+  
   while (!Serial.available()) {
     delay(1);
   }
-
+  if(packet_length == 0) {
+    return; // no command to process, reset bytes
+  }
   // get the command byte
   command = (byte)Serial.read();
 
@@ -721,15 +716,16 @@ void scan_analog_inputs() {
           value = analogRead(adjusted_pin_number);
           differential = abs(value - the_analog_pins[i].last_value);
           if (differential >= the_analog_pins[i].differential) {
+            // send_debug_info(i, differential);
             // trigger value achieved, send out the report
             the_analog_pins[i].last_value = value;
             // input_message[1] = the_analog_pins[i].pin_number;
-            report_message[1] = (byte)i;
+            report_message[1] = (byte)adjusted_pin_number;
             report_message[2] = highByte(value); // get high order byte
             report_message[3] = lowByte(value);
             // Serial.write(report_message, 5);
             send_message(report_message);
-            delay(1);
+            // delay(1);
           }
         }
       }
@@ -868,11 +864,13 @@ void reset_data() {
   analog_sampling_interval = 19;
 
   // detach any attached servos
+  #if MAX_SERVOS > 0
   for (int i = 0; i < MAX_SERVOS; i++) {
     if (servos[i].attached() == true) {
       servos[i].detach();
     }
   }
+  #endif
   sonars_index = 0; // reset the index into the sonars array
 
   sonar_current_millis = 0;  // for analog input loop
@@ -973,6 +971,20 @@ void feature_detection() {
         report_message[4] = 1; // single encoder
       }else if (cmd == &sonar_new) {
         report_message[3] = MAX_SONARS; // sonar
+      } else if(cmd == &set_pin_mode) {
+        report_message[3] = MAX_DIGITAL_PINS_SUPPORTED;
+        report_message[4] = MAX_ANALOG_PINS_SUPPORTED;
+        report_message[5] = ANALOG_PIN_OFFSET;
+      }
+      else if(cmd == &servo_attach) {
+        report_message[3] = MAX_SERVOS;
+      } else if(cmd == &dht_new) {
+        report_message[3] = MAX_DHTS;
+      } else if(cmd == &get_firmware_version) {
+        report_message[3] = FIRMWARE_MAJOR;
+        report_message[4] = FIRMWARE_MINOR;
+      } else if(cmd == &get_unique_id) {
+        report_message[3] = 0; // TODO: implement
       }
     } 
   }
@@ -1010,7 +1022,6 @@ void ping() {
   static uint8_t random = -1;
 
   auto special_num = command_buffer[0];
-  send_debug_info(0, special_num);
   if (!watchdog_enabled) {
   #if ENABLE_ADAFRUIT_WATCHDOG
 

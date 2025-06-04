@@ -1,7 +1,10 @@
 #pragma once
 
 #include <Arduino.h>
-
+#include "boards/esp32devkit.hpp"
+#include "boards/nanoatmega.hpp"
+#include "boards/stm32blackpill.hpp"
+#include "boards/itsybitsy_m4.hpp"
 void get_unique_id();
 
 // Old code
