@@ -934,7 +934,7 @@ void setup() {
   //   delay(100);
   // }
   for (auto i = 0; i < 0xFF; i++) {
-    Serial.write(0);
+    Serial.write((uint8_t)0);
   }
   // get_firmware_version();
 }
