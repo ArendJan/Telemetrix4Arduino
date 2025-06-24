@@ -1,8 +1,8 @@
 // #include "Telemetrix4Arduino.h"
 // #include <Cpp_Standard_Library.h>
-#include "config.hpp"
 #include "Telemetrix4Arduino.h"
 #include "commands.hpp"
+#include "config.hpp"
 #include "i2c.hpp"
 #include <Arduino.h>
 #include <NewPing.h>
@@ -142,7 +142,6 @@ const size_t command_table_size =
 // #define AT_ANALOG 3
 // #define NOT_SET 255
 
-
 // Reports - sent from this sketch
 // #define DIGITAL_REPORT DIGITAL_WRITE
 // #define ANALOG_REPORT ANALOG_WRITE
@@ -180,29 +179,30 @@ bool stop_reports = false; // a flag to stop sending all report messages
 // The boards header file defines the analog pins that are not available
 // To translate a pin number from an integer value to its analog pin number
 // equivalent, this array is used to look up the value to use for the pin.
-constexpr int analog_read_pins[20] = {A0, A1, A2,  A3,  A4,  A5,  A6,  A7,
-                            A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19
-                          };
+constexpr int analog_read_pins[20] = {A0,  A1,  A2,  A3,  A4,  A5,  A6,
+                                      A7,  A8,  A9,  A10, A11, A12, A13,
+                                      A14, A15, A16, A17, A18, A19};
 constexpr int analog_read_pins_size =
     sizeof(analog_read_pins) / sizeof(analog_read_pins[0]);
 constexpr int ANALOG_PIN_OFFSET = A0;
 constexpr int get_total_pins_not(const int *pins, int size, int not_value) {
   return size > 0 ? (pins[size - 1] != not_value
-                          ? get_total_pins_not(pins, size - 1, not_value) + 1
-                          : get_total_pins_not(pins, size - 1, not_value))
-                   : 0;
+                         ? get_total_pins_not(pins, size - 1, not_value) + 1
+                         : get_total_pins_not(pins, size - 1, not_value))
+                  : 0;
 }
-// constexpr int get_total_pins_c(const int *pins, int size, int not_value, int c) {
-//   return c<size ? (pins[c] !=not_value ? get_total_pins_c(pins, size, not_value, c+1) + c : 0) : 0;
+// constexpr int get_total_pins_c(const int *pins, int size, int not_value, int
+// c) {
+//   return c<size ? (pins[c] !=not_value ? get_total_pins_c(pins, size,
+//   not_value, c+1) + c : 0) : 0;
 // }
 
-constexpr auto MAX_ANALOG_PINS_SUPPORTED = get_total_pins_not(analog_read_pins,
-                                                      analog_read_pins_size,
-                                                      2047);
+constexpr auto MAX_ANALOG_PINS_SUPPORTED =
+    get_total_pins_not(analog_read_pins, analog_read_pins_size, 2047);
 
 // maximum number of pins supported
 constexpr auto MAX_DIGITAL_PINS_SUPPORTED = NUM_DIGITAL_PINS;
-// #define  
+// #define
 // a descriptor for digital pins
 struct pin_descriptor {
   byte pin_number;
@@ -299,7 +299,7 @@ intCB interruptMap[MAX_ENCODERS] = {
     [] { optEnc[1].optEnc_sensor->handleInterrupt(); },
     // [] { optEnc[2].optEnc_sensor->handleInterrupt(); },
     // [] { optEnc[3].optEnc_sensor->handleInterrupt(); }
-  };
+};
 
 unsigned long optenc_current_millis;   // for analog input loop
 unsigned long optenc_previous_millis;  // for analog input loop
@@ -444,7 +444,9 @@ void modify_reporting() {
 }
 
 void get_firmware_version() {
-  byte report_message[] = { FIRMWARE_REPORT, FIRMWARE_MAJOR, FIRMWARE_MINOR};
+  byte report_message[] = {FIRMWARE_REPORT, FIRMWARE_MAJOR, FIRMWARE_MINOR};
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, LOW);
   // Serial.write(report_message, 4);
   send_message(report_message);
 }
@@ -461,7 +463,7 @@ void get_firmware_version() {
 // Find the first servo that is not attached to a pin
 // This is a helper function not called directly via the API
 int find_servo() {
-  #if MAX_SERVOS > 0
+#if MAX_SERVOS > 0
   int index = -1;
   for (int i = 0; i < MAX_SERVOS; i++) {
     if (servos[i].attached() == false) {
@@ -470,13 +472,13 @@ int find_servo() {
     }
   }
   return index;
-  #else
+#else
   return -1; // no servos supported
-  #endif
+#endif
 }
 
 void servo_attach() {
-  #if MAX_SERVOS > 0
+#if MAX_SERVOS > 0
   byte pin = command_buffer[0];
   int servo_found = -1;
 
@@ -494,12 +496,12 @@ void servo_attach() {
     // Serial.write(report_message, 2);
     send_message(report_message);
   }
-  #endif
+#endif
 }
 
 // set a servo to a given angle
 void servo_write() {
-  #if MAX_SERVOS > 0
+#if MAX_SERVOS > 0
   byte pin = command_buffer[0];
   int angle = command_buffer[1];
   // find the servo object for the pin
@@ -510,12 +512,12 @@ void servo_write() {
       return;
     }
   }
-  #endif
+#endif
 }
 
 // detach a servo and make it available for future use
 void servo_detach() {
-  #if MAX_SERVOS > 0
+#if MAX_SERVOS > 0
   byte pin = command_buffer[0];
 
   // find the servo object for the pin
@@ -526,7 +528,7 @@ void servo_detach() {
       servos[i].detach();
     }
   }
-  #endif
+#endif
 }
 
 /***********************************
@@ -559,8 +561,8 @@ void dht_new() {
   // 4 - error value
 
   // pre-build an error report in case of a read error
-  byte report_message[] = { (byte)DHT_REPORT, (byte)DHT_READ_ERROR, (byte)0,
-                            (byte)0};
+  byte report_message[] = {(byte)DHT_REPORT, (byte)DHT_READ_ERROR, (byte)0,
+                           (byte)0};
 
   dhts[dht_index].dht_sensor = new DHTNEW((uint8_t)command_buffer[0]);
   dhts[dht_index].dht_sensor->setType();
@@ -625,11 +627,12 @@ void get_next_command() {
   }
   // get the packet length
   packet_length = (byte)Serial.read();
-  
-  while (!Serial.available()) {
-    delay(1);
+  // send_debug_info(0, packet_length);
+  auto max_wait = 10; // wait for the command to be available
+  while (max_wait-- > 0 && !Serial.available()) {
+    delayMicroseconds(10);
   }
-  if(packet_length == 0) {
+  if (packet_length == 0) {
     return; // no command to process, reset bytes
   }
   // get the command byte
@@ -637,8 +640,9 @@ void get_next_command() {
 
   if (command >= command_table_size) { // discard the command
     for (auto i = 0; i < packet_length - 1; i++) {
-      while (!Serial.available()) {
-        delay(1);
+      max_wait = 10; // wait for the next byte to be available
+      while (max_wait-- > 0 && !Serial.available()) {
+        delayMicroseconds(10);
       }
       Serial.read();
     }
@@ -650,9 +654,10 @@ void get_next_command() {
   if (packet_length > 1) {
     // get the data for that command
     for (int i = 0; i < packet_length - 1; i++) {
+      max_wait = 10; // wait for the next byte to be available
       // need this delay or data read is not correct
-      while (!Serial.available()) {
-        delay(1);
+      while (max_wait-- > 0 && !Serial.available()) {
+        delayMicroseconds(10);
       }
       command_buffer[i] = (byte)Serial.read();
       // uncomment out to see each of the bytes following the command
@@ -781,8 +786,7 @@ void scan_dhts() {
   // byte 9 = temperature byte 2
   // byte 10 = temperature byte 3
   // byte 11 = temperature byte 4
-  byte report_message[] = {DHT_REPORT, DHT_DATA, 0, 0, 0,
-                             0,  0,          0,        0, 0, 0};
+  byte report_message[] = {DHT_REPORT, DHT_DATA, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
   byte d_read;
 
@@ -865,14 +869,14 @@ void reset_data() {
   previous_millis = 0; // for analog input loop
   analog_sampling_interval = 19;
 
-  // detach any attached servos
-  #if MAX_SERVOS > 0
+// detach any attached servos
+#if MAX_SERVOS > 0
   for (int i = 0; i < MAX_SERVOS; i++) {
     if (servos[i].attached() == true) {
       servos[i].detach();
     }
   }
-  #endif
+#endif
   sonars_index = 0; // reset the index into the sonars array
 
   sonar_current_millis = 0;  // for analog input loop
@@ -920,15 +924,19 @@ void init_pin_structures() {
 }
 
 void setup() {
+  Serial.begin(115200);
   // initialize the servo allocation map table
   init_pin_structures();
-  for(int i = 0; i < 5; i++) {
-    digitalWrite(LED_BUILTIN, LOW);
-    delay(100);
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(100);
+  // for (int i = 0; i < 5; i++) {
+  //   digitalWrite(LED_BUILTIN, LOW);
+  //   delay(100);
+  //   digitalWrite(LED_BUILTIN, HIGH);
+  //   delay(100);
+  // }
+  for (auto i = 0; i < 0xFF; i++) {
+    Serial.write(0);
   }
-  Serial.begin(115200);
+  // get_firmware_version();
 }
 
 void loop() {
@@ -938,6 +946,9 @@ void loop() {
   static decltype(millis()) scan_delay = 10;
   if (!stop_reports) { // stop reporting
     if (millis() - last_scan >= (scan_delay)) {
+      digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+      // Serial.println("Scanning inputs...");
+      // send_debug_info(10, 10);
       last_scan += scan_delay;
 
       scan_digital_inputs();
@@ -949,16 +960,16 @@ void loop() {
   }
 }
 
-static_assert(
-    sizeof(command_buffer) == MAX_COMMAND_LENGTH,
-    "command_buffer size must be equal to MAX_COMMAND_LENGTH");
-static_assert( command_table[37] == &feature_detection,
-               "command_table[37] must be feature_detection");
+static_assert(sizeof(command_buffer) == MAX_COMMAND_LENGTH,
+              "command_buffer size must be equal to MAX_COMMAND_LENGTH");
+static_assert(command_table[37] == &feature_detection,
+              "command_table[37] must be feature_detection");
 
 void feature_detection() {
   // in message: [FEATURE_CHECK = 37, message_type_to_check]
   // out message: [3, FEATURE_CHECK, 0/1]
-  uint8_t report_message[6+analog_read_pins_size] = {FEATURE_CHECK, 0, 0,0,0,0,0};
+  uint8_t report_message[6 + analog_read_pins_size] = {
+      FEATURE_CHECK, 0, 0, 0, 0, 0, 0};
   // byte report_message[3] = {2, FEATURE_CHECK, 0};
   auto message_type = command_buffer[0];
   report_message[1] = message_type;
@@ -968,36 +979,36 @@ void feature_detection() {
     auto cmd = command_table[message_type];
     if (cmd != nullptr) {
       report_message[2] = 1;
-      if(cmd == &encoder_new) {
+      if (cmd == &encoder_new) {
         report_message[3] = MAX_ENCODERS; // encoder
-        report_message[4] = 1; // single encoder
-      }else if (cmd == &sonar_new) {
+        report_message[4] = 1;            // single encoder
+      } else if (cmd == &sonar_new) {
         report_message[3] = MAX_SONARS; // sonar
-      } else if(cmd == &set_pin_mode) {
+      } else if (cmd == &set_pin_mode) {
         report_message[3] = MAX_DIGITAL_PINS_SUPPORTED;
         report_message[4] = MAX_ANALOG_PINS_SUPPORTED;
         report_message[5] = ANALOG_PIN_OFFSET;
-        for(auto i = 0; i < analog_read_pins_size; i++) {
-          report_message[6+i] = (uint8_t)analog_read_pins[i];
+        for (auto i = 0; i < analog_read_pins_size; i++) {
+          report_message[6 + i] = (uint8_t)analog_read_pins[i];
         }
-      }      else if(cmd == &servo_attach) {
+      } else if (cmd == &servo_attach) {
         report_message[3] = MAX_SERVOS;
-      } else if(cmd == &dht_new) {
+      } else if (cmd == &dht_new) {
         report_message[3] = MAX_DHTS;
-      } else if(cmd == &get_firmware_version) {
+      } else if (cmd == &get_firmware_version) {
         report_message[3] = FIRMWARE_MAJOR;
         report_message[4] = FIRMWARE_MINOR;
-      } else if(cmd == &get_unique_id) {
+      } else if (cmd == &get_unique_id) {
         report_message[3] = 0; // TODO: implement
       }
-    } 
+    }
   }
   send_message(report_message);
 }
 
 template <size_t N> void send_message(const uint8_t (&message)[N]) {
-  while(Serial.availableForWrite() < (int)N+3) {
-    delay(1);
+  while (Serial.availableForWrite() < (int)N + 3) {
+    delayMicroseconds(10);
   }
   Serial.write((uint8_t)N); // send msg len
   Serial.write(message, N); // send message
@@ -1017,7 +1028,7 @@ void get_unique_id() {
 #endif
 // TODO: other watchdog implementations
 
-#if ENABLE_WATCHDOG==0
+#if ENABLE_WATCHDOG == 0
 #warning "Watchdog not enabled, please enable it in the code"
 #endif
 bool watchdog_enabled = false;
@@ -1027,28 +1038,27 @@ void ping() {
 
   auto special_num = command_buffer[0];
   if (!watchdog_enabled) {
-  #if ENABLE_ADAFRUIT_WATCHDOG
+#if ENABLE_ADAFRUIT_WATCHDOG
 
     Watchdog.enable(4000);
 #endif
     // watchdog_enable(WATCHDOG_TIME,
-                    // 1); // Add watchdog requiring trigger every 5s
+    // 1); // Add watchdog requiring trigger every 5s
     watchdog_enabled = true;
     srand(millis());
     random = rand() % 100; // create some random number to let computer side
-                            // know it is the same run
+                           // know it is the same run
     random = 0x1B;
   }
-  uint8_t out[] = {
-                              PONG_REPORT, // write type
-                              special_num, random,0,0,0,0};
+  uint8_t out[] = {PONG_REPORT, // write type
+                   special_num, random, 0, 0, 0, 0};
   // out[0] = out.size() - 1; // dont count the packet length
   send_message(out);
   if (true) {
     // watchdog_update();
-  #if ENABLE_ADAFRUIT_WATCHDOG
+#if ENABLE_ADAFRUIT_WATCHDOG
     Watchdog.reset();
-  #endif
+#endif
 
     last_ping = millis();
   }

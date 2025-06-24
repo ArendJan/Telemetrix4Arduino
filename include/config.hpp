@@ -1,7 +1,5 @@
 #pragma once
 
-
-
 #ifndef MAX_SONARS
 #define MAX_SONARS 6
 #endif
