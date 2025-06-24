@@ -183,6 +183,8 @@ bool stop_reports = false; // a flag to stop sending all report messages
 constexpr int analog_read_pins[20] = {A0, A1, A2,  A3,  A4,  A5,  A6,  A7,
                             A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19
                           };
+constexpr int analog_read_pins_size =
+    sizeof(analog_read_pins) / sizeof(analog_read_pins[0]);
 constexpr int ANALOG_PIN_OFFSET = A0;
 constexpr int get_total_pins_not(const int *pins, int size, int not_value) {
   return size > 0 ? (pins[size - 1] != not_value
@@ -195,7 +197,7 @@ constexpr int get_total_pins_not(const int *pins, int size, int not_value) {
 // }
 
 constexpr auto MAX_ANALOG_PINS_SUPPORTED = get_total_pins_not(analog_read_pins,
-                                                      sizeof(analog_read_pins)/sizeof(int),
+                                                      analog_read_pins_size,
                                                       2047);
 
 // maximum number of pins supported
@@ -956,7 +958,7 @@ static_assert( command_table[37] == &feature_detection,
 void feature_detection() {
   // in message: [FEATURE_CHECK = 37, message_type_to_check]
   // out message: [3, FEATURE_CHECK, 0/1]
-  uint8_t report_message[] = {FEATURE_CHECK, 0, 0,0,0,0,0};
+  uint8_t report_message[6+analog_read_pins_size] = {FEATURE_CHECK, 0, 0,0,0,0,0};
   // byte report_message[3] = {2, FEATURE_CHECK, 0};
   auto message_type = command_buffer[0];
   report_message[1] = message_type;
@@ -975,8 +977,10 @@ void feature_detection() {
         report_message[3] = MAX_DIGITAL_PINS_SUPPORTED;
         report_message[4] = MAX_ANALOG_PINS_SUPPORTED;
         report_message[5] = ANALOG_PIN_OFFSET;
-      }
-      else if(cmd == &servo_attach) {
+        for(auto i = 0; i < analog_read_pins_size; i++) {
+          report_message[6+i] = (uint8_t)analog_read_pins[i];
+        }
+      }      else if(cmd == &servo_attach) {
         report_message[3] = MAX_SERVOS;
       } else if(cmd == &dht_new) {
         report_message[3] = MAX_DHTS;
