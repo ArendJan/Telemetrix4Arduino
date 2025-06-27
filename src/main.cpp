@@ -201,31 +201,33 @@ constexpr auto MAX_ANALOG_PINS_SUPPORTED =
     get_total_pins_not(analog_read_pins, analog_read_pins_size, 2047);
 
 // maximum number of pins supported
-constexpr auto MAX_DIGITAL_PINS_SUPPORTED = NUM_DIGITAL_PINS;
+constexpr auto MAX_PINS_SUPPORTED = NUM_DIGITAL_PINS + MAX_ANALOG_PINS_SUPPORTED; // probably too high but good enough
 // #define
 // a descriptor for digital pins
 struct pin_descriptor {
   byte pin_number;
   PIN_MODES pin_mode;
-  bool reporting_enabled; // If true, then send reports if an input pin
+  bool digital_reporting_enabled; // If true, then send reports if an input pin
+  bool analog_reporting_enabled; // If true, then send reports if an input pin
   int last_value;         // Last value read for input mode
+    int differential;       // difference between current and last value needed
+  // to generate a report
+
 };
 
 // an array of digital_pin_descriptors
-pin_descriptor the_digital_pins[MAX_DIGITAL_PINS_SUPPORTED];
+pin_descriptor the_digital_pins[MAX_PINS_SUPPORTED];
 
 // a descriptor for digital pins
-struct analog_pin_descriptor {
-  byte pin_number;
-  PIN_MODES pin_mode;
-  bool reporting_enabled; // If true, then send reports if an input pin
-  int last_value;         // Last value read for input mode
-  int differential;       // difference between current and last value needed
-  // to generate a report
-};
+// struct analog_pin_descriptor {
+//   byte pin_number;
+//   PIN_MODES pin_mode;
+//   bool reporting_enabled; // If true, then send reports if an input pin
+//   int last_value;         // Last value read for input mode
+// };
 
-// an array of analog_pin_descriptors
-analog_pin_descriptor the_analog_pins[MAX_ANALOG_PINS_SUPPORTED];
+// // an array of analog_pin_descriptors
+// analog_pin_descriptor the_analog_pins[40];
 
 unsigned long current_millis;  // for analog input loop
 unsigned long previous_millis; // for analog input loop
@@ -333,11 +335,12 @@ void set_pin_mode() {
   PIN_MODES mode;
   pin = command_buffer[0];
   mode = (PIN_MODES)command_buffer[1];
-
+  Serial2.println("Setting pin mode: " + String(pin) + " to " +
+                 String(mode));
   switch (mode) {
   case INPUT_PULL_DOWN:
     the_digital_pins[pin].pin_mode = mode;
-    the_digital_pins[pin].reporting_enabled = command_buffer[2];
+    the_digital_pins[pin].digital_reporting_enabled = command_buffer[2];
     the_digital_pins[pin].last_value = -1;
 #ifndef INPUT_PULLDOWN // for boards that do not support INPUT_PULLDOWN, fall
                        // back to INPUT
@@ -347,13 +350,13 @@ void set_pin_mode() {
     break;
   case INPUT_MODE: //[SET_PIN_MODE = 1, pin, digital_in_type, report_enable]
     the_digital_pins[pin].pin_mode = mode;
-    the_digital_pins[pin].reporting_enabled = command_buffer[2];
+    the_digital_pins[pin].digital_reporting_enabled = command_buffer[2];
     the_digital_pins[pin].last_value = -1;
     pinMode(pin, INPUT);
     break;
   case INPUT_PULL_UP:
     the_digital_pins[pin].pin_mode = mode;
-    the_digital_pins[pin].reporting_enabled = command_buffer[2];
+    the_digital_pins[pin].digital_reporting_enabled = command_buffer[2];
     the_digital_pins[pin].last_value = -1;
     pinMode(pin, INPUT_PULLUP);
     break;
@@ -363,15 +366,16 @@ void set_pin_mode() {
     break;
   case ANALOG_INPUT: // [SET_PIN_MODE = 1, adc_pin, ANALOG_IN = 5, diff_high,
                      // diff_low, report_enable ]
-    the_analog_pins[pin].pin_mode = mode;
-    the_analog_pins[pin].differential =
+    pinMode(pin, INPUT);
+    the_digital_pins[pin].pin_mode = mode;
+    the_digital_pins[pin].differential =
         (command_buffer[2] << 8) + command_buffer[3];
-    the_analog_pins[pin].reporting_enabled = command_buffer[4];
-    the_analog_pins[pin].last_value = -1;
-    send_debug_info(pin, the_analog_pins[pin].differential);
+    the_digital_pins[pin].analog_reporting_enabled = command_buffer[4];
+    the_digital_pins[pin].last_value = -1;
+    send_debug_info(pin, the_digital_pins[pin].differential);
     break;
   case PWM:
-
+    pinMode(pin, OUTPUT);
     break;
   default:
     break;
@@ -411,31 +415,29 @@ void modify_reporting() {
 
   switch (command_buffer[0]) {
   case REPORTING_DISABLE_ALL:
-    for (int i = 0; i < MAX_DIGITAL_PINS_SUPPORTED; i++) {
-      the_digital_pins[i].reporting_enabled = false;
-    }
-    for (int i = 0; i < MAX_ANALOG_PINS_SUPPORTED; i++) {
-      the_analog_pins[i].reporting_enabled = false;
+    for (int i = 0; i < MAX_PINS_SUPPORTED; i++) {
+      the_digital_pins[i].digital_reporting_enabled = false;
+      the_digital_pins[i].analog_reporting_enabled = false;
     }
     break;
   case REPORTING_ANALOG_ENABLE:
-    if (the_analog_pins[pin].pin_mode != NOT_SET) {
-      the_analog_pins[pin].reporting_enabled = true;
+    if (the_digital_pins[pin].pin_mode != NOT_SET) {
+      the_digital_pins[pin].analog_reporting_enabled = true;
     }
     break;
   case REPORTING_ANALOG_DISABLE:
-    if (the_analog_pins[pin].pin_mode != NOT_SET) {
-      the_analog_pins[pin].reporting_enabled = false;
+    if (the_digital_pins[pin].pin_mode != NOT_SET) {
+      the_digital_pins[pin].analog_reporting_enabled = false;
     }
     break;
   case REPORTING_DIGITAL_ENABLE:
     if (the_digital_pins[pin].pin_mode != NOT_SET) {
-      the_digital_pins[pin].reporting_enabled = true;
+      the_digital_pins[pin].digital_reporting_enabled = true;
     }
     break;
   case REPORTING_DIGITAL_DISABLE:
     if (the_digital_pins[pin].pin_mode != NOT_SET) {
-      the_digital_pins[pin].reporting_enabled = false;
+      the_digital_pins[pin].digital_reporting_enabled = false;
     }
     break;
   default:
@@ -446,9 +448,9 @@ void modify_reporting() {
 void get_firmware_version() {
   byte report_message[] = {FIRMWARE_REPORT, FIRMWARE_MAJOR, FIRMWARE_MINOR};
   pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, LOW);
+  digitalWrite(LED_BUILTIN, HIGH);
   // Serial.write(report_message, 4);
-  send_message(report_message);
+  send_message<3>(report_message);
 }
 
 // void are_you_there() {
@@ -536,15 +538,19 @@ void servo_detach() {
  **********************************/
 
 void sonar_new() {
+  send_debug_info(9, sonars_index);
   // [SONAR_NEW = 13, trigger_pin, echo_pin]
   if (sonars_index >= MAX_SONARS) {
     return;
   }
+
   sonars[sonars_index].usonic =
       new NewPing((uint8_t)command_buffer[0], (uint8_t)command_buffer[1], 400);
   sonars[sonars_index].trigger_pin = command_buffer[0];
   sonars_index++; // next index, so it is the number of sonars
   sonar_scan_interval = 100 / sonars_index; // always scan all sonars in 100ms
+      send_debug_info(9, sonars_index);
+
 }
 
 /***********************************
@@ -650,7 +656,8 @@ void get_next_command() {
     return;
   }
   command_entry = command_table[command];
-
+  Serial2.print("Command: ");
+  Serial2.println(command);
   if (packet_length > 1) {
     // get the data for that command
     for (int i = 0; i < packet_length - 1; i++) {
@@ -676,11 +683,11 @@ void scan_digital_inputs() {
 
   byte report_message[4] = {DIGITAL_REPORT, 0, 0};
 
-  for (int i = 0; i < MAX_DIGITAL_PINS_SUPPORTED; i++) {
+  for (int i = 0; i < MAX_PINS_SUPPORTED; i++) {
     if (the_digital_pins[i].pin_mode == INPUT_MODE ||
         the_digital_pins[i].pin_mode == INPUT_PULL_UP ||
         the_digital_pins[i].pin_mode == INPUT_PULL_DOWN) {
-      if (the_digital_pins[i].reporting_enabled) {
+      if (the_digital_pins[i].digital_reporting_enabled) {
         // if the value changed since last read
         value = (byte)digitalRead(the_digital_pins[i].pin_number);
         if (value != the_digital_pins[i].last_value) {
@@ -714,24 +721,28 @@ void scan_analog_inputs() {
   current_millis = millis();
   if (current_millis - previous_millis > analog_sampling_interval) {
     previous_millis += analog_sampling_interval;
-    for (int i = 0; i < MAX_ANALOG_PINS_SUPPORTED; i++) {
-      if (the_analog_pins[i].pin_mode == ANALOG_INPUT) {
-        if (the_analog_pins[i].reporting_enabled) {
+    for (int i = 0; i < MAX_PINS_SUPPORTED; i++) {
+      if (the_digital_pins[i].pin_mode == ANALOG_INPUT) {
+        if (the_digital_pins[i].analog_reporting_enabled) {
           // if the value changed since last read
           // adjust pin number for the actual read
-          adjusted_pin_number = (uint8_t)(analog_read_pins[i]);
+          adjusted_pin_number = i; // (uint8_t)(analog_read_pins[i]);
           value = analogRead(adjusted_pin_number);
-          differential = abs(value - the_analog_pins[i].last_value);
-          if (differential >= the_analog_pins[i].differential) {
+          differential = abs(value - the_digital_pins[i].last_value);
+          if (differential >= the_digital_pins[i].differential) {
             // send_debug_info(i, differential);
             // trigger value achieved, send out the report
-            the_analog_pins[i].last_value = value;
+            the_digital_pins[i].last_value = value;
             // input_message[1] = the_analog_pins[i].pin_number;
             report_message[1] = (byte)adjusted_pin_number;
             report_message[2] = highByte(value); // get high order byte
             report_message[3] = lowByte(value);
             // Serial.write(report_message, 5);
             send_message(report_message);
+            Serial2.print("Analog pin: ");
+            Serial2.print(adjusted_pin_number);
+            Serial2.print(" value: ");
+            Serial2.println(value);
             // delay(1);
           }
         }
@@ -746,9 +757,10 @@ void scan_sonars() {
   if (sonars_index) {
     sonar_current_millis = millis();
     if (sonar_current_millis - sonar_previous_millis > sonar_scan_interval) {
+      // send_debug_info(10, sonar_current_millis);
       sonar_previous_millis += sonar_scan_interval;
       distance = sonars[last_sonar_visited].usonic->ping() / US_ROUNDTRIP_CM;
-      if (distance != sonars[last_sonar_visited].last_value) {
+      if (distance != sonars[last_sonar_visited].last_value || true) {
         sonars[last_sonar_visited].last_value = distance;
 
         // [SONAR_REPORT = 11, trigger_pin, distance_m, distance_cm]
@@ -757,6 +769,7 @@ void scan_sonars() {
             SONAR_DISTANCE, sonars[last_sonar_visited].trigger_pin,
             (byte)(distance / 100), (byte)(distance % 100)};
         // Serial.write(report_message, 5);
+        // send_debug_info(0, distance);
         send_message(report_message);
       }
       last_sonar_visited++;
@@ -906,25 +919,24 @@ void reset_data() {
 void init_pin_structures() {
   // create an array of pin_descriptors for 100 pins
   // establish the digital pin array
-  for (byte i = 0; i < MAX_DIGITAL_PINS_SUPPORTED; i++) {
+  for (byte i = 0; i < MAX_PINS_SUPPORTED; i++) {
     the_digital_pins[i].pin_number = i;
     the_digital_pins[i].pin_mode = NOT_SET;
-    the_digital_pins[i].reporting_enabled = false;
+    the_digital_pins[i].digital_reporting_enabled = false;
+    the_digital_pins[i].analog_reporting_enabled = false;
     the_digital_pins[i].last_value = -1;
+    the_digital_pins[i].differential = 0; // no differential by default
   }
 
-  // establish the analog pin array
-  for (byte i = 0; i < MAX_ANALOG_PINS_SUPPORTED; i++) {
-    the_analog_pins[i].pin_number = i;
-    the_analog_pins[i].pin_mode = NOT_SET;
-    the_analog_pins[i].reporting_enabled = false;
-    the_analog_pins[i].last_value = -1;
-    the_analog_pins[i].differential = 0;
-  }
 }
+#define RXD2 16
+#define TXD2 17
+
 
 void setup() {
   Serial.begin(115200);
+    Serial2.begin(115200, SERIAL_8N1, RXD2, TXD2);
+Serial2.println("Starting up...");
   // initialize the servo allocation map table
   init_pin_structures();
   // for (int i = 0; i < 5; i++) {
@@ -946,7 +958,7 @@ void loop() {
   static decltype(millis()) scan_delay = 10;
   if (!stop_reports) { // stop reporting
     if (millis() - last_scan >= (scan_delay)) {
-      digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+      // digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
       // Serial.println("Scanning inputs...");
       // send_debug_info(10, 10);
       last_scan += scan_delay;
@@ -959,7 +971,8 @@ void loop() {
     }
   }
 }
-
+static_assert(command_table[32] == &ping,
+              "command_table[32] must be ping");
 static_assert(sizeof(command_buffer) == MAX_COMMAND_LENGTH,
               "command_buffer size must be equal to MAX_COMMAND_LENGTH");
 static_assert(command_table[37] == &feature_detection,
@@ -985,10 +998,10 @@ void feature_detection() {
       } else if (cmd == &sonar_new) {
         report_message[3] = MAX_SONARS; // sonar
       } else if (cmd == &set_pin_mode) {
-        report_message[3] = MAX_DIGITAL_PINS_SUPPORTED;
+        report_message[3] = NUM_DIGITAL_PINS;
         report_message[4] = MAX_ANALOG_PINS_SUPPORTED;
-        report_message[5] = ANALOG_PIN_OFFSET;
-        for (auto i = 0; i < analog_read_pins_size; i++) {
+        // report_message[5] = ANALOG_PIN_OFFSET;
+        for (auto i = 0; i < MAX_ANALOG_PINS_SUPPORTED; i++) {
           report_message[6 + i] = (uint8_t)analog_read_pins[i];
         }
       } else if (cmd == &servo_attach) {
@@ -1001,17 +1014,24 @@ void feature_detection() {
       } else if (cmd == &get_unique_id) {
         report_message[3] = 0; // TODO: implement
       }
+    } else {
+      report_message[2] = 0; // command not supported
     }
   }
   send_message(report_message);
 }
 
 template <size_t N> void send_message(const uint8_t (&message)[N]) {
-  while (Serial.availableForWrite() < (int)N + 3) {
-    delayMicroseconds(10);
-  }
+  // while (Serial.availableForWrite() < (int)N + 3) {
+  //   Serial.println("Waiting for serial write...");
+  //   delayMicroseconds(10);
+  // }
   Serial.write((uint8_t)N); // send msg len
-  Serial.write(message, N); // send message
+  for(auto i = 0; i < N; i++) {
+      Serial.write((uint8_t)message[i]); // send msg len
+
+  }
+  // Serial.write(message, N); // send message
 }
 
 void get_unique_id() {
@@ -1035,7 +1055,7 @@ bool watchdog_enabled = false;
 uint32_t last_ping = 0;
 void ping() {
   static uint8_t random = -1;
-
+// digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
   auto special_num = command_buffer[0];
   if (!watchdog_enabled) {
 #if ENABLE_ADAFRUIT_WATCHDOG
@@ -1045,14 +1065,18 @@ void ping() {
     // watchdog_enable(WATCHDOG_TIME,
     // 1); // Add watchdog requiring trigger every 5s
     watchdog_enabled = true;
-    srand(millis());
-    random = rand() % 100; // create some random number to let computer side
-                           // know it is the same run
+    // srand(millis());
+    // random = rand() % 100; // create some random number to let computer side
+    //                        // know it is the same run
     random = 0x1B;
   }
   uint8_t out[] = {PONG_REPORT, // write type
                    special_num, random, 0, 0, 0, 0};
   // out[0] = out.size() - 1; // dont count the packet length
+  // send_debug_info(1, special_num);
+  // send_debug_info(2, random);
+      // Serial2.println("Pinging...");
+
   send_message(out);
   if (true) {
     // watchdog_update();
@@ -1062,4 +1086,5 @@ void ping() {
 
     last_ping = millis();
   }
+
 }
