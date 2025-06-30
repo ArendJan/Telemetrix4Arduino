@@ -1,8 +1,11 @@
 #pragma once
 #include <Arduino.h>
 
-#if defined(ARDUINO_ARCH_AVR) && defined(ARDUINO_AVR_NANO)
-
+#if defined(ARDUINO_RASPBERRY_PI_PICO) && defined(ARDUINO_ARCH_RP2040)
+const auto A4 = 2047;
+const auto A5 = 2047;
+const auto A6 = 2047;
+const auto A7 = 2047;
 const auto A8 = 2047;
 const auto A9 = 2047;
 const auto A10 = 2047;

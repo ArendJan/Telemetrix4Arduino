@@ -238,7 +238,7 @@ uint8_t analog_sampling_interval = 19;
 Servo servos[MAX_SERVOS]; // max set by servo library
 // this array allows us to retrieve the servo object
 // associated with a specific pin number
-byte pin_to_servo_index_map[MAX_SERVOS];
+byte servo_index_to_pin_map[MAX_SERVOS];
 #endif
 // HC-SR04 Sonar Management
 
@@ -335,8 +335,8 @@ void set_pin_mode() {
   PIN_MODES mode;
   pin = command_buffer[0];
   mode = (PIN_MODES)command_buffer[1];
-  Serial2.println("Setting pin mode: " + String(pin) + " to " +
-                 String(mode));
+  // Serial2.println("Setting pin mode: " + String(pin) + " to " +
+                //  String(mode));
   switch (mode) {
   case INPUT_PULL_DOWN:
     the_digital_pins[pin].pin_mode = mode;
@@ -401,10 +401,12 @@ void pwm_write() {
   // command_buffer[2] = value_lsb
   byte pin; // command_buffer[0]
   unsigned int value;
-
   pin = command_buffer[0];
 
   value = (command_buffer[1] << 8) + command_buffer[2];
+
+  send_debug_info(3, pin);
+  send_debug_info(4, value);
   analogWrite(pin, value);
 }
 
@@ -415,7 +417,7 @@ void modify_reporting() {
 
   switch (command_buffer[0]) {
   case REPORTING_DISABLE_ALL:
-    for (int i = 0; i < MAX_PINS_SUPPORTED; i++) {
+    for (uint8_t i = 0; i < MAX_PINS_SUPPORTED; i++) {
       the_digital_pins[i].digital_reporting_enabled = false;
       the_digital_pins[i].analog_reporting_enabled = false;
     }
@@ -490,7 +492,7 @@ void servo_attach() {
   // find the first available open servo
   servo_found = find_servo();
   if (servo_found != -1) {
-    pin_to_servo_index_map[servo_found] = pin;
+    servo_index_to_pin_map[servo_found] = pin;
     servos[servo_found].attach(pin, minpulse, maxpulse);
   } else {
     // no open servos available, send a report back to client
@@ -505,11 +507,10 @@ void servo_attach() {
 void servo_write() {
 #if MAX_SERVOS > 0
   byte pin = command_buffer[0];
-  int angle = command_buffer[1];
+  int angle = command_buffer[1] << 8 | command_buffer[2];
   // find the servo object for the pin
   for (int i = 0; i < MAX_SERVOS; i++) {
-    if (pin_to_servo_index_map[i] == pin) {
-
+    if (servo_index_to_pin_map[i] == pin) {
       servos[i].write(angle);
       return;
     }
@@ -524,12 +525,14 @@ void servo_detach() {
 
   // find the servo object for the pin
   for (int i = 0; i < MAX_SERVOS; i++) {
-    if (pin_to_servo_index_map[i] == pin) {
+    if (servo_index_to_pin_map[i] == pin) {
 
-      pin_to_servo_index_map[i] = -1;
+      servo_index_to_pin_map[i] = -1;
       servos[i].detach();
     }
   }
+#else
+#warning "No servos supported, servos will not do anything"
 #endif
 }
 
@@ -656,8 +659,8 @@ void get_next_command() {
     return;
   }
   command_entry = command_table[command];
-  Serial2.print("Command: ");
-  Serial2.println(command);
+  // Serial2.print("Command: ");
+  // Serial2.println(command);
   if (packet_length > 1) {
     // get the data for that command
     for (int i = 0; i < packet_length - 1; i++) {
@@ -683,7 +686,7 @@ void scan_digital_inputs() {
 
   byte report_message[4] = {DIGITAL_REPORT, 0, 0};
 
-  for (int i = 0; i < MAX_PINS_SUPPORTED; i++) {
+  for (uint8_t i = 0; i < MAX_PINS_SUPPORTED; i++) {
     if (the_digital_pins[i].pin_mode == INPUT_MODE ||
         the_digital_pins[i].pin_mode == INPUT_PULL_UP ||
         the_digital_pins[i].pin_mode == INPUT_PULL_DOWN) {
@@ -721,7 +724,7 @@ void scan_analog_inputs() {
   current_millis = millis();
   if (current_millis - previous_millis > analog_sampling_interval) {
     previous_millis += analog_sampling_interval;
-    for (int i = 0; i < MAX_PINS_SUPPORTED; i++) {
+    for (uint8_t i = 0; i < MAX_PINS_SUPPORTED; i++) {
       if (the_digital_pins[i].pin_mode == ANALOG_INPUT) {
         if (the_digital_pins[i].analog_reporting_enabled) {
           // if the value changed since last read
@@ -739,10 +742,10 @@ void scan_analog_inputs() {
             report_message[3] = lowByte(value);
             // Serial.write(report_message, 5);
             send_message(report_message);
-            Serial2.print("Analog pin: ");
-            Serial2.print(adjusted_pin_number);
-            Serial2.print(" value: ");
-            Serial2.println(value);
+            // Serial2.print("Analog pin: ");
+            // Serial2.print(adjusted_pin_number);
+            // Serial2.print(" value: ");
+            // Serial2.println(value);
             // delay(1);
           }
         }
@@ -935,8 +938,8 @@ void init_pin_structures() {
 
 void setup() {
   Serial.begin(115200);
-    Serial2.begin(115200, SERIAL_8N1, RXD2, TXD2);
-Serial2.println("Starting up...");
+    // Serial2.begin(115200, SERIAL_8N1, RXD2, TXD2);
+// Serial2.println("Starting up...");
   // initialize the servo allocation map table
   init_pin_structures();
   // for (int i = 0; i < 5; i++) {
@@ -1027,7 +1030,7 @@ template <size_t N> void send_message(const uint8_t (&message)[N]) {
   //   delayMicroseconds(10);
   // }
   Serial.write((uint8_t)N); // send msg len
-  for(auto i = 0; i < N; i++) {
+  for(size_t i = 0; i < N; i++) {
       Serial.write((uint8_t)message[i]); // send msg len
 
   }
@@ -1075,7 +1078,7 @@ void ping() {
   // out[0] = out.size() - 1; // dont count the packet length
   // send_debug_info(1, special_num);
   // send_debug_info(2, random);
-      // Serial2.println("Pinging...");
+      // // Serial2.println("Pinging...");
 
   send_message(out);
   if (true) {

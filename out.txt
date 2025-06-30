@@ -1,0 +1,1292 @@
+[test-clang-format/cpp_style_check] ⭐ Run Set up job
+[test-clang-format/cpp_style_check] 🚀  Start image=catthehacker/ubuntu:act-latest
+[Arduino Compile/build-2          ] ⭐ Run Set up job
+[Arduino Compile/build-2          ] 🚀  Start image=catthehacker/ubuntu:act-latest
+[Arduino Compile/build-3          ] ⭐ Run Set up job
+[Arduino Compile/build-3          ] 🚀  Start image=catthehacker/ubuntu:act-latest
+[Arduino Compile/build-4          ] ⭐ Run Set up job
+[Arduino Compile/build-4          ] 🚀  Start image=catthehacker/ubuntu:act-latest
+[Arduino Compile/build-1          ] ⭐ Run Set up job
+[Arduino Compile/build-1          ] 🚀  Start image=catthehacker/ubuntu:act-latest
+[Arduino Compile/build-2          ]   🐳  docker pull image=catthehacker/ubuntu:act-latest platform= username= forcePull=true
+[Arduino Compile/build-4          ]   🐳  docker pull image=catthehacker/ubuntu:act-latest platform= username= forcePull=true
+[Arduino Compile/build-1          ]   🐳  docker pull image=catthehacker/ubuntu:act-latest platform= username= forcePull=true
+[Arduino Compile/build-3          ]   🐳  docker pull image=catthehacker/ubuntu:act-latest platform= username= forcePull=true
+[test-clang-format/cpp_style_check]   🐳  docker pull image=catthehacker/ubuntu:act-latest platform= username= forcePull=true
+[Arduino Compile/build-3          ]   🐳  docker create image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[Arduino Compile/build-1          ]   🐳  docker create image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[Arduino Compile/build-2          ]   🐳  docker create image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[Arduino Compile/build-3          ]   🐳  docker run image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[Arduino Compile/build-1          ]   🐳  docker run image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[test-clang-format/cpp_style_check]   🐳  docker create image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[Arduino Compile/build-2          ]   🐳  docker run image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[test-clang-format/cpp_style_check]   🐳  docker run image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[Arduino Compile/build-4          ]   🐳  docker create image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[Arduino Compile/build-3          ]   🐳  docker exec cmd=[node --no-warnings -e console.log(process.execPath)] user= workdir=
+[Arduino Compile/build-2          ]   🐳  docker exec cmd=[node --no-warnings -e console.log(process.execPath)] user= workdir=
+[Arduino Compile/build-1          ]   🐳  docker exec cmd=[node --no-warnings -e console.log(process.execPath)] user= workdir=
+[Arduino Compile/build-2          ]   ✅  Success - Set up job
+[Arduino Compile/build-4          ]   🐳  docker run image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[Arduino Compile/build-2          ]   ☁  git clone 'https://github.com/actions/setup-python' # ref=v5
+[Arduino Compile/build-1          ]   ✅  Success - Set up job
+[Arduino Compile/build-3          ]   ✅  Success - Set up job
+[Arduino Compile/build-1          ]   ☁  git clone 'https://github.com/actions/setup-python' # ref=v5
+[Arduino Compile/build-3          ]   ☁  git clone 'https://github.com/actions/setup-python' # ref=v5
+[test-clang-format/cpp_style_check]   🐳  docker exec cmd=[node --no-warnings -e console.log(process.execPath)] user= workdir=
+[test-clang-format/cpp_style_check]   ✅  Success - Set up job
+[test-clang-format/cpp_style_check]   ☁  git clone 'https://github.com/DoozyX/clang-format-lint-action' # ref=v0.14
+[Arduino Compile/build-4          ]   🐳  docker exec cmd=[node --no-warnings -e console.log(process.execPath)] user= workdir=
+[Arduino Compile/build-4          ]   ✅  Success - Set up job
+[Arduino Compile/build-4          ]   ☁  git clone 'https://github.com/actions/setup-python' # ref=v5
+[Arduino Compile/build-2          ] Non-terminating error while running 'git clone': some refs were not updated
+[Arduino Compile/build-2          ] 🧪  Matrix: map[board_fqbn:robotdyn_blackpill_f303cc]
+[Arduino Compile/build-2          ] ⭐ Run Main actions/checkout@v4
+[Arduino Compile/build-2          ]   🐳  docker cp src=/home/arendjan/mirte/telemetrix4arduino/. dst=/home/arendjan/mirte/telemetrix4arduino
+[Arduino Compile/build-2          ]   ✅  Success - Main actions/checkout@v4
+[Arduino Compile/build-2          ] ⭐ Run Main Set up Python
+[Arduino Compile/build-2          ]   🐳  docker cp src=/home/arendjan/.cache/act/actions-setup-python@v5/ dst=/var/run/act/actions/actions-setup-python@v5/
+[Arduino Compile/build-2          ]   🐳  docker exec cmd=[/opt/acttoolcache/node/18.20.8/x64/bin/node /var/run/act/actions/actions-setup-python@v5/dist/setup/index.js] user= workdir=
+[Arduino Compile/build-2          ]   ❓  ::group::Installed versions
+[Arduino Compile/build-1          ] Non-terminating error while running 'git clone': some refs were not updated
+[Arduino Compile/build-1          ] 🧪  Matrix: map[board_fqbn:nanoatmega328new]
+[Arduino Compile/build-2          ]   | Successfully set up CPython (3.13.5)
+[Arduino Compile/build-2          ]   ❓  ::endgroup::
+[Arduino Compile/build-2          ]   ❓ add-matcher /run/act/actions/actions-setup-python@v5/.github/python.json
+[Arduino Compile/build-2          ]   ✅  Success - Main Set up Python
+[Arduino Compile/build-2          ]   ⚙  ::set-env:: pythonLocation=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-2          ]   ⚙  ::set-env:: PKG_CONFIG_PATH=/opt/hostedtoolcache/Python/3.13.5/x64/lib/pkgconfig
+[Arduino Compile/build-2          ]   ⚙  ::set-env:: Python_ROOT_DIR=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-2          ]   ⚙  ::set-env:: Python2_ROOT_DIR=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-2          ]   ⚙  ::set-env:: Python3_ROOT_DIR=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-2          ]   ⚙  ::set-env:: LD_LIBRARY_PATH=/opt/hostedtoolcache/Python/3.13.5/x64/lib
+[Arduino Compile/build-2          ]   ⚙  ::set-output:: python-version=3.13.5
+[Arduino Compile/build-2          ]   ⚙  ::set-output:: python-path=/opt/hostedtoolcache/Python/3.13.5/x64/bin/python
+[Arduino Compile/build-1          ] ⭐ Run Main actions/checkout@v4
+[Arduino Compile/build-2          ]   ⚙  ::add-path:: /opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-2          ]   ⚙  ::add-path:: /opt/hostedtoolcache/Python/3.13.5/x64/bin
+[Arduino Compile/build-1          ]   🐳  docker cp src=/home/arendjan/mirte/telemetrix4arduino/. dst=/home/arendjan/mirte/telemetrix4arduino
+[Arduino Compile/build-2          ] ⭐ Run Main Install dependencies
+[Arduino Compile/build-1          ]   ✅  Success - Main actions/checkout@v4
+[Arduino Compile/build-2          ]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/2] user= workdir=
+[Arduino Compile/build-1          ] ⭐ Run Main Set up Python
+[Arduino Compile/build-1          ]   🐳  docker cp src=/home/arendjan/.cache/act/actions-setup-python@v5/ dst=/var/run/act/actions/actions-setup-python@v5/
+[Arduino Compile/build-1          ]   🐳  docker exec cmd=[/opt/acttoolcache/node/18.20.8/x64/bin/node /var/run/act/actions/actions-setup-python@v5/dist/setup/index.js] user= workdir=
+[Arduino Compile/build-3          ] Non-terminating error while running 'git clone': some refs were not updated
+[Arduino Compile/build-3          ] 🧪  Matrix: map[board_fqbn:nanoatmega328]
+[Arduino Compile/build-3          ] ⭐ Run Main actions/checkout@v4
+[Arduino Compile/build-1          ]   ❓  ::group::Installed versions
+[Arduino Compile/build-3          ]   🐳  docker cp src=/home/arendjan/mirte/telemetrix4arduino/. dst=/home/arendjan/mirte/telemetrix4arduino
+[Arduino Compile/build-1          ]   | Successfully set up CPython (3.13.5)
+[Arduino Compile/build-1          ]   ❓  ::endgroup::
+[Arduino Compile/build-1          ]   ❓ add-matcher /run/act/actions/actions-setup-python@v5/.github/python.json
+[Arduino Compile/build-1          ]   ✅  Success - Main Set up Python
+[Arduino Compile/build-1          ]   ⚙  ::set-env:: Python3_ROOT_DIR=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-1          ]   ⚙  ::set-env:: LD_LIBRARY_PATH=/opt/hostedtoolcache/Python/3.13.5/x64/lib
+[Arduino Compile/build-1          ]   ⚙  ::set-env:: pythonLocation=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-1          ]   ⚙  ::set-env:: PKG_CONFIG_PATH=/opt/hostedtoolcache/Python/3.13.5/x64/lib/pkgconfig
+[Arduino Compile/build-1          ]   ⚙  ::set-env:: Python_ROOT_DIR=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-1          ]   ⚙  ::set-env:: Python2_ROOT_DIR=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-2          ]   | Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (25.1.1)
+[Arduino Compile/build-1          ]   ⚙  ::set-output:: python-path=/opt/hostedtoolcache/Python/3.13.5/x64/bin/python
+[Arduino Compile/build-1          ]   ⚙  ::set-output:: python-version=3.13.5
+[Arduino Compile/build-1          ]   ⚙  ::add-path:: /opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-1          ]   ⚙  ::add-path:: /opt/hostedtoolcache/Python/3.13.5/x64/bin
+[Arduino Compile/build-3          ]   ✅  Success - Main actions/checkout@v4
+[Arduino Compile/build-1          ] ⭐ Run Main Install dependencies
+[Arduino Compile/build-3          ] ⭐ Run Main Set up Python
+[Arduino Compile/build-3          ]   🐳  docker cp src=/home/arendjan/.cache/act/actions-setup-python@v5/ dst=/var/run/act/actions/actions-setup-python@v5/
+[Arduino Compile/build-1          ]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/2] user= workdir=
+[test-clang-format/cpp_style_check] Non-terminating error while running 'git clone': some refs were not updated
+[test-clang-format/cpp_style_check] ⭐ Run Main actions/checkout@v3
+[Arduino Compile/build-2          ]   | WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[test-clang-format/cpp_style_check]   🐳  docker cp src=/home/arendjan/mirte/telemetrix4arduino/. dst=/home/arendjan/mirte/telemetrix4arduino
+[test-clang-format/cpp_style_check]   ✅  Success - Main actions/checkout@v3
+[test-clang-format/cpp_style_check] ⭐ Run Main DoozyX/clang-format-lint-action@v0.14
+[test-clang-format/cpp_style_check]   🐳  docker build -t act-doozyx-clang-format-lint-action-v0-14-dockeraction:latest /home/arendjan/.cache/act/DoozyX-clang-format-lint-action@v0.14
+[Arduino Compile/build-3          ]   🐳  docker exec cmd=[/opt/acttoolcache/node/18.20.8/x64/bin/node /var/run/act/actions/actions-setup-python@v5/dist/setup/index.js] user= workdir=
+[Arduino Compile/build-1          ]   | Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (25.1.1)
+[test-clang-format/cpp_style_check]   🐳  docker pull image=act-doozyx-clang-format-lint-action-v0-14-dockeraction:latest platform= username= forcePull=false
+[test-clang-format/cpp_style_check]   🐳  docker create image=act-doozyx-clang-format-lint-action-v0-14-dockeraction:latest platform= entrypoint=[] cmd=["--clang-format-executable" "/clang-format/clang-format14" "-r" "--color" "always" "--style" "llvm" "--inplace" "False" "--extensions" "h,cpp" "--exclude" "none" "."] network="container:act-test-clang-format-cpp-style-check-326e39a0d645c808983c597b24e14296cd95459c3cd88b8c4801f7d7b725c758"
+[Arduino Compile/build-3          ]   ❓  ::group::Installed versions
+[Arduino Compile/build-1          ]   | WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[Arduino Compile/build-3          ]   | Successfully set up CPython (3.13.5)
+[Arduino Compile/build-3          ]   ❓  ::endgroup::
+[Arduino Compile/build-3          ]   ❓ add-matcher /run/act/actions/actions-setup-python@v5/.github/python.json
+[Arduino Compile/build-3          ]   ✅  Success - Main Set up Python
+[Arduino Compile/build-3          ]   ⚙  ::set-env:: PKG_CONFIG_PATH=/opt/hostedtoolcache/Python/3.13.5/x64/lib/pkgconfig
+[Arduino Compile/build-3          ]   ⚙  ::set-env:: Python_ROOT_DIR=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-3          ]   ⚙  ::set-env:: Python2_ROOT_DIR=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-3          ]   ⚙  ::set-env:: Python3_ROOT_DIR=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-3          ]   ⚙  ::set-env:: LD_LIBRARY_PATH=/opt/hostedtoolcache/Python/3.13.5/x64/lib
+[Arduino Compile/build-3          ]   ⚙  ::set-env:: pythonLocation=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-2          ]   | Requirement already satisfied: platformio in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (6.1.18)
+[Arduino Compile/build-3          ]   ⚙  ::set-output:: python-version=3.13.5
+[Arduino Compile/build-3          ]   ⚙  ::set-output:: python-path=/opt/hostedtoolcache/Python/3.13.5/x64/bin/python
+[Arduino Compile/build-2          ]   | Requirement already satisfied: bottle==0.13.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.13.4)
+[Arduino Compile/build-3          ]   ⚙  ::add-path:: /opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-3          ]   ⚙  ::add-path:: /opt/hostedtoolcache/Python/3.13.5/x64/bin
+[Arduino Compile/build-2          ]   | Requirement already satisfied: click<8.1.8,>=8.0.4 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (8.1.7)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: colorama in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.4.6)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: marshmallow==3.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (3.26.1)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: pyelftools<1,>=0.27 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.32)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: pyserial==3.5.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (3.5)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: requests==2.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (2.32.4)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: semantic_version==2.10.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (2.10.0)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: tabulate==0.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.9.0)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: ajsonrpc==1.2.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (1.2.0)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: starlette<0.47,>=0.19 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.46.2)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: uvicorn<0.35,>=0.16 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.34.3)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: wsproto==1.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (1.2.0)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: packaging>=17.0 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from marshmallow==3.*->platformio) (25.0)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: charset_normalizer<4,>=2 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (3.4.2)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: idna<4,>=2.5 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (3.10)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (2.5.0)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: certifi>=2017.4.17 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (2025.6.15)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: anyio<5,>=3.6.2 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from starlette<0.47,>=0.19->platformio) (4.9.0)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: sniffio>=1.1 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from anyio<5,>=3.6.2->starlette<0.47,>=0.19->platformio) (1.3.1)
+[Arduino Compile/build-2          ]   | Requirement already satisfied: h11>=0.8 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from uvicorn<0.35,>=0.16->platformio) (0.16.0)
+[Arduino Compile/build-3          ] ⭐ Run Main Install dependencies
+[Arduino Compile/build-2          ]   | WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[Arduino Compile/build-3          ]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/2] user= workdir=
+[test-clang-format/cpp_style_check]   🐳  docker run image=act-doozyx-clang-format-lint-action-v0-14-dockeraction:latest platform= entrypoint=[] cmd=["--clang-format-executable" "/clang-format/clang-format14" "-r" "--color" "always" "--style" "llvm" "--inplace" "False" "--extensions" "h,cpp" "--exclude" "none" "."] network="container:act-test-clang-format-cpp-style-check-326e39a0d645c808983c597b24e14296cd95459c3cd88b8c4801f7d7b725c758"
+[Arduino Compile/build-4          ] Non-terminating error while running 'git clone': some refs were not updated
+[Arduino Compile/build-4          ] 🧪  Matrix: map[board_fqbn:adafruit_itsybitsy_m4]
+[Arduino Compile/build-2          ]   ✅  Success - Main Install dependencies
+[Arduino Compile/build-4          ] ⭐ Run Main actions/checkout@v4
+[Arduino Compile/build-4          ]   🐳  docker cp src=/home/arendjan/mirte/telemetrix4arduino/. dst=/home/arendjan/mirte/telemetrix4arduino
+[Arduino Compile/build-2          ] ⭐ Run Main Install platformIO libraries
+[Arduino Compile/build-4          ]   ✅  Success - Main actions/checkout@v4
+[Arduino Compile/build-2          ]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/3] user= workdir=
+[Arduino Compile/build-4          ] ⭐ Run Main Set up Python
+[Arduino Compile/build-4          ]   🐳  docker cp src=/home/arendjan/.cache/act/actions-setup-python@v5/ dst=/var/run/act/actions/actions-setup-python@v5/
+[Arduino Compile/build-4          ]   🐳  docker exec cmd=[/opt/acttoolcache/node/18.20.8/x64/bin/node /var/run/act/actions/actions-setup-python@v5/dist/setup/index.js] user= workdir=
+[Arduino Compile/build-2          ]   | ********************************************************************************
+[Arduino Compile/build-2          ]   | If you like PlatformIO, please:
+[Arduino Compile/build-2          ]   | - star it on GitHub > https://github.com/platformio/platformio-core
+[Arduino Compile/build-2          ]   | - follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+[Arduino Compile/build-2          ]   | - try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+[Arduino Compile/build-2          ]   | ********************************************************************************
+[Arduino Compile/build-2          ]   | 
+[Arduino Compile/build-2          ]   | Resolving robotdyn_blackpill_f303cc dependencies...
+[Arduino Compile/build-2          ]   | Platform Manager: Installing ststm32
+[Arduino Compile/build-1          ]   | Requirement already satisfied: platformio in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (6.1.18)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: bottle==0.13.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.13.4)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: click<8.1.8,>=8.0.4 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (8.1.7)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: colorama in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.4.6)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: marshmallow==3.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (3.26.1)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: pyelftools<1,>=0.27 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.32)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: pyserial==3.5.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (3.5)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: requests==2.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (2.32.4)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: semantic_version==2.10.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (2.10.0)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: tabulate==0.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.9.0)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: ajsonrpc==1.2.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (1.2.0)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: starlette<0.47,>=0.19 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.46.2)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: uvicorn<0.35,>=0.16 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.34.3)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: wsproto==1.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (1.2.0)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: packaging>=17.0 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from marshmallow==3.*->platformio) (25.0)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: charset_normalizer<4,>=2 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (3.4.2)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: idna<4,>=2.5 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (3.10)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (2.5.0)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: certifi>=2017.4.17 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (2025.6.15)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: anyio<5,>=3.6.2 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from starlette<0.47,>=0.19->platformio) (4.9.0)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: sniffio>=1.1 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from anyio<5,>=3.6.2->starlette<0.47,>=0.19->platformio) (1.3.1)
+[Arduino Compile/build-1          ]   | Requirement already satisfied: h11>=0.8 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from uvicorn<0.35,>=0.16->platformio) (0.16.0)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (25.1.1)
+[Arduino Compile/build-1          ]   | WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[Arduino Compile/build-1          ]   ✅  Success - Main Install dependencies
+[Arduino Compile/build-3          ]   | WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[Arduino Compile/build-1          ] ⭐ Run Main Install platformIO libraries
+[Arduino Compile/build-4          ]   ❓  ::group::Installed versions
+[Arduino Compile/build-4          ]   | Successfully set up CPython (3.13.5)
+[Arduino Compile/build-4          ]   ❓  ::endgroup::
+[Arduino Compile/build-4          ]   ❓ add-matcher /run/act/actions/actions-setup-python@v5/.github/python.json
+[Arduino Compile/build-1          ]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/3] user= workdir=
+[Arduino Compile/build-4          ]   ✅  Success - Main Set up Python
+[Arduino Compile/build-4          ]   ⚙  ::set-env:: Python2_ROOT_DIR=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-4          ]   ⚙  ::set-env:: Python3_ROOT_DIR=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-4          ]   ⚙  ::set-env:: LD_LIBRARY_PATH=/opt/hostedtoolcache/Python/3.13.5/x64/lib
+[Arduino Compile/build-4          ]   ⚙  ::set-env:: pythonLocation=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-4          ]   ⚙  ::set-env:: PKG_CONFIG_PATH=/opt/hostedtoolcache/Python/3.13.5/x64/lib/pkgconfig
+[Arduino Compile/build-4          ]   ⚙  ::set-env:: Python_ROOT_DIR=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-4          ]   ⚙  ::set-output:: python-version=3.13.5
+[Arduino Compile/build-4          ]   ⚙  ::set-output:: python-path=/opt/hostedtoolcache/Python/3.13.5/x64/bin/python
+[Arduino Compile/build-4          ]   ⚙  ::add-path:: /opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-4          ]   ⚙  ::add-path:: /opt/hostedtoolcache/Python/3.13.5/x64/bin
+[test-clang-format/cpp_style_check]   | Processing 4 files: ./src/i2c.cpp, ./src/main.cpp, ./lib/OpticalEncoder/OpticalEncoder.h, ./include/Telemetrix4Arduino.h
+[Arduino Compile/build-4          ] ⭐ Run Main Install dependencies
+[test-clang-format/cpp_style_check]   | [1m--- ./src/main.cpp	(original)
+[test-clang-format/cpp_style_check]   | [0m[1m+++ ./src/main.cpp	(reformatted)
+[test-clang-format/cpp_style_check]   | [0m[36m@@ -630,7 +630,7 @@
+[test-clang-format/cpp_style_check]   | [0m   // send_debug_info(0, packet_length);
+[test-clang-format/cpp_style_check]   |    auto max_wait = 10; // wait for the command to be available
+[test-clang-format/cpp_style_check]   |    while (max_wait-- > 0 && !Serial.available()) {
+[test-clang-format/cpp_style_check]   | [31m-        delayMicroseconds(10);
+[test-clang-format/cpp_style_check]   | [0m[32m+    delayMicroseconds(10);
+[test-clang-format/cpp_style_check]   | [0m   }
+[test-clang-format/cpp_style_check]   |    if (packet_length == 0) {
+[test-clang-format/cpp_style_check]   |      return; // no command to process, reset bytes
+[test-clang-format/cpp_style_check]   | [36m@@ -933,7 +933,7 @@
+[test-clang-format/cpp_style_check]   | [0m   //   digitalWrite(LED_BUILTIN, HIGH);
+[test-clang-format/cpp_style_check]   |    //   delay(100);
+[test-clang-format/cpp_style_check]   |    // }
+[test-clang-format/cpp_style_check]   | [31m-  for(auto i = 0; i < 0xFF; i++) {
+[test-clang-format/cpp_style_check]   | [0m[32m+  for (auto i = 0; i < 0xFF; i++) {
+[test-clang-format/cpp_style_check]   | [0m     Serial.write(0);
+[test-clang-format/cpp_style_check]   |    }
+[test-clang-format/cpp_style_check]   |    // get_firmware_version();
+[test-clang-format/cpp_style_check]   | [36m@@ -946,7 +946,7 @@
+[test-clang-format/cpp_style_check]   | [0m   static decltype(millis()) scan_delay = 10;
+[test-clang-format/cpp_style_check]   |    if (!stop_reports) { // stop reporting
+[test-clang-format/cpp_style_check]   |      if (millis() - last_scan >= (scan_delay)) {
+[test-clang-format/cpp_style_check]   | [31m-          digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+[test-clang-format/cpp_style_check]   | [0m[32m+      digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+[test-clang-format/cpp_style_check]   | [0m       // Serial.println("Scanning inputs...");
+[test-clang-format/cpp_style_check]   |        // send_debug_info(10, 10);
+[test-clang-format/cpp_style_check]   |        last_scan += scan_delay;
+[test-clang-format/cpp_style_check]   | [36m@@ -1008,7 +1008,7 @@
+[test-clang-format/cpp_style_check]   | [0m 
+[test-clang-format/cpp_style_check]   |  template <size_t N> void send_message(const uint8_t (&message)[N]) {
+[test-clang-format/cpp_style_check]   |    while (Serial.availableForWrite() < (int)N + 3) {
+[test-clang-format/cpp_style_check]   | [31m-        delayMicroseconds(10);
+[test-clang-format/cpp_style_check]   | [0m[32m+    delayMicroseconds(10);
+[test-clang-format/cpp_style_check]   | [0m   }
+[test-clang-format/cpp_style_check]   |    Serial.write((uint8_t)N); // send msg len
+[test-clang-format/cpp_style_check]   |    Serial.write(message, N); // send message
+[Arduino Compile/build-4          ]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/2] user= workdir=
+[test-clang-format/cpp_style_check]   ❌  Failure - Main DoozyX/clang-format-lint-action@v0.14
+[test-clang-format/cpp_style_check] exit with `FAILURE`: 1
+[test-clang-format/cpp_style_check] ⭐ Run Complete job
+[test-clang-format/cpp_style_check]   ✅  Success - Complete job
+[test-clang-format/cpp_style_check] 🏁  Job failed
+[Arduino Compile/build-1          ]   | ********************************************************************************
+[Arduino Compile/build-1          ]   | If you like PlatformIO, please:
+[Arduino Compile/build-1          ]   | - star it on GitHub > https://github.com/platformio/platformio-core
+[Arduino Compile/build-1          ]   | - follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+[Arduino Compile/build-1          ]   | - try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+[Arduino Compile/build-1          ]   | ********************************************************************************
+[Arduino Compile/build-1          ]   | 
+[Arduino Compile/build-1          ]   | Resolving nanoatmega328new dependencies...
+[Arduino Compile/build-1          ]   | Platform Manager: Installing atmelavr
+[Arduino Compile/build-3          ]   | Requirement already satisfied: platformio in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (6.1.18)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: bottle==0.13.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.13.4)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: click<8.1.8,>=8.0.4 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (8.1.7)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: colorama in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.4.6)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: marshmallow==3.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (3.26.1)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: pyelftools<1,>=0.27 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.32)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: pyserial==3.5.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (3.5)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: requests==2.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (2.32.4)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: semantic_version==2.10.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (2.10.0)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: tabulate==0.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.9.0)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: ajsonrpc==1.2.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (1.2.0)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: starlette<0.47,>=0.19 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.46.2)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: uvicorn<0.35,>=0.16 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.34.3)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: wsproto==1.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (1.2.0)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: packaging>=17.0 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from marshmallow==3.*->platformio) (25.0)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: charset_normalizer<4,>=2 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (3.4.2)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: idna<4,>=2.5 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (3.10)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (2.5.0)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: certifi>=2017.4.17 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (2025.6.15)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: anyio<5,>=3.6.2 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from starlette<0.47,>=0.19->platformio) (4.9.0)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: sniffio>=1.1 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from anyio<5,>=3.6.2->starlette<0.47,>=0.19->platformio) (1.3.1)
+[Arduino Compile/build-3          ]   | Requirement already satisfied: h11>=0.8 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from uvicorn<0.35,>=0.16->platformio) (0.16.0)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (25.1.1)
+[Arduino Compile/build-3          ]   | WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[Arduino Compile/build-3          ]   ✅  Success - Main Install dependencies
+[Arduino Compile/build-4          ]   | WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[Arduino Compile/build-3          ] ⭐ Run Main Install platformIO libraries
+[Arduino Compile/build-3          ]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/3] user= workdir=
+[Arduino Compile/build-3          ]   | ********************************************************************************
+[Arduino Compile/build-3          ]   | If you like PlatformIO, please:
+[Arduino Compile/build-3          ]   | - star it on GitHub > https://github.com/platformio/platformio-core
+[Arduino Compile/build-3          ]   | - follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+[Arduino Compile/build-3          ]   | - try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+[Arduino Compile/build-3          ]   | ********************************************************************************
+[Arduino Compile/build-3          ]   | 
+[Arduino Compile/build-3          ]   | Resolving nanoatmega328 dependencies...
+[Arduino Compile/build-3          ]   | Platform Manager: Installing atmelavr
+[Arduino Compile/build-4          ]   | Requirement already satisfied: platformio in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (6.1.18)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: bottle==0.13.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.13.4)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: click<8.1.8,>=8.0.4 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (8.1.7)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: colorama in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.4.6)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: marshmallow==3.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (3.26.1)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: pyelftools<1,>=0.27 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.32)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: pyserial==3.5.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (3.5)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: requests==2.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (2.32.4)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: semantic_version==2.10.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (2.10.0)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: tabulate==0.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.9.0)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: ajsonrpc==1.2.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (1.2.0)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: starlette<0.47,>=0.19 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.46.2)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: uvicorn<0.35,>=0.16 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.34.3)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: wsproto==1.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (1.2.0)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: packaging>=17.0 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from marshmallow==3.*->platformio) (25.0)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: charset_normalizer<4,>=2 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (3.4.2)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: idna<4,>=2.5 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (3.10)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (2.5.0)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: certifi>=2017.4.17 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (2025.6.15)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: anyio<5,>=3.6.2 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from starlette<0.47,>=0.19->platformio) (4.9.0)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: sniffio>=1.1 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from anyio<5,>=3.6.2->starlette<0.47,>=0.19->platformio) (1.3.1)
+[Arduino Compile/build-4          ]   | Requirement already satisfied: h11>=0.8 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from uvicorn<0.35,>=0.16->platformio) (0.16.0)
+[Arduino Compile/build-1          ]   | Downloading 0% 10% 20% 30% 40% 50% 60%
+[Arduino Compile/build-4          ]   | WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[Arduino Compile/build-4          ]   ✅  Success - Main Install dependencies
+[Arduino Compile/build-1          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-4          ] ⭐ Run Main Install platformIO libraries
+[Arduino Compile/build-1          ]   | Platform Manager: atmelavr@5.1.0 has been installed!
+[Arduino Compile/build-4          ]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/3] user= workdir=
+[Arduino Compile/build-1          ]   | Tool Manager: Installing platformio/toolchain-atmelavr @ ~1.70300.0
+[Arduino Compile/build-4          ]   | ********************************************************************************
+[Arduino Compile/build-4          ]   | If you like PlatformIO, please:
+[Arduino Compile/build-4          ]   | - star it on GitHub > https://github.com/platformio/platformio-core
+[Arduino Compile/build-4          ]   | - follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+[Arduino Compile/build-4          ]   | - try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+[Arduino Compile/build-4          ]   | ********************************************************************************
+[Arduino Compile/build-4          ]   | 
+[Arduino Compile/build-4          ]   | Resolving adafruit_itsybitsy_m4 dependencies...
+[Arduino Compile/build-4          ]   | Platform Manager: Installing atmelsam
+[Arduino Compile/build-3          ]   | Downloading 0% 10% 20% 30% 40% 50% 60%
+[Arduino Compile/build-3          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | Platform Manager: atmelavr@5.1.0 has been installed!
+[Arduino Compile/build-3          ]   | Tool Manager: Installing platformio/toolchain-atmelavr @ ~1.70300.0
+[Arduino Compile/build-4          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-4          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-4          ]   | Platform Manager: atmelsam@8.3.0 has been installed!
+[Arduino Compile/build-4          ]   | Tool Manager: Installing platformio/toolchain-gccarmnoneeabi @ ~1.90301.0
+[Arduino Compile/build-2          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-1          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-2          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-2          ]   | Platform Manager: ststm32@19.2.0 has been installed!
+[Arduino Compile/build-2          ]   | Tool Manager: Installing platformio/toolchain-gccarmnoneeabi @ *
+[Arduino Compile/build-1          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-1          ]   | Tool Manager: toolchain-atmelavr@1.70300.191015 has been installed!
+[Arduino Compile/build-1          ]   | Tool Manager: Installing platformio/framework-arduino-avr @ ~5.2.0
+[Arduino Compile/build-3          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-4          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | Tool Manager: toolchain-atmelavr@1.70300.191015 has been installed!
+[Arduino Compile/build-3          ]   | Tool Manager: Installing platformio/framework-arduino-avr @ ~5.2.0
+[Arduino Compile/build-3          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | Tool Manager: framework-arduino-avr@5.2.0 has been installed!
+[Arduino Compile/build-3          ]   | Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+[Arduino Compile/build-3          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-4          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | Tool Manager: tool-scons@4.40801.0 has been installed!
+[Arduino Compile/build-3          ]   | Library Manager: Installing teckel12/NewPing @ ^1.9.7
+[Arduino Compile/build-4          ]   | Tool Manager: toolchain-gccarmnoneeabi@1.90301.200702 has been installed!
+[Arduino Compile/build-4          ]   | Tool Manager: Installing platformio/framework-arduino-samd-adafruit @ ~1.10716.0
+[Arduino Compile/build-2          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | Downloading 0% 10% 20%
+[Arduino Compile/build-3          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | Library Manager: NewPing@1.9.7 has been installed!
+[Arduino Compile/build-3          ]   | Library Manager: Installing arduino-libraries/Stepper @ ^1.1.3
+[Arduino Compile/build-1          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-1          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-1          ]   | Tool Manager: framework-arduino-avr@5.2.0 has been installed!
+[Arduino Compile/build-1          ]   | Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+[Arduino Compile/build-4          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | Downloading 0% 10%
+[Arduino Compile/build-3          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90%
+[Arduino Compile/build-3          ]   | Library Manager: Stepper@1.1.3 has been installed!
+[Arduino Compile/build-3          ]   | Library Manager: Installing arduino-libraries/Servo @ ^1.2.0
+[Arduino Compile/build-4          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-4          ]   | Tool Manager: framework-arduino-samd-adafruit@1.10716.0 has been installed!
+[Arduino Compile/build-4          ]   | Tool Manager: Installing platformio/framework-cmsis @ ~2.50400.0
+[Arduino Compile/build-1          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-1          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-1          ]   | Tool Manager: tool-scons@4.40801.0 has been installed!
+[Arduino Compile/build-1          ]   | Library Manager: Installing teckel12/NewPing @ ^1.9.7
+[Arduino Compile/build-3          ]   | Downloading 0% 10% 20% 30% 40% 50%
+[Arduino Compile/build-3          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | Library Manager: Servo@1.2.2 has been installed!
+[Arduino Compile/build-3          ]   | Library Manager: Installing robtillaart/DHTNEW @ ^0.4.18
+[Arduino Compile/build-1          ]   | Downloading 0% 10% 20%
+[Arduino Compile/build-1          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-1          ]   | Library Manager: NewPing@1.9.7 has been installed!
+[Arduino Compile/build-1          ]   | Library Manager: Installing arduino-libraries/Stepper @ ^1.1.3
+[Arduino Compile/build-4          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | Downloading 0% 10% 20% 30%
+[Arduino Compile/build-3          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | Library Manager: DHTNEW@0.4.21 has been installed!
+[Arduino Compile/build-3          ]   | Library Manager: Installing adafruit/Adafruit SleepyDog Library @ ^1.6.5
+[Arduino Compile/build-1          ]   | Downloading 0% 10%
+[Arduino Compile/build-1          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90%
+[Arduino Compile/build-1          ]   | Library Manager: Stepper@1.1.3 has been installed!
+[Arduino Compile/build-1          ]   | Library Manager: Installing arduino-libraries/Servo @ ^1.2.0
+[Arduino Compile/build-4          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-4          ]   | Tool Manager: framework-cmsis@2.50400.181126 has been installed!
+[Arduino Compile/build-4          ]   | Tool Manager: Installing platformio/framework-cmsis-atmel @ ~1.2.2
+[Arduino Compile/build-3          ]   | Downloading 0% 10% 20%
+[Arduino Compile/build-3          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | Library Manager: Adafruit SleepyDog Library@1.6.5 has been installed!
+[Arduino Compile/build-3          ]   ✅  Success - Main Install platformIO libraries
+[Arduino Compile/build-3          ] ⭐ Run Main Run PlatformIO
+[Arduino Compile/build-3          ]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/4] user= workdir=
+[Arduino Compile/build-3          ]   | Processing nanoatmega328 (platform: atmelavr; board: nanoatmega328; framework: arduino)
+[Arduino Compile/build-3          ]   | --------------------------------------------------------------------------------
+[Arduino Compile/build-1          ]   | Downloading 0% 10% 20% 30% 40% 50%
+[Arduino Compile/build-1          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-1          ]   | Library Manager: Servo@1.2.2 has been installed!
+[Arduino Compile/build-1          ]   | Library Manager: Installing robtillaart/DHTNEW @ ^0.4.18
+[Arduino Compile/build-3          ]   | Verbose mode can be enabled via `-v, --verbose` option
+[Arduino Compile/build-3          ]   | CONFIGURATION: https://docs.platformio.org/page/boards/atmelavr/nanoatmega328.html
+[Arduino Compile/build-3          ]   | PLATFORM: Atmel AVR (5.1.0) > Arduino Nano ATmega328
+[Arduino Compile/build-3          ]   | HARDWARE: ATMEGA328P 16MHz, 2KB RAM, 30KB Flash
+[Arduino Compile/build-3          ]   | DEBUG: Current (avr-stub) External (avr-stub, simavr)
+[Arduino Compile/build-3          ]   | PACKAGES: 
+[Arduino Compile/build-3          ]   |  - framework-arduino-avr @ 5.2.0 
+[Arduino Compile/build-3          ]   |  - toolchain-atmelavr @ 1.70300.191015 (7.3.0)
+[Arduino Compile/build-3          ]   | LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+[Arduino Compile/build-3          ]   | LDF Modes: Finder ~ chain, Compatibility ~ soft
+[Arduino Compile/build-3          ]   | Found 11 compatible libraries
+[Arduino Compile/build-3          ]   | Scanning dependencies...
+[Arduino Compile/build-3          ]   | Dependency Graph
+[Arduino Compile/build-3          ]   | |-- NewPing @ 1.9.7
+[Arduino Compile/build-3          ]   | |-- Stepper @ 1.1.3
+[Arduino Compile/build-3          ]   | |-- Servo @ 1.2.2
+[Arduino Compile/build-3          ]   | |-- DHTNEW @ 0.4.21
+[Arduino Compile/build-3          ]   | |-- Adafruit SleepyDog Library @ 1.6.5
+[Arduino Compile/build-3          ]   | |-- Wire @ 1.0
+[Arduino Compile/build-3          ]   | |-- OpticalEncoder
+[Arduino Compile/build-3          ]   | Building in release mode
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/src/i2c.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/src/main.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/lib6de/NewPing/NewPing.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/lib227/Stepper/Stepper.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/lib5f8/Servo/avr/Servo.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/lib5f8/Servo/mbed/Servo.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/lib5f8/Servo/megaavr/Servo.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/lib5f8/Servo/nrf52/Servo.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/lib5f8/Servo/renesas/Servo.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/lib5f8/Servo/sam/Servo.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/lib5f8/Servo/samd/Servo.cpp.o
+[Arduino Compile/build-3          ]   | Archiving .pio/build/nanoatmega328/lib227/libStepper.a
+[Arduino Compile/build-3          ]   | Archiving .pio/build/nanoatmega328/lib6de/libNewPing.a
+[Arduino Compile/build-3          ]   | Indexing .pio/build/nanoatmega328/lib227/libStepper.a
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/lib5f8/Servo/stm32f4/Servo.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/lib5f8/Servo/xmc/Servo.cpp.o
+[Arduino Compile/build-3          ]   | Indexing .pio/build/nanoatmega328/lib6de/libNewPing.a
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/lib5be/DHTNEW/dhtnew.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/libcc5/Adafruit SleepyDog Library/Adafruit_SleepyDog.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/libcc5/Adafruit SleepyDog Library/utility/WatchdogAVR.cpp.o
+[Arduino Compile/build-3          ]   | Archiving .pio/build/nanoatmega328/lib5f8/libServo.a
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/libcc5/Adafruit SleepyDog Library/utility/WatchdogESP32.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/libcc5/Adafruit SleepyDog Library/utility/WatchdogESP8266.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/libcc5/Adafruit SleepyDog Library/utility/WatchdogKinetisK.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/libcc5/Adafruit SleepyDog Library/utility/WatchdogKinetisL.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/libcc5/Adafruit SleepyDog Library/utility/WatchdogNRF.cpp.o
+[Arduino Compile/build-3          ]   | Indexing .pio/build/nanoatmega328/lib5f8/libServo.a
+[Arduino Compile/build-3          ]   | Archiving .pio/build/nanoatmega328/lib5be/libDHTNEW.a
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/libcc5/Adafruit SleepyDog Library/utility/WatchdogRP2040.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/libcc5/Adafruit SleepyDog Library/utility/WatchdogSAMD.cpp.o
+[Arduino Compile/build-3          ]   | Indexing .pio/build/nanoatmega328/lib5be/libDHTNEW.a
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/lib143/Wire/Wire.cpp.o
+[Arduino Compile/build-4          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/lib143/Wire/utility/twi.c.o
+[Arduino Compile/build-3          ]   | Archiving .pio/build/nanoatmega328/libcc5/libAdafruit SleepyDog Library.a
+[Arduino Compile/build-3          ]   | Archiving .pio/build/nanoatmega328/libFrameworkArduinoVariant.a
+[Arduino Compile/build-3          ]   | Indexing .pio/build/nanoatmega328/libcc5/libAdafruit SleepyDog Library.a
+[Arduino Compile/build-3          ]   | Indexing .pio/build/nanoatmega328/libFrameworkArduinoVariant.a
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/CDC.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/HardwareSerial.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/HardwareSerial0.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/HardwareSerial1.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/HardwareSerial2.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/HardwareSerial3.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/IPAddress.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/PluggableUSB.cpp.o
+[Arduino Compile/build-3          ]   | Archiving .pio/build/nanoatmega328/lib143/libWire.a
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/Print.cpp.o
+[Arduino Compile/build-3          ]   | Indexing .pio/build/nanoatmega328/lib143/libWire.a
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/Stream.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/Tone.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/USBCore.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/WInterrupts.c.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/WMath.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/WString.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/abi.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/hooks.c.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/main.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/new.cpp.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/wiring.c.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/wiring_analog.c.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/wiring_digital.c.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/wiring_pulse.S.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/wiring_pulse.c.o
+[Arduino Compile/build-3          ]   | Compiling .pio/build/nanoatmega328/FrameworkArduino/wiring_shift.c.o
+[Arduino Compile/build-3          ]   | Archiving .pio/build/nanoatmega328/libFrameworkArduino.a
+[Arduino Compile/build-3          ]   | Indexing .pio/build/nanoatmega328/libFrameworkArduino.a
+[Arduino Compile/build-3          ]   | Linking .pio/build/nanoatmega328/firmware.elf
+[Arduino Compile/build-1          ]   | Downloading 0% 10% 20% 30%
+[Arduino Compile/build-1          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-1          ]   | Library Manager: DHTNEW@0.4.21 has been installed!
+[Arduino Compile/build-1          ]   | Library Manager: Installing adafruit/Adafruit SleepyDog Library @ ^1.6.5
+[Arduino Compile/build-3          ]   | Checking size .pio/build/nanoatmega328/firmware.elf
+[Arduino Compile/build-3          ]   | Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+[Arduino Compile/build-3          ]   | RAM:   [====      ]  40.9% (used 838 bytes from 2048 bytes)
+[Arduino Compile/build-3          ]   | Flash: [====      ]  40.9% (used 12560 bytes from 30720 bytes)
+[Arduino Compile/build-3          ]   | Building .pio/build/nanoatmega328/firmware.hex
+[Arduino Compile/build-4          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-3          ]   | ========================= [SUCCESS] Took 2.69 seconds =========================
+[Arduino Compile/build-3          ]   | 
+[Arduino Compile/build-3          ]   | Environment    Status    Duration
+[Arduino Compile/build-3          ]   | -------------  --------  ------------
+[Arduino Compile/build-3          ]   | nanoatmega328  SUCCESS   00:00:02.692
+[Arduino Compile/build-3          ]   | ========================= 1 succeeded in 00:00:02.692 =========================
+[Arduino Compile/build-3          ]   ✅  Success - Main Run PlatformIO
+[Arduino Compile/build-3          ] ⭐ Run Post Set up Python
+[Arduino Compile/build-3          ]   🐳  docker exec cmd=[/opt/acttoolcache/node/18.20.8/x64/bin/node /var/run/act/actions/actions-setup-python@v5/dist/cache-save/index.js] user= workdir=
+[Arduino Compile/build-4          ]   | Tool Manager: framework-cmsis-atmel@1.2.2 has been installed!
+[Arduino Compile/build-4          ]   | Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+[Arduino Compile/build-3          ]   ✅  Success - Post Set up Python
+[Arduino Compile/build-3          ] ⭐ Run Complete job
+[Arduino Compile/build-3          ] Cleaning up container for job build
+[Arduino Compile/build-3          ]   ✅  Success - Complete job
+[Arduino Compile/build-3          ] 🏁  Job succeeded
+[Arduino Compile/build-5          ] ⭐ Run Set up job
+[Arduino Compile/build-5          ] 🚀  Start image=catthehacker/ubuntu:act-latest
+[Arduino Compile/build-5          ]   🐳  docker pull image=catthehacker/ubuntu:act-latest platform= username= forcePull=true
+[Arduino Compile/build-2          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-1          ]   | Downloading 0% 10% 20%
+[Arduino Compile/build-1          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-1          ]   | Library Manager: Adafruit SleepyDog Library@1.6.5 has been installed!
+[Arduino Compile/build-1          ]   ✅  Success - Main Install platformIO libraries
+[Arduino Compile/build-1          ] ⭐ Run Main Run PlatformIO
+[Arduino Compile/build-1          ]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/4] user= workdir=
+[Arduino Compile/build-5          ]   🐳  docker create image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[Arduino Compile/build-4          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-1          ]   | Processing nanoatmega328new (platform: atmelavr; board: nanoatmega328new; framework: arduino)
+[Arduino Compile/build-1          ]   | --------------------------------------------------------------------------------
+[Arduino Compile/build-5          ]   🐳  docker run image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[Arduino Compile/build-4          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-4          ]   | Tool Manager: tool-scons@4.40801.0 has been installed!
+[Arduino Compile/build-4          ]   | Library Manager: Installing teckel12/NewPing @ ^1.9.7
+[Arduino Compile/build-5          ]   🐳  docker exec cmd=[node --no-warnings -e console.log(process.execPath)] user= workdir=
+[Arduino Compile/build-5          ]   ✅  Success - Set up job
+[Arduino Compile/build-5          ]   ☁  git clone 'https://github.com/actions/setup-python' # ref=v5
+[Arduino Compile/build-1          ]   | Verbose mode can be enabled via `-v, --verbose` option
+[Arduino Compile/build-1          ]   | CONFIGURATION: https://docs.platformio.org/page/boards/atmelavr/nanoatmega328new.html
+[Arduino Compile/build-1          ]   | PLATFORM: Atmel AVR (5.1.0) > Arduino Nano ATmega328 (New Bootloader)
+[Arduino Compile/build-1          ]   | HARDWARE: ATMEGA328P 16MHz, 2KB RAM, 30KB Flash
+[Arduino Compile/build-1          ]   | DEBUG: Current (avr-stub) External (avr-stub, simavr)
+[Arduino Compile/build-1          ]   | PACKAGES: 
+[Arduino Compile/build-1          ]   |  - framework-arduino-avr @ 5.2.0 
+[Arduino Compile/build-1          ]   |  - toolchain-atmelavr @ 1.70300.191015 (7.3.0)
+[Arduino Compile/build-1          ]   | LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+[Arduino Compile/build-1          ]   | LDF Modes: Finder ~ chain, Compatibility ~ soft
+[Arduino Compile/build-1          ]   | Found 11 compatible libraries
+[Arduino Compile/build-1          ]   | Scanning dependencies...
+[Arduino Compile/build-1          ]   | Dependency Graph
+[Arduino Compile/build-1          ]   | |-- NewPing @ 1.9.7
+[Arduino Compile/build-1          ]   | |-- Stepper @ 1.1.3
+[Arduino Compile/build-1          ]   | |-- Servo @ 1.2.2
+[Arduino Compile/build-1          ]   | |-- DHTNEW @ 0.4.21
+[Arduino Compile/build-1          ]   | |-- Adafruit SleepyDog Library @ 1.6.5
+[Arduino Compile/build-1          ]   | |-- Wire @ 1.0
+[Arduino Compile/build-1          ]   | |-- OpticalEncoder
+[Arduino Compile/build-2          ]   | Tool Manager: toolchain-gccarmnoneeabi@1.140201.0 has been installed!
+[Arduino Compile/build-2          ]   | Tool Manager: Installing platformio/framework-cmsis @ ~2.50900.0
+[Arduino Compile/build-1          ]   | Building in release mode
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/src/i2c.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/src/main.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/libb7f/NewPing/NewPing.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/lib88e/Stepper/Stepper.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/liba34/Servo/avr/Servo.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/liba34/Servo/mbed/Servo.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/liba34/Servo/megaavr/Servo.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/liba34/Servo/nrf52/Servo.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/liba34/Servo/renesas/Servo.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/liba34/Servo/sam/Servo.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/liba34/Servo/samd/Servo.cpp.o
+[Arduino Compile/build-1          ]   | Archiving .pio/build/nanoatmega328new/lib88e/libStepper.a
+[Arduino Compile/build-1          ]   | Archiving .pio/build/nanoatmega328new/libb7f/libNewPing.a
+[Arduino Compile/build-1          ]   | Indexing .pio/build/nanoatmega328new/lib88e/libStepper.a
+[Arduino Compile/build-1          ]   | Indexing .pio/build/nanoatmega328new/libb7f/libNewPing.a
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/liba34/Servo/stm32f4/Servo.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/liba34/Servo/xmc/Servo.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/libe9a/DHTNEW/dhtnew.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/lib2f2/Adafruit SleepyDog Library/Adafruit_SleepyDog.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/lib2f2/Adafruit SleepyDog Library/utility/WatchdogAVR.cpp.o
+[Arduino Compile/build-1          ]   | Archiving .pio/build/nanoatmega328new/liba34/libServo.a
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/lib2f2/Adafruit SleepyDog Library/utility/WatchdogESP32.cpp.o
+[Arduino Compile/build-1          ]   | Indexing .pio/build/nanoatmega328new/liba34/libServo.a
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/lib2f2/Adafruit SleepyDog Library/utility/WatchdogESP8266.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/lib2f2/Adafruit SleepyDog Library/utility/WatchdogKinetisK.cpp.o
+[Arduino Compile/build-5          ] Non-terminating error while running 'git clone': some refs were not updated
+[Arduino Compile/build-5          ] 🧪  Matrix: map[board_fqbn:program_via_AVRISP_mkII]
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/lib2f2/Adafruit SleepyDog Library/utility/WatchdogKinetisL.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/lib2f2/Adafruit SleepyDog Library/utility/WatchdogNRF.cpp.o
+[Arduino Compile/build-1          ]   | Archiving .pio/build/nanoatmega328new/libe9a/libDHTNEW.a
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/lib2f2/Adafruit SleepyDog Library/utility/WatchdogRP2040.cpp.o
+[Arduino Compile/build-5          ] ⭐ Run Main actions/checkout@v4
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/lib2f2/Adafruit SleepyDog Library/utility/WatchdogSAMD.cpp.o
+[Arduino Compile/build-1          ]   | Indexing .pio/build/nanoatmega328new/libe9a/libDHTNEW.a
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/lib143/Wire/Wire.cpp.o
+[Arduino Compile/build-5          ]   🐳  docker cp src=/home/arendjan/mirte/telemetrix4arduino/. dst=/home/arendjan/mirte/telemetrix4arduino
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/lib143/Wire/utility/twi.c.o
+[Arduino Compile/build-1          ]   | Archiving .pio/build/nanoatmega328new/lib2f2/libAdafruit SleepyDog Library.a
+[Arduino Compile/build-1          ]   | Archiving .pio/build/nanoatmega328new/libFrameworkArduinoVariant.a
+[Arduino Compile/build-5          ]   ✅  Success - Main actions/checkout@v4
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/CDC.cpp.o
+[Arduino Compile/build-1          ]   | Indexing .pio/build/nanoatmega328new/lib2f2/libAdafruit SleepyDog Library.a
+[Arduino Compile/build-1          ]   | Indexing .pio/build/nanoatmega328new/libFrameworkArduinoVariant.a
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/HardwareSerial.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/HardwareSerial0.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/HardwareSerial1.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/HardwareSerial2.cpp.o
+[Arduino Compile/build-1          ]   | Archiving .pio/build/nanoatmega328new/lib143/libWire.a
+[Arduino Compile/build-5          ] ⭐ Run Main Set up Python
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/HardwareSerial3.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/IPAddress.cpp.o
+[Arduino Compile/build-1          ]   | Indexing .pio/build/nanoatmega328new/lib143/libWire.a
+[Arduino Compile/build-5          ]   🐳  docker cp src=/home/arendjan/.cache/act/actions-setup-python@v5/ dst=/var/run/act/actions/actions-setup-python@v5/
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/PluggableUSB.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/Print.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/Stream.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/Tone.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/USBCore.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/WInterrupts.c.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/WMath.cpp.o
+[Arduino Compile/build-4          ]   | Downloading 0% 10% 20%
+[Arduino Compile/build-4          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-4          ]   | Library Manager: NewPing@1.9.7 has been installed!
+[Arduino Compile/build-4          ]   | Library Manager: Installing arduino-libraries/Stepper @ ^1.1.3
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/WString.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/abi.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/hooks.c.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/main.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/new.cpp.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/wiring.c.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/wiring_analog.c.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/wiring_digital.c.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/wiring_pulse.S.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/wiring_pulse.c.o
+[Arduino Compile/build-1          ]   | Compiling .pio/build/nanoatmega328new/FrameworkArduino/wiring_shift.c.o
+[Arduino Compile/build-1          ]   | Archiving .pio/build/nanoatmega328new/libFrameworkArduino.a
+[Arduino Compile/build-1          ]   | Indexing .pio/build/nanoatmega328new/libFrameworkArduino.a
+[Arduino Compile/build-1          ]   | Linking .pio/build/nanoatmega328new/firmware.elf
+[Arduino Compile/build-5          ]   🐳  docker exec cmd=[/opt/acttoolcache/node/18.20.8/x64/bin/node /var/run/act/actions/actions-setup-python@v5/dist/setup/index.js] user= workdir=
+[Arduino Compile/build-1          ]   | Checking size .pio/build/nanoatmega328new/firmware.elf
+[Arduino Compile/build-1          ]   | Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+[Arduino Compile/build-1          ]   | RAM:   [====      ]  40.9% (used 838 bytes from 2048 bytes)
+[Arduino Compile/build-1          ]   | Flash: [====      ]  40.9% (used 12560 bytes from 30720 bytes)
+[Arduino Compile/build-1          ]   | Building .pio/build/nanoatmega328new/firmware.hex
+[Arduino Compile/build-5          ]   ❓  ::group::Installed versions
+[Arduino Compile/build-5          ]   | Successfully set up CPython (3.13.5)
+[Arduino Compile/build-5          ]   ❓  ::endgroup::
+[Arduino Compile/build-5          ]   ❓ add-matcher /run/act/actions/actions-setup-python@v5/.github/python.json
+[Arduino Compile/build-5          ]   ✅  Success - Main Set up Python
+[Arduino Compile/build-5          ]   ⚙  ::set-env:: Python_ROOT_DIR=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-5          ]   ⚙  ::set-env:: Python2_ROOT_DIR=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-5          ]   ⚙  ::set-env:: Python3_ROOT_DIR=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-5          ]   ⚙  ::set-env:: LD_LIBRARY_PATH=/opt/hostedtoolcache/Python/3.13.5/x64/lib
+[Arduino Compile/build-5          ]   ⚙  ::set-env:: pythonLocation=/opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-5          ]   ⚙  ::set-env:: PKG_CONFIG_PATH=/opt/hostedtoolcache/Python/3.13.5/x64/lib/pkgconfig
+[Arduino Compile/build-5          ]   ⚙  ::set-output:: python-version=3.13.5
+[Arduino Compile/build-5          ]   ⚙  ::set-output:: python-path=/opt/hostedtoolcache/Python/3.13.5/x64/bin/python
+[Arduino Compile/build-5          ]   ⚙  ::add-path:: /opt/hostedtoolcache/Python/3.13.5/x64
+[Arduino Compile/build-5          ]   ⚙  ::add-path:: /opt/hostedtoolcache/Python/3.13.5/x64/bin
+[Arduino Compile/build-1          ]   | ========================= [SUCCESS] Took 2.62 seconds =========================
+[Arduino Compile/build-1          ]   | 
+[Arduino Compile/build-1          ]   | Environment       Status    Duration
+[Arduino Compile/build-1          ]   | ----------------  --------  ------------
+[Arduino Compile/build-1          ]   | nanoatmega328new  SUCCESS   00:00:02.624
+[Arduino Compile/build-1          ]   | ========================= 1 succeeded in 00:00:02.624 =========================
+[Arduino Compile/build-5          ] ⭐ Run Main Install dependencies
+[Arduino Compile/build-1          ]   ✅  Success - Main Run PlatformIO
+[Arduino Compile/build-5          ]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/2] user= workdir=
+[Arduino Compile/build-1          ] ⭐ Run Post Set up Python
+[Arduino Compile/build-1          ]   🐳  docker exec cmd=[/opt/acttoolcache/node/18.20.8/x64/bin/node /var/run/act/actions/actions-setup-python@v5/dist/cache-save/index.js] user= workdir=
+[Arduino Compile/build-1          ]   ✅  Success - Post Set up Python
+[Arduino Compile/build-1          ] ⭐ Run Complete job
+[Arduino Compile/build-1          ] Cleaning up container for job build
+[Arduino Compile/build-1          ]   ✅  Success - Complete job
+[Arduino Compile/build-1          ] 🏁  Job succeeded
+[Arduino Compile/build-5          ]   | Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (25.1.1)
+[Arduino Compile/build-2          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-5          ]   | WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[Arduino Compile/build-4          ]   | Downloading 0% 10%
+[Arduino Compile/build-4          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90%
+[Arduino Compile/build-4          ]   | Library Manager: Stepper@1.1.3 has been installed!
+[Arduino Compile/build-4          ]   | Library Manager: Installing robtillaart/DHTNEW @ ^0.4.18
+[Arduino Compile/build-2          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-5          ]   | Requirement already satisfied: platformio in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (6.1.18)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: bottle==0.13.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.13.4)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: click<8.1.8,>=8.0.4 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (8.1.7)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: colorama in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.4.6)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: marshmallow==3.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (3.26.1)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: pyelftools<1,>=0.27 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.32)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: pyserial==3.5.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (3.5)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: requests==2.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (2.32.4)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: semantic_version==2.10.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (2.10.0)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: tabulate==0.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.9.0)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: ajsonrpc==1.2.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (1.2.0)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: starlette<0.47,>=0.19 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.46.2)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: uvicorn<0.35,>=0.16 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (0.34.3)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: wsproto==1.* in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from platformio) (1.2.0)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: packaging>=17.0 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from marshmallow==3.*->platformio) (25.0)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: charset_normalizer<4,>=2 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (3.4.2)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: idna<4,>=2.5 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (3.10)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (2.5.0)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: certifi>=2017.4.17 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from requests==2.*->platformio) (2025.6.15)
+[Arduino Compile/build-2          ]   | Tool Manager: framework-cmsis@2.50900.0 has been installed!
+[Arduino Compile/build-2          ]   | Tool Manager: Installing platformio/framework-arduinoststm32 @ ~4.21001.0
+[Arduino Compile/build-5          ]   | Requirement already satisfied: anyio<5,>=3.6.2 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from starlette<0.47,>=0.19->platformio) (4.9.0)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: sniffio>=1.1 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from anyio<5,>=3.6.2->starlette<0.47,>=0.19->platformio) (1.3.1)
+[Arduino Compile/build-5          ]   | Requirement already satisfied: h11>=0.8 in /opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages (from uvicorn<0.35,>=0.16->platformio) (0.16.0)
+[Arduino Compile/build-5          ]   | WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[Arduino Compile/build-5          ]   ✅  Success - Main Install dependencies
+[Arduino Compile/build-5          ] ⭐ Run Main Install platformIO libraries
+[Arduino Compile/build-5          ]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/3] user= workdir=
+[Arduino Compile/build-5          ]   | ********************************************************************************
+[Arduino Compile/build-5          ]   | If you like PlatformIO, please:
+[Arduino Compile/build-5          ]   | - star it on GitHub > https://github.com/platformio/platformio-core
+[Arduino Compile/build-5          ]   | - follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+[Arduino Compile/build-5          ]   | - try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+[Arduino Compile/build-5          ]   | ********************************************************************************
+[Arduino Compile/build-5          ]   | 
+[Arduino Compile/build-5          ]   | Resolving program_via_AVRISP_mkII dependencies...
+[Arduino Compile/build-5          ]   | Platform Manager: Installing atmelavr
+[Arduino Compile/build-4          ]   | Downloading 0% 10% 20% 30%
+[Arduino Compile/build-4          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-4          ]   | Library Manager: DHTNEW@0.4.21 has been installed!
+[Arduino Compile/build-4          ]   | Library Manager: Installing adafruit/Adafruit SleepyDog Library @ ^1.6.5
+[Arduino Compile/build-5          ]   | Downloading 0% 10% 20% 30% 40% 50% 60%
+[Arduino Compile/build-5          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-5          ]   | Platform Manager: atmelavr@5.1.0 has been installed!
+[Arduino Compile/build-5          ]   | Tool Manager: Installing platformio/toolchain-atmelavr @ ~1.70300.0
+[Arduino Compile/build-4          ]   | Downloading 0% 10% 20%
+[Arduino Compile/build-4          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-4          ]   | Library Manager: Adafruit SleepyDog Library@1.6.5 has been installed!
+[Arduino Compile/build-4          ]   ✅  Success - Main Install platformIO libraries
+[Arduino Compile/build-4          ] ⭐ Run Main Run PlatformIO
+[Arduino Compile/build-4          ]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/4] user= workdir=
+[Arduino Compile/build-2          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-4          ]   | Processing adafruit_itsybitsy_m4 (platform: atmelsam; board: adafruit_itsybitsy_m4; framework: arduino)
+[Arduino Compile/build-4          ]   | --------------------------------------------------------------------------------
+[Arduino Compile/build-4          ]   | Verbose mode can be enabled via `-v, --verbose` option
+[Arduino Compile/build-4          ]   | CONFIGURATION: https://docs.platformio.org/page/boards/atmelsam/adafruit_itsybitsy_m4.html
+[Arduino Compile/build-4          ]   | PLATFORM: Atmel SAM (8.3.0) > Adafruit ItsyBitsy M4
+[Arduino Compile/build-4          ]   | HARDWARE: SAMD51G19A 120MHz, 192KB RAM, 512KB Flash
+[Arduino Compile/build-4          ]   | DEBUG: Current (atmel-ice) External (atmel-ice, jlink)
+[Arduino Compile/build-4          ]   | PACKAGES: 
+[Arduino Compile/build-4          ]   |  - framework-arduino-samd-adafruit @ 1.10716.0 (1.7.16) 
+[Arduino Compile/build-4          ]   |  - framework-cmsis @ 2.50400.181126 (5.4.0) 
+[Arduino Compile/build-4          ]   |  - framework-cmsis-atmel @ 1.2.2 
+[Arduino Compile/build-4          ]   |  - toolchain-gccarmnoneeabi @ 1.90301.200702 (9.3.1)
+[Arduino Compile/build-4          ]   | LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+[Arduino Compile/build-4          ]   | LDF Modes: Finder ~ chain, Compatibility ~ soft
+[Arduino Compile/build-4          ]   | Found 16 compatible libraries
+[Arduino Compile/build-4          ]   | Scanning dependencies...
+[Arduino Compile/build-4          ]   | Dependency Graph
+[Arduino Compile/build-4          ]   | |-- NewPing @ 1.9.7
+[Arduino Compile/build-4          ]   | |-- Stepper @ 1.1.3
+[Arduino Compile/build-4          ]   | |-- DHTNEW @ 0.4.21
+[Arduino Compile/build-4          ]   | |-- Adafruit SleepyDog Library @ 1.6.5
+[Arduino Compile/build-4          ]   | |-- Wire @ 1.0
+[Arduino Compile/build-4          ]   | |-- OpticalEncoder
+[Arduino Compile/build-4          ]   | |-- Servo @ 1.1.4
+[Arduino Compile/build-4          ]   | Building in release mode
+[Arduino Compile/build-4          ]   | Compiling .pio/build/adafruit_itsybitsy_m4/src/i2c.cpp.o
+[Arduino Compile/build-4          ]   | Compiling .pio/build/adafruit_itsybitsy_m4/src/main.cpp.o
+[Arduino Compile/build-5          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-4          ]   | Compiling .pio/build/adafruit_itsybitsy_m4/lib13f/NewPing/NewPing.cpp.o
+[Arduino Compile/build-4          ]   | Compiling .pio/build/adafruit_itsybitsy_m4/lib924/Stepper/Stepper.cpp.o
+[Arduino Compile/build-4          ]   | src/main.cpp: In function 'void modify_reporting()':
+[Arduino Compile/build-4          ]   | src/main.cpp:414:23: warning: comparison of integer expressions of different signedness: 'int' and 'const unsigned int' [-Wsign-compare]
+[Arduino Compile/build-4          ]   |   414 |     for (int i = 0; i < MAX_DIGITAL_PINS_SUPPORTED; i++) {
+[Arduino Compile/build-4          ]   |       |                     ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[Arduino Compile/build-4          ]   | src/main.cpp: In function 'void scan_digital_inputs()':
+[Arduino Compile/build-4          ]   | src/main.cpp:679:21: warning: comparison of integer expressions of different signedness: 'int' and 'const unsigned int' [-Wsign-compare]
+[Arduino Compile/build-4          ]   |   679 |   for (int i = 0; i < MAX_DIGITAL_PINS_SUPPORTED; i++) {
+[Arduino Compile/build-4          ]   |       |                   ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[Arduino Compile/build-4          ]   | src/main.cpp: In function 'void setup()':
+[Arduino Compile/build-4          ]   | src/main.cpp:937:19: error: call of overloaded 'write(int)' is ambiguous
+[Arduino Compile/build-4          ]   |   937 |     Serial.write(0);
+[Arduino Compile/build-4          ]   |       |                   ^
+[Arduino Compile/build-4          ]   | In file included from /root/.platformio/packages/framework-arduino-samd-adafruit/cores/arduino/Arduino.h:158,
+[Arduino Compile/build-4          ]   |                  from include/Telemetrix4Arduino.h:2,
+[Arduino Compile/build-4          ]   |                  from src/main.cpp:3:
+[Arduino Compile/build-4          ]   | /root/.platformio/packages/framework-arduino-samd-adafruit/cores/arduino/USB/USBAPI.h:136:17: note: candidate: 'virtual size_t Serial_::write(uint8_t)'
+[Arduino Compile/build-4          ]   |   136 |  virtual size_t write(uint8_t);
+[Arduino Compile/build-4          ]   |       |                 ^~~~~
+[Arduino Compile/build-4          ]   | In file included from /root/.platformio/packages/framework-arduino-samd-adafruit/cores/arduino/Stream.h:26,
+[Arduino Compile/build-4          ]   |                  from /root/.platformio/packages/framework-arduino-samd-adafruit/cores/arduino/HardwareSerial.h:24,
+[Arduino Compile/build-4          ]   |                  from /root/.platformio/packages/framework-arduino-samd-adafruit/cores/arduino/Arduino.h:77,
+[Arduino Compile/build-4          ]   |                  from include/Telemetrix4Arduino.h:2,
+[Arduino Compile/build-4          ]   |                  from src/main.cpp:3:
+[Arduino Compile/build-4          ]   | /root/.platformio/packages/framework-arduino-samd-adafruit/cores/arduino/Print.h:51:12: note: candidate: 'size_t Print::write(const char*)'
+[Arduino Compile/build-4          ]   |    51 |     size_t write(const char *str) {
+[Arduino Compile/build-4          ]   |       |            ^~~~~
+[Arduino Compile/build-4          ]   | Compiling .pio/build/adafruit_itsybitsy_m4/lib6d7/DHTNEW/dhtnew.cpp.o
+[Arduino Compile/build-4          ]   | *** [.pio/build/adafruit_itsybitsy_m4/src/main.cpp.o] Error 1
+[Arduino Compile/build-4          ]   | ========================== [FAILED] Took 2.47 seconds ==========================
+[Arduino Compile/build-4          ]   | 
+[Arduino Compile/build-4          ]   | Environment            Status    Duration
+[Arduino Compile/build-4          ]   | ---------------------  --------  ------------
+[Arduino Compile/build-4          ]   | adafruit_itsybitsy_m4  FAILED    00:00:02.473
+[Arduino Compile/build-4          ]   | ==================== 1 failed, 0 succeeded in 00:00:02.473 ====================
+[Arduino Compile/build-4          ]   ❌  Failure - Main Run PlatformIO
+[Arduino Compile/build-4          ] exitcode '1': failure
+[Arduino Compile/build-4          ] ⭐ Run Complete job
+[Arduino Compile/build-4          ]   ✅  Success - Complete job
+[Arduino Compile/build-4          ] 🏁  Job failed
+[Arduino Compile/build-5          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-5          ]   | Tool Manager: toolchain-atmelavr@1.70300.191015 has been installed!
+[Arduino Compile/build-5          ]   | Tool Manager: Installing platformio/framework-arduino-avr @ ~5.2.0
+[Arduino Compile/build-2          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-5          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-5          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-5          ]   | Tool Manager: framework-arduino-avr@5.2.0 has been installed!
+[Arduino Compile/build-5          ]   | Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+[Arduino Compile/build-2          ]   | Tool Manager: framework-arduinoststm32@4.21001.250617 has been installed!
+[Arduino Compile/build-2          ]   | Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+[Arduino Compile/build-5          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-5          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-5          ]   | Tool Manager: tool-scons@4.40801.0 has been installed!
+[Arduino Compile/build-5          ]   | Library Manager: Installing teckel12/NewPing @ ^1.9.7
+[Arduino Compile/build-2          ]   | Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-2          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-2          ]   | Tool Manager: tool-scons@4.40801.0 has been installed!
+[Arduino Compile/build-2          ]   | Library Manager: Installing teckel12/NewPing @ ^1.9.7
+[Arduino Compile/build-5          ]   | Downloading 0% 10% 20%
+[Arduino Compile/build-5          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-5          ]   | Library Manager: NewPing@1.9.7 has been installed!
+[Arduino Compile/build-5          ]   | Library Manager: Installing arduino-libraries/Stepper @ ^1.1.3
+[Arduino Compile/build-2          ]   | Downloading 0% 10% 20%
+[Arduino Compile/build-2          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-2          ]   | Library Manager: NewPing@1.9.7 has been installed!
+[Arduino Compile/build-2          ]   | Library Manager: Installing arduino-libraries/Stepper @ ^1.1.3
+[Arduino Compile/build-5          ]   | Downloading 0% 10%
+[Arduino Compile/build-5          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90%
+[Arduino Compile/build-5          ]   | Library Manager: Stepper@1.1.3 has been installed!
+[Arduino Compile/build-5          ]   | Library Manager: Installing arduino-libraries/Servo @ ^1.2.0
+[Arduino Compile/build-2          ]   | Downloading 0% 10%
+[Arduino Compile/build-2          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90%
+[Arduino Compile/build-2          ]   | Library Manager: Stepper@1.1.3 has been installed!
+[Arduino Compile/build-2          ]   | Library Manager: Installing robtillaart/DHTNEW @ ^0.4.18
+[Arduino Compile/build-5          ]   | Downloading 0% 10% 20% 30% 40% 50%
+[Arduino Compile/build-5          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-5          ]   | Library Manager: Servo@1.2.2 has been installed!
+[Arduino Compile/build-5          ]   | Library Manager: Installing robtillaart/DHTNEW @ ^0.4.18
+[Arduino Compile/build-2          ]   | Downloading 0% 10% 20% 30%
+[Arduino Compile/build-2          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-2          ]   | Library Manager: DHTNEW@0.4.21 has been installed!
+[Arduino Compile/build-2          ]   ✅  Success - Main Install platformIO libraries
+[Arduino Compile/build-2          ] ⭐ Run Main Run PlatformIO
+[Arduino Compile/build-2          ]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/4] user= workdir=
+[Arduino Compile/build-2          ]   | Processing robotdyn_blackpill_f303cc (platform: ststm32; board: robotdyn_blackpill_f303cc; framework: arduino)
+[Arduino Compile/build-2          ]   | --------------------------------------------------------------------------------
+[Arduino Compile/build-5          ]   | Downloading 0% 10% 20% 30%
+[Arduino Compile/build-5          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-5          ]   | Library Manager: DHTNEW@0.4.21 has been installed!
+[Arduino Compile/build-5          ]   | Library Manager: Installing adafruit/Adafruit SleepyDog Library @ ^1.6.5
+[Arduino Compile/build-2          ]   | Verbose mode can be enabled via `-v, --verbose` option
+[Arduino Compile/build-2          ]   | CONFIGURATION: https://docs.platformio.org/page/boards/ststm32/robotdyn_blackpill_f303cc.html
+[Arduino Compile/build-2          ]   | PLATFORM: ST STM32 (19.2.0) > BlackPill F303CC
+[Arduino Compile/build-2          ]   | HARDWARE: STM32F303CCT6 72MHz, 40KB RAM, 256KB Flash
+[Arduino Compile/build-2          ]   | DEBUG: Current (blackmagic) External (blackmagic, cmsis-dap, jlink, stlink)
+[Arduino Compile/build-2          ]   | PACKAGES: 
+[Arduino Compile/build-2          ]   |  - framework-arduinoststm32 @ 4.21001.250617 (2.10.1) 
+[Arduino Compile/build-2          ]   |  - framework-cmsis @ 2.50900.0 (5.9.0) 
+[Arduino Compile/build-2          ]   |  - toolchain-gccarmnoneeabi @ 1.140201.0 (14.2.1)
+[Arduino Compile/build-2          ]   | LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+[Arduino Compile/build-2          ]   | LDF Modes: Finder ~ chain, Compatibility ~ soft
+[Arduino Compile/build-2          ]   | Found 18 compatible libraries
+[Arduino Compile/build-2          ]   | Scanning dependencies...
+[Arduino Compile/build-2          ]   | Dependency Graph
+[Arduino Compile/build-2          ]   | |-- NewPing @ 1.9.7
+[Arduino Compile/build-2          ]   | |-- Stepper @ 1.1.3
+[Arduino Compile/build-2          ]   | |-- DHTNEW @ 0.4.21
+[Arduino Compile/build-2          ]   | |-- Wire @ 1.0.0
+[Arduino Compile/build-2          ]   | |-- OpticalEncoder
+[Arduino Compile/build-2          ]   | |-- Servo @ 1.1.2
+[Arduino Compile/build-2          ]   | Building in release mode
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduinoVariant/PeripheralPins.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduinoVariant/PeripheralPins_SPARKY_F303CC.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduinoVariant/generic_clock.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduinoVariant/variant_BLACKPILL_F303CC.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduinoVariant/variant_SPARKY_F303CC.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduinoVariant/variant_generic.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_adc.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_adc_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_can.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_ccb.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_cec.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_comp.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_comp_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_cordic.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_cortex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_crc.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_crc_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_cryp.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_cryp_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_dac.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_dac_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_dcache.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_dcmi.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_dcmi_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_dfsdm.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_dfsdm_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_dma.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_dma2d.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_dma_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_dsi.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_dts.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_eth.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_eth_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_exti.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_fdcan.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_firewall.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_flash.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_flash_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_flash_ramfunc.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_fmac.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_fmpi2c.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_fmpi2c_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_fmpsmbus.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_fmpsmbus_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_gfxmmu.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_gfxtim.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_gpio.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_gpio_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_gpu2d.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_gtzc.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_hash.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_hash_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_hcd.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_hrtim.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_hsem.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_i2c.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_i2c_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_i2s.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_i2s_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_i3c.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_icache.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_ipcc.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_irda.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_iwdg.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_jpeg.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_lcd.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_lptim.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_ltdc.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_ltdc_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_mdf.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_mdios.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_mdma.c.o
+[Arduino Compile/build-5          ]   | Downloading 0% 10% 20%
+[Arduino Compile/build-5          ]   | Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_mmc.c.o
+[Arduino Compile/build-5          ]   | Library Manager: Adafruit SleepyDog Library@1.6.5 has been installed!
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_mmc_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_nand.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_nor.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_opamp.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_opamp_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_ospi.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_otfdec.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_pccard.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_pcd.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_pcd_ex.c.o
+[Arduino Compile/build-5          ]   ✅  Success - Main Install platformIO libraries
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_pka.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_pssi.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_pwr.c.o
+[Arduino Compile/build-5          ] ⭐ Run Main Run PlatformIO
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_pwr_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_qspi.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_ramcfg.c.o
+[Arduino Compile/build-5          ]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/4] user= workdir=
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_ramecc.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_rcc.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_rcc_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_rng.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_rng_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_rtc.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_rtc_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_sai.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_sai_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_sd.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_sd_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_sdadc.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_sdio.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_sdram.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_smartcard.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_smartcard_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_smbus.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_smbus_ex.c.o
+[Arduino Compile/build-5          ]   | Processing program_via_AVRISP_mkII (platform: atmelavr; board: nanoatmega328new; framework: arduino)
+[Arduino Compile/build-5          ]   | --------------------------------------------------------------------------------
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_spdifrx.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_spi.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_spi_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_sram.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_subghz.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_swpmi.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_tim.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_tim_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_tsc.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_uart.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_uart_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_usart.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_usart_ex.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_wwdg.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HAL/stm32yyxx_hal_xspi.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/HardwareTimer.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_adc.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_bdma.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_comp.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_cordic.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_crc.c.o
+[Arduino Compile/build-5          ]   | Verbose mode can be enabled via `-v, --verbose` option
+[Arduino Compile/build-5          ]   | CONFIGURATION: https://docs.platformio.org/page/boards/atmelavr/nanoatmega328new.html
+[Arduino Compile/build-5          ]   | PLATFORM: Atmel AVR (5.1.0) > Arduino Nano ATmega328 (New Bootloader)
+[Arduino Compile/build-5          ]   | HARDWARE: ATMEGA328P 16MHz, 2KB RAM, 30KB Flash
+[Arduino Compile/build-5          ]   | DEBUG: Current (avr-stub) External (avr-stub, simavr)
+[Arduino Compile/build-5          ]   | PACKAGES: 
+[Arduino Compile/build-5          ]   |  - framework-arduino-avr @ 5.2.0 
+[Arduino Compile/build-5          ]   |  - toolchain-atmelavr @ 1.70300.191015 (7.3.0)
+[Arduino Compile/build-5          ]   | LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+[Arduino Compile/build-5          ]   | LDF Modes: Finder ~ chain, Compatibility ~ soft
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_crs.c.o
+[Arduino Compile/build-5          ]   | Found 11 compatible libraries
+[Arduino Compile/build-5          ]   | Scanning dependencies...
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_dac.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_delayblock.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_dlyb.c.o
+[Arduino Compile/build-5          ]   | Dependency Graph
+[Arduino Compile/build-5          ]   | |-- NewPing @ 1.9.7
+[Arduino Compile/build-5          ]   | |-- Stepper @ 1.1.3
+[Arduino Compile/build-5          ]   | |-- Servo @ 1.2.2
+[Arduino Compile/build-5          ]   | |-- DHTNEW @ 0.4.21
+[Arduino Compile/build-5          ]   | |-- Adafruit SleepyDog Library @ 1.6.5
+[Arduino Compile/build-5          ]   | |-- Wire @ 1.0
+[Arduino Compile/build-5          ]   | |-- OpticalEncoder
+[Arduino Compile/build-5          ]   | Building in release mode
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_dma.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_dma2d.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_exti.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/src/i2c.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_fmac.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/src/main.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_fmc.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/libf60/NewPing/NewPing.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_fmpi2c.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/libb59/Stepper/Stepper.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/libe88/Servo/avr/Servo.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/libe88/Servo/mbed/Servo.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_fsmc.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/libe88/Servo/megaavr/Servo.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/libe88/Servo/nrf52/Servo.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/libe88/Servo/renesas/Servo.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_gpio.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/libe88/Servo/sam/Servo.cpp.o
+[Arduino Compile/build-5          ]   | Archiving .pio/build/program_via_AVRISP_mkII/libf60/libNewPing.a
+[Arduino Compile/build-5          ]   | Archiving .pio/build/program_via_AVRISP_mkII/libb59/libStepper.a
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/libe88/Servo/samd/Servo.cpp.o
+[Arduino Compile/build-5          ]   | Indexing .pio/build/program_via_AVRISP_mkII/libf60/libNewPing.a
+[Arduino Compile/build-5          ]   | Indexing .pio/build/program_via_AVRISP_mkII/libb59/libStepper.a
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/libe88/Servo/stm32f4/Servo.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_hrtim.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/libe88/Servo/xmc/Servo.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_i2c.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/lib356/DHTNEW/dhtnew.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/lib654/Adafruit SleepyDog Library/Adafruit_SleepyDog.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_i3c.c.o
+[Arduino Compile/build-5          ]   | Archiving .pio/build/program_via_AVRISP_mkII/libe88/libServo.a
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/lib654/Adafruit SleepyDog Library/utility/WatchdogAVR.cpp.o
+[Arduino Compile/build-5          ]   | Indexing .pio/build/program_via_AVRISP_mkII/libe88/libServo.a
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/lib654/Adafruit SleepyDog Library/utility/WatchdogESP32.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/lib654/Adafruit SleepyDog Library/utility/WatchdogESP8266.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/lib654/Adafruit SleepyDog Library/utility/WatchdogKinetisK.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/lib654/Adafruit SleepyDog Library/utility/WatchdogKinetisL.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_icache.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/lib654/Adafruit SleepyDog Library/utility/WatchdogNRF.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/lib654/Adafruit SleepyDog Library/utility/WatchdogRP2040.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/lib654/Adafruit SleepyDog Library/utility/WatchdogSAMD.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_lpgpio.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/lib143/Wire/Wire.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_lptim.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/lib143/Wire/utility/twi.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_lpuart.c.o
+[Arduino Compile/build-5          ]   | Archiving .pio/build/program_via_AVRISP_mkII/libFrameworkArduinoVariant.a
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_mdma.c.o
+[Arduino Compile/build-5          ]   | Indexing .pio/build/program_via_AVRISP_mkII/libFrameworkArduinoVariant.a
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/CDC.cpp.o
+[Arduino Compile/build-5          ]   | Archiving .pio/build/program_via_AVRISP_mkII/lib356/libDHTNEW.a
+[Arduino Compile/build-5          ]   | Archiving .pio/build/program_via_AVRISP_mkII/lib654/libAdafruit SleepyDog Library.a
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_opamp.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_pka.c.o
+[Arduino Compile/build-5          ]   | Indexing .pio/build/program_via_AVRISP_mkII/lib654/libAdafruit SleepyDog Library.a
+[Arduino Compile/build-5          ]   | Indexing .pio/build/program_via_AVRISP_mkII/lib356/libDHTNEW.a
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/HardwareSerial.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_pwr.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/HardwareSerial0.cpp.o
+[Arduino Compile/build-5          ]   | Archiving .pio/build/program_via_AVRISP_mkII/lib143/libWire.a
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_rcc.c.o
+[Arduino Compile/build-5          ]   | Indexing .pio/build/program_via_AVRISP_mkII/lib143/libWire.a
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/HardwareSerial1.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/HardwareSerial2.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_rng.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/HardwareSerial3.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_rtc.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/IPAddress.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_sdmmc.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/PluggableUSB.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/Print.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/Stream.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_spi.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/Tone.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/USBCore.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_swpmi.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/WInterrupts.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_tim.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/WMath.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/WString.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_ucpd.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/abi.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/hooks.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_usart.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/main.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/new.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/wiring.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_usb.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/LL/stm32yyxx_ll_utils.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/wiring_analog.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/new.cpp.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/wiring_digital.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/wiring_pulse.S.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/wiring_pulse.c.o
+[Arduino Compile/build-5          ]   | Compiling .pio/build/program_via_AVRISP_mkII/FrameworkArduino/wiring_shift.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/stm32/PortNames.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/stm32/analog.cpp.o
+[Arduino Compile/build-5          ]   | Archiving .pio/build/program_via_AVRISP_mkII/libFrameworkArduino.a
+[Arduino Compile/build-5          ]   | Indexing .pio/build/program_via_AVRISP_mkII/libFrameworkArduino.a
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/stm32/bootloader.c.o
+[Arduino Compile/build-5          ]   | Linking .pio/build/program_via_AVRISP_mkII/firmware.elf
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/stm32/clock.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/stm32/core_callback.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/stm32/dwt.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/stm32/hw_config.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/stm32/interrupt.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/stm32/otp.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/stm32/pinmap.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/stm32/stm32_def.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/stm32/system_stm32yyxx.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/stm32/timer.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/stm32/uart.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/SrcWrapper/src/syscalls.c.o
+[Arduino Compile/build-5          ]   | Checking size .pio/build/program_via_AVRISP_mkII/firmware.elf
+[Arduino Compile/build-5          ]   | Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+[Arduino Compile/build-5          ]   | RAM:   [====      ]  40.9% (used 838 bytes from 2048 bytes)
+[Arduino Compile/build-5          ]   | Flash: [====      ]  40.9% (used 12560 bytes from 30720 bytes)
+[Arduino Compile/build-5          ]   | Building .pio/build/program_via_AVRISP_mkII/firmware.hex
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/src/i2c.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/src/main.cpp.o
+[Arduino Compile/build-5          ]   | ========================= [SUCCESS] Took 4.06 seconds =========================
+[Arduino Compile/build-5          ]   | 
+[Arduino Compile/build-5          ]   | Environment              Status    Duration
+[Arduino Compile/build-5          ]   | -----------------------  --------  ------------
+[Arduino Compile/build-5          ]   | program_via_AVRISP_mkII  SUCCESS   00:00:04.060
+[Arduino Compile/build-5          ]   | ========================= 1 succeeded in 00:00:04.060 =========================
+[Arduino Compile/build-5          ]   ✅  Success - Main Run PlatformIO
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/libd2e/NewPing/NewPing.cpp.o
+[Arduino Compile/build-5          ] ⭐ Run Post Set up Python
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/lib77c/Stepper/Stepper.cpp.o
+[Arduino Compile/build-5          ]   🐳  docker exec cmd=[/opt/acttoolcache/node/18.20.8/x64/bin/node /var/run/act/actions/actions-setup-python@v5/dist/cache-save/index.js] user= workdir=
+[Arduino Compile/build-2          ]   | src/main.cpp:1032:2: warning: #warning "Watchdog not enabled, please enable it in the code" [-Wcpp]
+[Arduino Compile/build-2          ]   |  1032 | #warning "Watchdog not enabled, please enable it in the code"
+[Arduino Compile/build-2          ]   |       |  ^~~~~~~
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/libcc9/DHTNEW/dhtnew.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/libfde/Wire/Wire.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/libfde/Wire/utility/twi.c.o
+[Arduino Compile/build-5          ]   ✅  Success - Post Set up Python
+[Arduino Compile/build-5          ] ⭐ Run Complete job
+[Arduino Compile/build-5          ] Cleaning up container for job build
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/libc95/Servo/stm32/Servo.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/HardwareSerial.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/IPAddress.cpp.o
+[Arduino Compile/build-2          ]   | In file included from src/main.cpp:8:
+[Arduino Compile/build-2          ]   | .pio/libdeps/robotdyn_blackpill_f303cc/NewPing/src/NewPing.h:253:46: warning: 'boolean' is deprecated [-Wdeprecated-declarations]
+[Arduino Compile/build-2          ]   |   253 |                         boolean ping_trigger();
+[Arduino Compile/build-2          ]   |       |                                              ^
+[Arduino Compile/build-2          ]   | In file included from /root/.platformio/packages/framework-arduinoststm32/cores/arduino/wiring.h:34,
+[Arduino Compile/build-2          ]   |                  from /root/.platformio/packages/framework-arduinoststm32/cores/arduino/Arduino.h:36,
+[Arduino Compile/build-2          ]   |                  from include/Telemetrix4Arduino.h:2,
+[Arduino Compile/build-2          ]   |                  from src/main.cpp:3:
+[Arduino Compile/build-2          ]   | /root/.platformio/packages/framework-arduinoststm32/cores/arduino/wiring_constants.h:110:14: note: declared here
+[Arduino Compile/build-2          ]   |   110 | typedef bool boolean __attribute__((deprecated));
+[Arduino Compile/build-2          ]   |       |              ^~~~~~~
+[Arduino Compile/build-5          ]   ✅  Success - Complete job
+[Arduino Compile/build-5          ] 🏁  Job failed
+[Arduino Compile/build-2          ]   | In file included from .pio/libdeps/robotdyn_blackpill_f303cc/NewPing/src/NewPing.cpp:7:
+[Arduino Compile/build-2          ]   | .pio/libdeps/robotdyn_blackpill_f303cc/NewPing/src/NewPing.h:253:46: warning: 'boolean' is deprecated [-Wdeprecated-declarations]
+[Arduino Compile/build-2          ]   |   253 |                         boolean ping_trigger();
+[Arduino Compile/build-2          ]   |       |                                              ^
+[Arduino Compile/build-2          ]   | In file included from /root/.platformio/packages/framework-arduinoststm32/cores/arduino/wiring.h:34,
+[Arduino Compile/build-2          ]   |                  from /root/.platformio/packages/framework-arduinoststm32/cores/arduino/Arduino.h:36,
+[Arduino Compile/build-2          ]   |                  from .pio/libdeps/robotdyn_blackpill_f303cc/NewPing/src/NewPing.h:166:
+[Arduino Compile/build-2          ]   | /root/.platformio/packages/framework-arduinoststm32/cores/arduino/wiring_constants.h:110:14: note: declared here
+[Arduino Compile/build-2          ]   |   110 | typedef bool boolean __attribute__((deprecated));
+[Arduino Compile/build-2          ]   |       |              ^~~~~~~
+[Arduino Compile/build-2          ]   | .pio/libdeps/robotdyn_blackpill_f303cc/NewPing/src/NewPing.cpp:127:31: warning: 'boolean' is deprecated [-Wdeprecated-declarations]
+[Arduino Compile/build-2          ]   |   127 | boolean NewPing::ping_trigger() {
+[Arduino Compile/build-2          ]   |       |                               ^
+[Arduino Compile/build-2          ]   | /root/.platformio/packages/framework-arduinoststm32/cores/arduino/wiring_constants.h:110:14: note: declared here
+[Arduino Compile/build-2          ]   |   110 | typedef bool boolean __attribute__((deprecated));
+[Arduino Compile/build-2          ]   |       |              ^~~~~~~
+[Arduino Compile/build-2          ]   | Archiving .pio/build/robotdyn_blackpill_f303cc/libd2e/libNewPing.a
+[Arduino Compile/build-2          ]   | Archiving .pio/build/robotdyn_blackpill_f303cc/lib77c/libStepper.a
+[Arduino Compile/build-2          ]   | Indexing .pio/build/robotdyn_blackpill_f303cc/libd2e/libNewPing.a
+[Arduino Compile/build-2          ]   | Indexing .pio/build/robotdyn_blackpill_f303cc/lib77c/libStepper.a
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/Print.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/RingBuffer.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/Stream.cpp.o
+[Arduino Compile/build-2          ]   | Archiving .pio/build/robotdyn_blackpill_f303cc/libcc9/libDHTNEW.a
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/Tone.cpp.o
+[Arduino Compile/build-2          ]   | Indexing .pio/build/robotdyn_blackpill_f303cc/libcc9/libDHTNEW.a
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/WInterrupts.cpp.o
+[Arduino Compile/build-2          ]   | Archiving .pio/build/robotdyn_blackpill_f303cc/libfde/libWire.a
+[Arduino Compile/build-2          ]   | Indexing .pio/build/robotdyn_blackpill_f303cc/libfde/libWire.a
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/WMath.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/WSerial.cpp.o
+[Arduino Compile/build-2          ]   | Archiving .pio/build/robotdyn_blackpill_f303cc/libc95/libServo.a
+[Arduino Compile/build-2          ]   | Indexing .pio/build/robotdyn_blackpill_f303cc/libc95/libServo.a
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/WString.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/abi.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/avr/dtostrf.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/board.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/core_debug.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/hooks.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/itoa.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/main.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/pins_arduino.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/stm32/startup_stm32yyxx.S.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/wiring_analog.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/wiring_digital.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/wiring_pulse.cpp.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/wiring_shift.c.o
+[Arduino Compile/build-2          ]   | Compiling .pio/build/robotdyn_blackpill_f303cc/FrameworkArduino/wiring_time.c.o
+[Arduino Compile/build-2          ]   | Archiving .pio/build/robotdyn_blackpill_f303cc/libFrameworkArduino.a
+[Arduino Compile/build-2          ]   | Indexing .pio/build/robotdyn_blackpill_f303cc/libFrameworkArduino.a
+[Arduino Compile/build-2          ]   | Linking .pio/build/robotdyn_blackpill_f303cc/firmware.elf
+[Arduino Compile/build-2          ]   | Checking size .pio/build/robotdyn_blackpill_f303cc/firmware.elf
+[Arduino Compile/build-2          ]   | Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+[Arduino Compile/build-2          ]   | RAM:   [=         ]   6.1% (used 2512 bytes from 40960 bytes)
+[Arduino Compile/build-2          ]   | Flash: [==        ]  17.4% (used 45732 bytes from 262144 bytes)
+[Arduino Compile/build-2          ]   | Building .pio/build/robotdyn_blackpill_f303cc/firmware.bin
+[Arduino Compile/build-2          ]   | ========================= [SUCCESS] Took 12.38 seconds =========================
+[Arduino Compile/build-2          ]   | 
+[Arduino Compile/build-2          ]   | Environment                Status    Duration
+[Arduino Compile/build-2          ]   | -------------------------  --------  ------------
+[Arduino Compile/build-2          ]   | robotdyn_blackpill_f303cc  SUCCESS   00:00:12.381
+[Arduino Compile/build-2          ]   | ========================= 1 succeeded in 00:00:12.381 =========================
+[Arduino Compile/build-2          ]   ✅  Success - Main Run PlatformIO
+[Arduino Compile/build-2          ] ⭐ Run Post Set up Python
+[Arduino Compile/build-2          ]   🐳  docker exec cmd=[/opt/acttoolcache/node/18.20.8/x64/bin/node /var/run/act/actions/actions-setup-python@v5/dist/cache-save/index.js] user= workdir=
+[Arduino Compile/build-2          ]   ✅  Success - Post Set up Python
+[Arduino Compile/build-2          ] ⭐ Run Complete job
+[Arduino Compile/build-2          ] Cleaning up container for job build
+[Arduino Compile/build-2          ]   ✅  Success - Complete job
+[Arduino Compile/build-2          ] 🏁  Job failed

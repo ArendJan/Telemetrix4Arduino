@@ -156,7 +156,7 @@ Receive:
 To read a digital/analog pin, you need to send a command to set the pin mode and then, on-change, the data will be sent. It's possible to switch modes during operation, even input <-> output. Just send a new ```SET_PIN_MODE``` message.
 
 #### Analog
-The pin must be in range of [0..5] (pico: 26+adc_pin == gpio_pin, 4==temp_sensor). differential is the minimal change for the value or it is not reported.
+The pin must be in range of [0..MAX_PINS], check before that it's an analog pin. differential is the minimal change for the value or it is not reported.
 
 Differential is ```uint16_t```, with ```diff_high = diff>>8``` and ```diff_low = diff&0xFF```. 
 
@@ -205,7 +205,7 @@ If you only want to en/disable a single pin or type, send this message.
 modify_type can be any of
 - REPORTING_DISABLE_ALL = 0. Disable analog and digital inputs reporting. Set pin to 0.
 - REPORTING_ANALOG_ENABLE = 1. Enable a single analog pin. Needs to have been set as analog pin otherwise UB.
-- REPORTING_ANALOG_DISABLE = 3. Disable a single analog pin. Pin in range ```[0..5]```
+- REPORTING_ANALOG_DISABLE = 3. Disable a single analog pin. Pin in range ```[0..MAX_PINS]```
 - REPORTING_DIGITAL_ENABLE = 2. Enable a single digital pin. Needs to have been set as digital input, otherwise UB.
 - REPORTING_DIGITAL_DISABLE = 4. Disable a single digital pin.
 
@@ -270,3 +270,23 @@ time in ms.
 ```py
 [ 2, 0, enabled]
 ```
+
+
+
+
+# TODO:
+Check (done with pico arduino):
+- sonar ✅, TODO: no value
+- servo✅
+- motor driver
+- analog in
+- analog out
+- intensity sens
+- keypad
+- encoders
+- (modules?)
+
+
+
+# TODO:
+- check with pico code
