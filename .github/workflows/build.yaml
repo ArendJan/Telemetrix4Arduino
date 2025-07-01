@@ -16,7 +16,10 @@ jobs:
                     "robotdyn_blackpill_f303cc", 
                     "nanoatmega328",
                     "adafruit_itsybitsy_m4",
-                    "program_via_AVRISP_mkII"
+                    "program_via_AVRISP_mkII",
+                    "robotdyn_blackpill_f103",
+                    "pico",
+                    "esp32doit-devkit-v1",
                   ]
             fail-fast: false
           

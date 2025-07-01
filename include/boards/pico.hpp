@@ -18,5 +18,9 @@ const auto A16 = 2047;
 const auto A17 = 2047;
 const auto A18 = 2047;
 const auto A19 = 2047;
-#define MAX_SERVOS 4 // PWM pins on Nano
+#define MAX_SERVOS 12 // according to the servo lib
+void hw_init() {
+  analogWriteResolution(8);
+  analogReadResolution(10);
+}
 #endif

@@ -12,7 +12,11 @@ const auto A16 = 2047;
 const auto A17 = 2047;
 const auto A18 = 2047;
 const auto A19 = 2047;
-const auto MAX_SERVOS = 8; // PWM pins on BlackPill
+const auto MAX_SERVOS = 8;
+void hw_init() {
+  analogWriteResolution(8);
+  analogReadResolution(10);
+}
 #endif
 
 #if defined(ARDUINO_ARCH_STM32) && defined(ARDUINO_BLACKPILL_F303CC)
@@ -21,5 +25,9 @@ const auto A16 = 2047;
 const auto A17 = 2047;
 const auto A18 = 2047;
 const auto A19 = 2047;
-const auto MAX_SERVOS = 8; // PWM pins on BlackPill
+const auto MAX_SERVOS = 8;
+void hw_init() {
+  analogWriteResolution(8);
+  analogReadResolution(10);
+}
 #endif

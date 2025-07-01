@@ -16,4 +16,5 @@ const auto A17 = 2047;
 const auto A18 = 2047;
 const auto A19 = 2047;
 #define MAX_SERVOS 4 // PWM pins on Nano
+void hw_init() {}
 #endif

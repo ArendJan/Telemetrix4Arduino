@@ -18,4 +18,8 @@ const auto A18 = 2047;
 const auto A19 = 2047;
 
 const auto MAX_SERVOS = 0;
+void hw_init() {
+  analogWriteResolution(8);
+  analogReadResolution(10);
+}
 #endif

@@ -44,7 +44,7 @@ void OpticalEncoder::setup(uint8_t pinNr, void (*ISR_callback)(void), int value,
 
 inline void OpticalEncoder::handleInterrupt(void) {
   unsigned long currmillis = millis();
-  if (currmillis - prevmillis > 3) {
+  if (currmillis - prevmillis > 2) {
     if (_movingForward) {
       _encoder0Pos++;
     } else {

@@ -279,13 +279,13 @@ Check (done with pico arduino):
 - sonar ✅, TODO: no value
 - servo✅
 - motor driver
-- analog in
-- analog out
-- intensity sens
-- keypad
-- encoders
+- analog in✅
+- analog out TODO: geen pins lijst ofzo, gewoon alles ok doen✅
+- intensity sens✅
+- keypad✅
+- encoders, single
 - (modules?)
-
+- i2c todo!
 
 
 # TODO:

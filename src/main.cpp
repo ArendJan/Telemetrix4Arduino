@@ -1,5 +1,6 @@
 // #include "Telemetrix4Arduino.h"
 // #include <Cpp_Standard_Library.h>
+#include "main.hpp"
 #include "Telemetrix4Arduino.h"
 #include "commands.hpp"
 #include "config.hpp"
@@ -7,6 +8,7 @@
 #include <Arduino.h>
 #include <NewPing.h>
 #include <OpticalEncoder.h>
+
 #if MAX_SERVOS > 0
 #include <Servo.h>
 #endif
@@ -33,7 +35,6 @@
 // We define these here to provide a forward reference.
 // If you add a new command, you must add the command handler
 // here as well.
-#include "main.hpp"
 
 // #include <array>
 template <size_t N> void send_message(const uint8_t (&message)[N]);
@@ -201,18 +202,19 @@ constexpr auto MAX_ANALOG_PINS_SUPPORTED =
     get_total_pins_not(analog_read_pins, analog_read_pins_size, 2047);
 
 // maximum number of pins supported
-constexpr auto MAX_PINS_SUPPORTED = NUM_DIGITAL_PINS + MAX_ANALOG_PINS_SUPPORTED; // probably too high but good enough
+constexpr auto MAX_PINS_SUPPORTED =
+    NUM_DIGITAL_PINS +
+    MAX_ANALOG_PINS_SUPPORTED; // probably too high but good enough
 // #define
 // a descriptor for digital pins
 struct pin_descriptor {
   byte pin_number;
   PIN_MODES pin_mode;
   bool digital_reporting_enabled; // If true, then send reports if an input pin
-  bool analog_reporting_enabled; // If true, then send reports if an input pin
-  int last_value;         // Last value read for input mode
-    int differential;       // difference between current and last value needed
+  bool analog_reporting_enabled;  // If true, then send reports if an input pin
+  int last_value;                 // Last value read for input mode
+  int differential; // difference between current and last value needed
   // to generate a report
-
 };
 
 // an array of digital_pin_descriptors
@@ -336,7 +338,7 @@ void set_pin_mode() {
   pin = command_buffer[0];
   mode = (PIN_MODES)command_buffer[1];
   // Serial2.println("Setting pin mode: " + String(pin) + " to " +
-                //  String(mode));
+  //  String(mode));
   switch (mode) {
   case INPUT_PULL_DOWN:
     the_digital_pins[pin].pin_mode = mode;
@@ -552,8 +554,6 @@ void sonar_new() {
   sonars[sonars_index].trigger_pin = command_buffer[0];
   sonars_index++; // next index, so it is the number of sonars
   sonar_scan_interval = 100 / sonars_index; // always scan all sonars in 100ms
-      send_debug_info(9, sonars_index);
-
 }
 
 /***********************************
@@ -930,24 +930,14 @@ void init_pin_structures() {
     the_digital_pins[i].last_value = -1;
     the_digital_pins[i].differential = 0; // no differential by default
   }
-
 }
 #define RXD2 16
 #define TXD2 17
 
-
 void setup() {
   Serial.begin(115200);
-    // Serial2.begin(115200, SERIAL_8N1, RXD2, TXD2);
-// Serial2.println("Starting up...");
-  // initialize the servo allocation map table
   init_pin_structures();
-  // for (int i = 0; i < 5; i++) {
-  //   digitalWrite(LED_BUILTIN, LOW);
-  //   delay(100);
-  //   digitalWrite(LED_BUILTIN, HIGH);
-  //   delay(100);
-  // }
+  hw_init();
   for (auto i = 0; i < 0xFF; i++) {
     Serial.write((uint8_t)0);
   }
@@ -974,8 +964,7 @@ void loop() {
     }
   }
 }
-static_assert(command_table[32] == &ping,
-              "command_table[32] must be ping");
+static_assert(command_table[32] == &ping, "command_table[32] must be ping");
 static_assert(sizeof(command_buffer) == MAX_COMMAND_LENGTH,
               "command_buffer size must be equal to MAX_COMMAND_LENGTH");
 static_assert(command_table[37] == &feature_detection,
@@ -1003,6 +992,8 @@ void feature_detection() {
       } else if (cmd == &set_pin_mode) {
         report_message[3] = NUM_DIGITAL_PINS;
         report_message[4] = MAX_ANALOG_PINS_SUPPORTED;
+        // report_message[5] = ADC_RESOLUTION; // ADC resolution
+        // report_message[6] = PWM_RESOLUTION; // PWM resolution
         // report_message[5] = ANALOG_PIN_OFFSET;
         for (auto i = 0; i < MAX_ANALOG_PINS_SUPPORTED; i++) {
           report_message[6 + i] = (uint8_t)analog_read_pins[i];
@@ -1030,9 +1021,8 @@ template <size_t N> void send_message(const uint8_t (&message)[N]) {
   //   delayMicroseconds(10);
   // }
   Serial.write((uint8_t)N); // send msg len
-  for(size_t i = 0; i < N; i++) {
-      Serial.write((uint8_t)message[i]); // send msg len
-
+  for (size_t i = 0; i < N; i++) {
+    Serial.write((uint8_t)message[i]); // send msg len
   }
   // Serial.write(message, N); // send message
 }
@@ -1058,7 +1048,7 @@ bool watchdog_enabled = false;
 uint32_t last_ping = 0;
 void ping() {
   static uint8_t random = -1;
-// digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+  // digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
   auto special_num = command_buffer[0];
   if (!watchdog_enabled) {
 #if ENABLE_ADAFRUIT_WATCHDOG
@@ -1078,7 +1068,7 @@ void ping() {
   // out[0] = out.size() - 1; // dont count the packet length
   // send_debug_info(1, special_num);
   // send_debug_info(2, random);
-      // // Serial2.println("Pinging...");
+  // // Serial2.println("Pinging...");
 
   send_message(out);
   if (true) {
@@ -1089,5 +1079,4 @@ void ping() {
 
     last_ping = millis();
   }
-
 }
