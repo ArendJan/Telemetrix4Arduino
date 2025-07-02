@@ -39,15 +39,8 @@
 // #include <array>
 template <size_t N> void send_message(const uint8_t (&message)[N]);
 // uncomment out the next line to create a 2nd i2c port
-//#define SECOND_I2C_PORT
 
-#ifdef SECOND_I2C_PORT
-// Change the pins to match SDA and SCL for your board
-#define SECOND_I2C_PORT_SDA PB11
-#define SECOND_I2C_PORT_SCL PB10
 
-TwoWire Wire2(SECOND_I2C_PORT_SDA, SECOND_I2C_PORT_SCL);
-#endif
 
 // This value must be the same as specified when instantiating the
 // telemetrix client. The client defaults to a value of 1.
@@ -973,7 +966,7 @@ static_assert(command_table[37] == &feature_detection,
 void feature_detection() {
   // in message: [FEATURE_CHECK = 37, message_type_to_check]
   // out message: [3, FEATURE_CHECK, 0/1]
-  uint8_t report_message[6 + analog_read_pins_size] = {
+  uint8_t report_message[7 + analog_read_pins_size] = {
       FEATURE_CHECK, 0, 0, 0, 0, 0, 0};
   // byte report_message[3] = {2, FEATURE_CHECK, 0};
   auto message_type = command_buffer[0];
@@ -991,12 +984,14 @@ void feature_detection() {
         report_message[3] = MAX_SONARS; // sonar
       } else if (cmd == &set_pin_mode) {
         report_message[3] = NUM_DIGITAL_PINS;
-        report_message[4] = MAX_ANALOG_PINS_SUPPORTED;
+        report_message[4] = 10; // analog input resolution
+        report_message[5] = 8; // PWM resolution
+        report_message[6] = MAX_ANALOG_PINS_SUPPORTED;
         // report_message[5] = ADC_RESOLUTION; // ADC resolution
         // report_message[6] = PWM_RESOLUTION; // PWM resolution
         // report_message[5] = ANALOG_PIN_OFFSET;
         for (auto i = 0; i < MAX_ANALOG_PINS_SUPPORTED; i++) {
-          report_message[6 + i] = (uint8_t)analog_read_pins[i];
+          report_message[7 + i] = (uint8_t)analog_read_pins[i];
         }
       } else if (cmd == &servo_attach) {
         report_message[3] = MAX_SERVOS;

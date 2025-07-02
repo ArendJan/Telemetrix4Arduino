@@ -3,6 +3,7 @@
 #include "commands.hpp"
 #include <Arduino.h>
 #include <Wire.h>
+#include "config.hpp"
 
 /***********************************
    i2c functions
