@@ -11,3 +11,7 @@
 #ifndef ENABLE_ADAFRUIT_WATCHDOG
 #define ENABLE_ADAFRUIT_WATCHDOG 1
 #endif
+
+#ifndef I2C_COUNT
+#define I2C_COUNT 1
+#endif

@@ -44,6 +44,11 @@ void ping();
 
 void feature_detection();
 
+void send_debug_info(byte id, int value);
+
+void module_new();
+void module_data();
+
 enum PIN_MODES : uint8_t {
   NOT_SET = 255,
   INPUT_MODE = 0,
@@ -55,3 +60,5 @@ enum PIN_MODES : uint8_t {
   SONAR_MODE = 7,
   DHT_MODE = 8
 };
+
+void send_message(const uint8_t *message, size_t length);

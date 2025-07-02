@@ -9,29 +9,35 @@
    i2c functions
  **********************************/
 
-void i2c_begin() {
-  byte i2c_port = command_buffer[0];
-  if (!i2c_port) {
-    Wire.begin();
-#if defined(__AVR_ATmega328P__)
-    Wire.setWireTimeout(10, false);
-    Wire.clearWireTimeoutFlag();
-#endif
-  }
+TwoWire *i2c_buses[I2C_COUNT] = {&Wire,
+  #if I2C_COUNT > 1
+  &Wire2
+  #endif
+  #if I2C_COUNT > 2
+  &Wire3
+  #endif
+  // Add more TwoWire instances if needed
+};
 
-#ifdef SECOND_I2C_PORT
-  else {
-    Wire2.begin();
-#if defined(__AVR_ATmega328P__)
-    Wire2.setWireTimeout(10, false);
-    Wire2.clearWireTimeoutFlag();
-#endif
+void i2c_begin() {
+  
+  byte i2c_port = command_buffer[0];
+  if(i2c_port >= I2C_COUNT) {
+    // Invalid I2C port requested, return without initializing
+    // Serial.println("Invalid I2C port requested");
+    return;
   }
+  auto &current_i2c_port = *i2c_buses[i2c_port];
+  // Initialize the I2C port
+  current_i2c_port.begin();
+  
+#if defined(__AVR_ATmega328P__)
+    current_i2c_port.setWireTimeout(10, false);
+    current_i2c_port.clearWireTimeoutFlag();
 #endif
 }
 
 void i2c_read() {
-  TwoWire *current_i2c_port;
 
   // data in the incoming message:
   // address, [0]
@@ -44,18 +50,13 @@ void i2c_read() {
   byte address = command_buffer[0];
   byte the_register = command_buffer[1];
   uint8_t message_id = command_buffer[I2C_READ_MESSAGE_ID];
-
-  // set the current i2c port if this is for the primary i2c
-  if (command_buffer[4] == 0) {
-    current_i2c_port = &Wire;
+  uint8_t port = command_buffer[I2C_PORT];
+  if(port >= I2C_COUNT) {
+    // Invalid I2C port requested, return without processing
+    // Serial.println("Invalid I2C port requested");
+    return;
   }
-
-#ifdef SECOND_I2C_PORT
-  // this is for port 2
-  if (command_buffer[4] == 1) {
-    current_i2c_port = &Wire2;
-  }
-#endif
+  auto &current_i2c_port = i2c_buses[port];
   uint8_t i2c_report_message[64];
 
   current_i2c_port->beginTransmission(address);
@@ -105,7 +106,6 @@ void i2c_read() {
 }
 
 void i2c_write() {
-  TwoWire *current_i2c_port;
 
   // command_buffer[0] is the number of bytes to send
   // command_buffer[1] is the device address
@@ -113,16 +113,13 @@ void i2c_write() {
   // additional bytes to write= command_buffer[3..];
 
   // set the current i2c port if this is for the primary i2c
-  if (command_buffer[2] == 0) {
-    current_i2c_port = &Wire;
+  uint8_t i2c_port = command_buffer[I2C_PORT];
+  if (i2c_port >= I2C_COUNT) {
+    // Invalid I2C port requested, return without processing
+    // Serial.println("Invalid I2C port requested");
+    return;
   }
-
-#ifdef SECOND_I2C_PORT
-  // this is for port 2
-  if (command_buffer[2] == 1) {
-    current_i2c_port = &Wire2;
-  }
-#endif
+  auto &current_i2c_port = i2c_buses[i2c_port];
 #if defined(__AVR_ATmega328P__)
   if (current_i2c_port->getWireTimeoutFlag()) {
     return;

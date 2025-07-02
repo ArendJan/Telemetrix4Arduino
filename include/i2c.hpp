@@ -1,5 +1,6 @@
 #pragma once
-
+#include <config.hpp>
+#include <Wire.h>
 void i2c_begin();
 void i2c_read();
 void i2c_write();
@@ -44,3 +45,7 @@ void i2c_write();
 
 // Indicator that no i2c register is being specified in the command
 #define I2C_NO_REGISTER 254
+
+
+
+extern TwoWire* i2c_buses[I2C_COUNT];

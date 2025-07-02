@@ -8,7 +8,7 @@
 #include <Arduino.h>
 #include <NewPing.h>
 #include <OpticalEncoder.h>
-
+#include "modules.hpp"
 #if MAX_SERVOS > 0
 #include <Servo.h>
 #endif
@@ -73,8 +73,8 @@ auto spi_cs_control = nullptr;
 auto set_scan_delay = nullptr;
 auto sensor_new = nullptr;
 // auto ping = nullptr;
-auto module_new = nullptr;
-auto module_data = nullptr;
+// auto module_new = module_new;
+// auto module_data = module_data;
 auto get_id = nullptr;
 auto set_id = nullptr;
 // If you add new commands, make sure to extend the siz of this
@@ -113,8 +113,8 @@ constexpr command_descriptor command_table[] = {
     &encoder_new, // 30, checked
     sensor_new,
     ping, // 32,  checked, not impelemented
-    module_new,
-    module_data,
+    &module_new,
+    &module_data,
     get_id,
     set_id,
     &feature_detection};
@@ -615,9 +615,9 @@ void enable_all_reports() {
   // delay(20);
 }
 
+  byte packet_length;
 void get_next_command() {
   byte command;
-  byte packet_length;
   command_descriptor command_entry;
 
   // clear the command buffer
@@ -1002,6 +1002,8 @@ void feature_detection() {
         report_message[4] = FIRMWARE_MINOR;
       } else if (cmd == &get_unique_id) {
         report_message[3] = 0; // TODO: implement
+      } else if(cmd == &i2c_begin) {
+        report_message[3] = I2C_COUNT;
       }
     } else {
       report_message[2] = 0; // command not supported
@@ -1021,6 +1023,16 @@ template <size_t N> void send_message(const uint8_t (&message)[N]) {
   }
   // Serial.write(message, N); // send message
 }
+
+void send_message(const uint8_t *message, size_t length) {
+  // while (Serial.availableForWrite() < (int)length + 3) {
+  //   Serial.println("Waiting for serial write...");
+  //   delayMicroseconds(10);
+  // }
+  Serial.write((uint8_t)(length)); // send msg len
+ for (size_t i = 0; i < length; i++) {
+    Serial.write((uint8_t)message[i]); // send msg len
+  }}
 
 void get_unique_id() {
   // in message: [GET_UNIQUE_ID = 6]
@@ -1074,4 +1086,12 @@ void ping() {
 
     last_ping = millis();
   }
+}
+
+void module_new() {
+  module_new_i(command_buffer, packet_length);
+}
+
+void module_data() {
+  module_data_i(command_buffer, packet_length);
 }

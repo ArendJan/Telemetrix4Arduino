@@ -36,7 +36,7 @@ extern TwoWire Wire2;
 #define MAX_SERVOS 0
 extern TwoWire Wire2; // Use GPIO 10 and 11 for I2C on Pico 2W
 #endif
-
+#define I2C_COUNT 2
 
 void hw_init();
 #endif
