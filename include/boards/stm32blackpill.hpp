@@ -3,7 +3,7 @@
 #if defined(ARDUINO_ARCH_STM32) && defined(ARDUINO_BLACKPILL_F103C8)
 
 const auto A10 = 2047;
-const auto A11 = 2047;  
+const auto A11 = 2047;
 const auto A12 = 2047;
 const auto A13 = 2047;
 const auto A14 = 2047;

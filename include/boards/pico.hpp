@@ -2,7 +2,7 @@
 #include <Arduino.h>
 
 // Maybe some more are required, for pico2 and pico1w
-#if defined(RASPBERRY_PI_PICO) || defined(ARDUINO_RASPBERRY_PI_PICO_W) || \
+#if defined(RASPBERRY_PI_PICO) || defined(ARDUINO_RASPBERRY_PI_PICO_W) ||      \
     defined(ARDUINO_ARCH_RP2040)
 
 #include <Wire.h>

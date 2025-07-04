@@ -1,8 +1,8 @@
 #include "sensors.hpp"
 #if MAX_SENSORS_COUNT > 0
-#include "sensors/veml6040.hpp" // Include the VEML6040
-#include "main.hpp"
 #include "commands.hpp"
+#include "main.hpp"
+#include "sensors/veml6040.hpp" // Include the VEML6040
 
 void Sensor::writeSensorData(const uint8_t data[], size_t size) {
   uint8_t out[30] = {
@@ -10,18 +10,18 @@ void Sensor::writeSensorData(const uint8_t data[], size_t size) {
       (uint8_t)this->num, // write num
       this->type,         // write sensor type
   };
-  for(size_t i = 0; i < size && i < sizeof(out) - 3; i++) {
+  for (size_t i = 0; i < size && i < sizeof(out) - 3; i++) {
     out[i + 3] = data[i]; // copy data to the output buffer
   }
-  send_message(out, size+3);
+  send_message(out, size + 3);
 }
 Sensor *sensors[MAX_SENSORS_COUNT] = {}; // Array of pointers to sensors
-size_t sensors_count = 0; // Number of sensors in the array
+size_t sensors_count = 0;                // Number of sensors in the array
 
 void sensor_new_i(uint8_t command_buffer[], size_t packet_size) {
   const SENSOR_TYPES type = (SENSOR_TYPES)command_buffer[1];
   const uint8_t sensor_num = command_buffer[0];
-  uint8_t* sensor_data = command_buffer + 2; // data starts after type and num
+  uint8_t *sensor_data = command_buffer + 2; // data starts after type and num
   size_t sensor_data_size = packet_size - 2; // size of the data
   if (type >= SENSOR_TYPES::MAX_SENSORS) {
     return;
@@ -59,7 +59,6 @@ void readSensors() {
     }
     sensors[i]->readSensor();
   }
-  
 }
 
 #else

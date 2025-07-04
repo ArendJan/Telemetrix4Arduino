@@ -1,6 +1,7 @@
 #include <config.hpp>
 
-#if  defined(ARDUINO_RASPBERRY_PI_PICO_2W) || defined(ARDUINO_RASPBERRY_PI_PICO_2)
+#if defined(ARDUINO_RASPBERRY_PI_PICO_2W) ||                                   \
+    defined(ARDUINO_RASPBERRY_PI_PICO_2)
 TwoWire Wire2(i2c1, SECOND_I2C_PORT_SDA, SECOND_I2C_PORT_SCL);
 #endif
 

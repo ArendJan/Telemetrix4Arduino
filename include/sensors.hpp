@@ -2,8 +2,7 @@
 #include <Arduino.h>
 #ifndef MAX_SENSORS_COUNT
 #define MAX_SENSORS_COUNT 4 // Max number of modules that can be added
-#endif // MAX_MODULES_COUNT
-
+#endif                      // MAX_MODULES_COUNT
 
 #if MAX_SENSORS_COUNT > 0
 /*****************************************************************************/
@@ -37,7 +36,6 @@ public:
 const int SENSORS_MAX_SETTINGS_A = 6;
 void sensor_new_i(uint8_t command_buffer[], size_t packet_size);
 void readSensors();
-
 
 #else
 

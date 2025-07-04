@@ -5,16 +5,16 @@
 #include "commands.hpp"
 #include "config.hpp"
 #include "i2c.hpp"
+#include "modules.hpp"
 #include <Arduino.h>
 #include <NewPing.h>
 #include <OpticalEncoder.h>
-#include "modules.hpp"
 #if MAX_SERVOS > 0
 #include <Servo.h>
 #endif
+#include "sensors.hpp"
 #include <Wire.h>
 #include <dhtnew.h>
-#include "sensors.hpp"
 // #include <vector>
 /*
   Copyright (c) 2020 Alan Yorinks All rights reserved.
@@ -40,8 +40,6 @@
 // #include <array>
 template <size_t N> void send_message(const uint8_t (&message)[N]);
 // uncomment out the next line to create a 2nd i2c port
-
-
 
 // This value must be the same as specified when instantiating the
 // telemetrix client. The client defaults to a value of 1.
@@ -187,16 +185,18 @@ constexpr int get_total_pins_not(const int *pins, int size, int not_value) {
                   : 0;
 }
 
-constexpr int max_i(int a, int b) { // some board have an old stdlib without constexpr max
-  return a<b? b : a;
+constexpr int
+max_i(int a, int b) { // some board have an old stdlib without constexpr max
+  return a < b ? b : a;
 }
 
-constexpr int get_highest_analog_pin(const int *pins, int size,
-                                      int not_value) {
-  return size > 0 ? (pins[size - 1] != not_value
-                         ? max_i(get_highest_analog_pin(pins, size - 1, not_value), pins[size - 1])
-                         : get_highest_analog_pin(pins, size - 1, not_value))
-                  : 0;
+constexpr int get_highest_analog_pin(const int *pins, int size, int not_value) {
+  return size > 0
+             ? (pins[size - 1] != not_value
+                    ? max_i(get_highest_analog_pin(pins, size - 1, not_value),
+                            pins[size - 1])
+                    : get_highest_analog_pin(pins, size - 1, not_value))
+             : 0;
 }
 
 constexpr auto MAX_ANALOG_PINS_SUPPORTED =
@@ -205,9 +205,10 @@ constexpr auto MAX_ANALOG_PINS_SUPPORTED =
 // maximum number of pins supported
 // some boards (stm32f103) put analog pins in the 0xC0 range
 // wastes some memory space, but is easier to use.
-constexpr auto MAX_PINS_SUPPORTED = max_i(
-    NUM_DIGITAL_PINS +
-    MAX_ANALOG_PINS_SUPPORTED, get_highest_analog_pin(analog_read_pins, analog_read_pins_size, 2047)); // probably too high but good enough
+constexpr auto MAX_PINS_SUPPORTED =
+    max_i(NUM_DIGITAL_PINS + MAX_ANALOG_PINS_SUPPORTED,
+          get_highest_analog_pin(analog_read_pins, analog_read_pins_size,
+                                 2047)); // probably too high but good enough
 // #define
 // a descriptor for digital pins
 struct pin_descriptor {
@@ -626,7 +627,7 @@ void enable_all_reports() {
   // delay(20);
 }
 
-  byte packet_length;
+byte packet_length;
 void get_next_command() {
   byte command;
   command_descriptor command_entry;
@@ -761,7 +762,7 @@ void scan_sonars() {
       auto ping = sonars[last_sonar_visited].usonic->ping();
       send_debug_info(123, ping);
       distance = ping / US_ROUNDTRIP_CM;
-      if(ping == 0) {
+      if (ping == 0) {
         distance = 0xFFFE;
       }
       if (distance != sonars[last_sonar_visited].last_value || true) {
@@ -944,7 +945,7 @@ void setup() {
   }
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW); // turn off the LED
-  for(auto i = 0; i < 4; i++) {
+  for (auto i = 0; i < 4; i++) {
     digitalWrite(LED_BUILTIN, HIGH);
     delay(100);
     digitalWrite(LED_BUILTIN, LOW);
@@ -965,7 +966,7 @@ void loop() {
       x++;
       // send_debug_info(100, x++);
       // send_debug_info(101, Serial.available());
-      digitalWrite(LED_BUILTIN, x%2);
+      digitalWrite(LED_BUILTIN, x % 2);
       // Serial.println("Scanning inputs...");
       // send_debug_info(10, 10);
       last_scan += scan_delay;
@@ -1008,7 +1009,7 @@ void feature_detection() {
       } else if (cmd == &set_pin_mode) {
         report_message[3] = NUM_DIGITAL_PINS;
         report_message[4] = 10; // analog input resolution
-        report_message[5] = 8; // PWM resolution
+        report_message[5] = 8;  // PWM resolution
         report_message[6] = MAX_ANALOG_PINS_SUPPORTED;
         // report_message[5] = ADC_RESOLUTION; // ADC resolution
         // report_message[6] = PWM_RESOLUTION; // PWM resolution
@@ -1025,7 +1026,7 @@ void feature_detection() {
         report_message[4] = FIRMWARE_MINOR;
       } else if (cmd == &get_unique_id) {
         report_message[3] = 0; // TODO: implement
-      } else if(cmd == &i2c_begin) {
+      } else if (cmd == &i2c_begin) {
         report_message[3] = I2C_COUNT;
       }
     } else {
@@ -1054,9 +1055,10 @@ void send_message(const uint8_t *message, size_t length) {
   //   delayMicroseconds(10);
   // }
   Serial.write((uint8_t)(length)); // send msg len
- for (size_t i = 0; i < length; i++) {
+  for (size_t i = 0; i < length; i++) {
     Serial.write((uint8_t)message[i]); // send msg len
-  }}
+  }
+}
 
 void get_unique_id() {
   // in message: [GET_UNIQUE_ID = 6]
@@ -1112,14 +1114,8 @@ void ping() {
   }
 }
 
-void module_new() {
-  module_new_i(command_buffer, packet_length);
-}
+void module_new() { module_new_i(command_buffer, packet_length); }
 
-void module_data() {
-  module_data_i(command_buffer, packet_length);
-}
+void module_data() { module_data_i(command_buffer, packet_length); }
 
-void sensor_new() {
-  sensor_new_i(command_buffer, packet_length);
-}
+void sensor_new() { sensor_new_i(command_buffer, packet_length); }

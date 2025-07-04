@@ -1,28 +1,29 @@
 #include "i2c.hpp"
 #include "Telemetrix4Arduino.h"
 #include "commands.hpp"
+#include "config.hpp"
 #include <Arduino.h>
 #include <Wire.h>
-#include "config.hpp"
 
 /***********************************
    i2c functions
  **********************************/
 
-TwoWire *i2c_buses[I2C_COUNT] = {&Wire,
-  #if I2C_COUNT > 1
-  &Wire2
-  #endif
-  #if I2C_COUNT > 2
-  &Wire3
-  #endif
-  // Add more TwoWire instances if needed
+TwoWire *i2c_buses[I2C_COUNT] = {
+    &Wire,
+#if I2C_COUNT > 1
+    &Wire2
+#endif
+#if I2C_COUNT > 2
+        &Wire3
+#endif
+    // Add more TwoWire instances if needed
 };
 
 void i2c_begin() {
-  
+
   byte i2c_port = command_buffer[0];
-  if(i2c_port >= I2C_COUNT) {
+  if (i2c_port >= I2C_COUNT) {
     // Invalid I2C port requested, return without initializing
     // Serial.println("Invalid I2C port requested");
     return;
@@ -30,10 +31,10 @@ void i2c_begin() {
   auto &current_i2c_port = *i2c_buses[i2c_port];
   // Initialize the I2C port
   current_i2c_port.begin();
-  
+
 #if defined(__AVR_ATmega328P__)
-    current_i2c_port.setWireTimeout(10, false);
-    current_i2c_port.clearWireTimeoutFlag();
+  current_i2c_port.setWireTimeout(10, false);
+  current_i2c_port.clearWireTimeoutFlag();
 #endif
 }
 
@@ -51,7 +52,7 @@ void i2c_read() {
   byte the_register = command_buffer[1];
   uint8_t message_id = command_buffer[I2C_READ_MESSAGE_ID];
   uint8_t port = command_buffer[I2C_PORT];
-  if(port >= I2C_COUNT) {
+  if (port >= I2C_COUNT) {
     // Invalid I2C port requested, return without processing
     // Serial.println("Invalid I2C port requested");
     return;
@@ -135,12 +136,12 @@ void i2c_write() {
   // delayMicroseconds(70);
 }
 
-
-bool write_i2c(int i2c_port, int device_address, const uint8_t* data, size_t length) {
+bool write_i2c(int i2c_port, int device_address, const uint8_t *data,
+               size_t length) {
   if (i2c_port < 0 || i2c_port >= I2C_COUNT) {
     return false; // Invalid I2C port
   }
-  TwoWire* wire = i2c_buses[i2c_port];
+  TwoWire *wire = i2c_buses[i2c_port];
   if (wire == nullptr) {
     return false; // I2C bus not initialized
   }
@@ -151,33 +152,33 @@ bool write_i2c(int i2c_port, int device_address, const uint8_t* data, size_t len
   return wire->endTransmission() == 0; // Return true if successful
 }
 
-
-bool read_i2c(int i2c_port, int device_address, const uint8_t* registers, size_t register_length, uint8_t* data, size_t data_length) {
+bool read_i2c(int i2c_port, int device_address, const uint8_t *registers,
+              size_t register_length, uint8_t *data, size_t data_length) {
   if (i2c_port < 0 || i2c_port >= I2C_COUNT) {
     return false; // Invalid I2C port
   }
-  TwoWire* wire = i2c_buses[i2c_port];
+  TwoWire *wire = i2c_buses[i2c_port];
   if (wire == nullptr) {
     return false; // I2C bus not initialized
   }
-  
+
   wire->beginTransmission(device_address);
   for (size_t i = 0; i < register_length; i++) {
     wire->write(registers[i]);
   }
-  
+
   if (wire->endTransmission() != 0) {
     return false; // Transmission failed
   }
-  
+
   size_t bytesRead = wire->requestFrom(device_address, data_length);
   if (bytesRead != data_length) {
     return false; // Not enough data read
   }
-  
+
   for (size_t i = 0; i < bytesRead; i++) {
     data[i] = wire->read();
   }
-  
+
   return true; // Read successful
 }

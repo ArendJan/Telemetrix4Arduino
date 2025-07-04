@@ -2,16 +2,14 @@
 #include <Arduino.h>
 #ifndef MAX_MODULES_COUNT
 #define MAX_MODULES_COUNT 4 // Max number of modules that can be added
-#endif // MAX_MODULES_COUNT
-
+#endif                      // MAX_MODULES_COUNT
 
 #if MAX_MODULES_COUNT > 0
 /***********************************************/
 /***************MODULES*************************/
-void module_new_i(uint8_t command_buffer[], size_t packet_size); 
+void module_new_i(uint8_t command_buffer[], size_t packet_size);
 
 void module_data_i(uint8_t command_buffer[], size_t packet_size);
-
 
 enum MODULE_TYPES : uint8_t { // Max 255 modules, but will always fit in a
                               // single byte!
@@ -33,13 +31,12 @@ public:
   int num = 0;
   MODULE_TYPES type = MODULE_TYPES::MAX_MODULES;
   // called at every loop, only used when needed (Oled update)
-  virtual void updModule() {};
+  virtual void updModule(){};
 };
 void scan_modules();
 void upd_modules();
 extern Module *modules[MAX_MODULES_COUNT]; // Array of pointers to modules
-extern size_t module_count; // Number of modules in the array
-
+extern size_t module_count;                // Number of modules in the array
 
 #include "modules/ssd1306.hpp" // Include the SSD1306 module header
 

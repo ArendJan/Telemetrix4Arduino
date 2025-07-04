@@ -1,8 +1,8 @@
 #pragma once
 
 #if defined(ARDUINO_ARCH_ESP32)
-#include <Wire.h>
 #include <Arduino.h>
+#include <Wire.h>
 // This board does not have a normal list of analog pins
 #define A1 2047
 #define A2 2047
