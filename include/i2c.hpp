@@ -49,3 +49,7 @@ void i2c_write();
 
 
 extern TwoWire* i2c_buses[I2C_COUNT];
+
+
+bool write_i2c(int i2c_port, int device_address, const uint8_t* data, size_t length);
+bool read_i2c(int i2c_port, int device_address, const uint8_t*  registers, size_t register_length, uint8_t* data, size_t data_length);

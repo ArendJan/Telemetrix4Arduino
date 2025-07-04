@@ -134,3 +134,50 @@ void i2c_write() {
   current_i2c_port->endTransmission();
   // delayMicroseconds(70);
 }
+
+
+bool write_i2c(int i2c_port, int device_address, const uint8_t* data, size_t length) {
+  if (i2c_port < 0 || i2c_port >= I2C_COUNT) {
+    return false; // Invalid I2C port
+  }
+  TwoWire* wire = i2c_buses[i2c_port];
+  if (wire == nullptr) {
+    return false; // I2C bus not initialized
+  }
+  wire->beginTransmission(device_address);
+  for (size_t i = 0; i < length; i++) {
+    wire->write(data[i]);
+  }
+  return wire->endTransmission() == 0; // Return true if successful
+}
+
+
+bool read_i2c(int i2c_port, int device_address, const uint8_t* registers, size_t register_length, uint8_t* data, size_t data_length) {
+  if (i2c_port < 0 || i2c_port >= I2C_COUNT) {
+    return false; // Invalid I2C port
+  }
+  TwoWire* wire = i2c_buses[i2c_port];
+  if (wire == nullptr) {
+    return false; // I2C bus not initialized
+  }
+  
+  wire->beginTransmission(device_address);
+  for (size_t i = 0; i < register_length; i++) {
+    wire->write(registers[i]);
+  }
+  
+  if (wire->endTransmission() != 0) {
+    return false; // Transmission failed
+  }
+  
+  size_t bytesRead = wire->requestFrom(device_address, data_length);
+  if (bytesRead != data_length) {
+    return false; // Not enough data read
+  }
+  
+  for (size_t i = 0; i < bytesRead; i++) {
+    data[i] = wire->read();
+  }
+  
+  return true; // Read successful
+}

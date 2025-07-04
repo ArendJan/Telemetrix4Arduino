@@ -20,6 +20,7 @@ jobs:
                     "robotdyn_blackpill_f103",
                     "pico",
                     "esp32doit-devkit-v1",
+                    "pico2w"
                   ]
             fail-fast: false
           

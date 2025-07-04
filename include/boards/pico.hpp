@@ -37,6 +37,6 @@ extern TwoWire Wire2;
 extern TwoWire Wire2; // Use GPIO 10 and 11 for I2C on Pico 2W
 #endif
 #define I2C_COUNT 2
-
+#define MAX_SONARS 6 // the current library does not work somehow on pico
 void hw_init();
 #endif

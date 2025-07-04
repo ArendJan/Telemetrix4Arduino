@@ -97,8 +97,25 @@ void Module::publishData(const uint8_t data[], size_t size) {
       this->type,         // write sensor type
   };
   for(size_t i = 0; i < size && i < sizeof(out) - 4; i++) {
-    out[i + 4] = data[i]; // copy data to the output buffer
+    out[i + 3] = data[i]; // copy data to the output buffer
   }
   
   send_message(out, size + 4); // send the message with the data
+  // TODO: check dit
+}
+
+void scan_modules() {
+  for (size_t i = 0; i < module_count; i++) {
+    if (modules[i] != nullptr && !modules[i]->stop) {
+      modules[i]->readModule();
+    }
+  }
+}
+
+void upd_modules() {
+  for (size_t i = 0; i < module_count; i++) {
+    if (modules[i] != nullptr && !modules[i]->stop) {
+      modules[i]->updModule();
+    }
+  }
 }

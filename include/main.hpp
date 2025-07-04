@@ -48,7 +48,7 @@ void send_debug_info(byte id, int value);
 
 void module_new();
 void module_data();
-
+void sensor_new();
 enum PIN_MODES : uint8_t {
   NOT_SET = 255,
   INPUT_MODE = 0,

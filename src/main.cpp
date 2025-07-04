@@ -14,6 +14,7 @@
 #endif
 #include <Wire.h>
 #include <dhtnew.h>
+#include "sensors.hpp"
 // #include <vector>
 /*
   Copyright (c) 2020 Alan Yorinks All rights reserved.
@@ -71,7 +72,7 @@ auto read_blocking_spi = nullptr;
 auto set_format_spi = nullptr;
 auto spi_cs_control = nullptr;
 auto set_scan_delay = nullptr;
-auto sensor_new = nullptr;
+// auto sensor_new = ;
 // auto ping = nullptr;
 // auto module_new = module_new;
 // auto module_data = module_data;
@@ -111,7 +112,7 @@ constexpr command_descriptor command_table[] = {
     spi_cs_control,
     set_scan_delay,
     &encoder_new, // 30, checked
-    sensor_new,
+    &sensor_new,
     ping, // 32,  checked, not impelemented
     &module_new,
     &module_data,
@@ -185,19 +186,28 @@ constexpr int get_total_pins_not(const int *pins, int size, int not_value) {
                          : get_total_pins_not(pins, size - 1, not_value))
                   : 0;
 }
-// constexpr int get_total_pins_c(const int *pins, int size, int not_value, int
-// c) {
-//   return c<size ? (pins[c] !=not_value ? get_total_pins_c(pins, size,
-//   not_value, c+1) + c : 0) : 0;
-// }
+
+constexpr int max_i(int a, int b) { // some board have an old stdlib without constexpr max
+  return a<b? b : a;
+}
+
+constexpr int get_highest_analog_pin(const int *pins, int size,
+                                      int not_value) {
+  return size > 0 ? (pins[size - 1] != not_value
+                         ? max_i(get_highest_analog_pin(pins, size - 1, not_value), pins[size - 1])
+                         : get_highest_analog_pin(pins, size - 1, not_value))
+                  : 0;
+}
 
 constexpr auto MAX_ANALOG_PINS_SUPPORTED =
     get_total_pins_not(analog_read_pins, analog_read_pins_size, 2047);
 
 // maximum number of pins supported
-constexpr auto MAX_PINS_SUPPORTED =
+// some boards (stm32f103) put analog pins in the 0xC0 range
+// wastes some memory space, but is easier to use.
+constexpr auto MAX_PINS_SUPPORTED = max_i(
     NUM_DIGITAL_PINS +
-    MAX_ANALOG_PINS_SUPPORTED; // probably too high but good enough
+    MAX_ANALOG_PINS_SUPPORTED, get_highest_analog_pin(analog_read_pins, analog_read_pins_size, 2047)); // probably too high but good enough
 // #define
 // a descriptor for digital pins
 struct pin_descriptor {
@@ -541,7 +551,8 @@ void sonar_new() {
   if (sonars_index >= MAX_SONARS) {
     return;
   }
-
+  send_debug_info(130, command_buffer[0]);
+  send_debug_info(131, command_buffer[1]);
   sonars[sonars_index].usonic =
       new NewPing((uint8_t)command_buffer[0], (uint8_t)command_buffer[1], 400);
   sonars[sonars_index].trigger_pin = command_buffer[0];
@@ -726,20 +737,12 @@ void scan_analog_inputs() {
           value = analogRead(adjusted_pin_number);
           differential = abs(value - the_digital_pins[i].last_value);
           if (differential >= the_digital_pins[i].differential) {
-            // send_debug_info(i, differential);
             // trigger value achieved, send out the report
             the_digital_pins[i].last_value = value;
-            // input_message[1] = the_analog_pins[i].pin_number;
             report_message[1] = (byte)adjusted_pin_number;
             report_message[2] = highByte(value); // get high order byte
             report_message[3] = lowByte(value);
-            // Serial.write(report_message, 5);
             send_message(report_message);
-            // Serial2.print("Analog pin: ");
-            // Serial2.print(adjusted_pin_number);
-            // Serial2.print(" value: ");
-            // Serial2.println(value);
-            // delay(1);
           }
         }
       }
@@ -755,7 +758,12 @@ void scan_sonars() {
     if (sonar_current_millis - sonar_previous_millis > sonar_scan_interval) {
       // send_debug_info(10, sonar_current_millis);
       sonar_previous_millis += sonar_scan_interval;
-      distance = sonars[last_sonar_visited].usonic->ping() / US_ROUNDTRIP_CM;
+      auto ping = sonars[last_sonar_visited].usonic->ping();
+      send_debug_info(123, ping);
+      distance = ping / US_ROUNDTRIP_CM;
+      if(ping == 0) {
+        distance = 0xFFFE;
+      }
       if (distance != sonars[last_sonar_visited].last_value || true) {
         sonars[last_sonar_visited].last_value = distance;
 
@@ -763,7 +771,7 @@ void scan_sonars() {
 
         byte report_message[] = {
             SONAR_DISTANCE, sonars[last_sonar_visited].trigger_pin,
-            (byte)(distance / 100), (byte)(distance % 100)};
+            (byte)(distance >> 8), (byte)(distance % 0xFF)};
         // Serial.write(report_message, 5);
         // send_debug_info(0, distance);
         send_message(report_message);
@@ -934,17 +942,30 @@ void setup() {
   for (auto i = 0; i < 0xFF; i++) {
     Serial.write((uint8_t)0);
   }
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, LOW); // turn off the LED
+  for(auto i = 0; i < 4; i++) {
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(100);
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(100);
+  }
   // get_firmware_version();
 }
 
 void loop() {
   // keep processing incoming commands
   get_next_command();
+  upd_modules();
   static decltype(millis()) last_scan = 0;
   static decltype(millis()) scan_delay = 10;
   if (!stop_reports) { // stop reporting
     if (millis() - last_scan >= (scan_delay)) {
-      // digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+      static int x = 0;
+      x++;
+      // send_debug_info(100, x++);
+      // send_debug_info(101, Serial.available());
+      digitalWrite(LED_BUILTIN, x%2);
       // Serial.println("Scanning inputs...");
       // send_debug_info(10, 10);
       last_scan += scan_delay;
@@ -954,6 +975,7 @@ void loop() {
       scan_sonars();
       scan_dhts();
       scan_encoders();
+      scan_modules();
     }
   }
 }
@@ -964,6 +986,7 @@ static_assert(command_table[37] == &feature_detection,
               "command_table[37] must be feature_detection");
 
 void feature_detection() {
+  send_debug_info(201, 1);
   // in message: [FEATURE_CHECK = 37, message_type_to_check]
   // out message: [3, FEATURE_CHECK, 0/1]
   uint8_t report_message[7 + analog_read_pins_size] = {
@@ -1010,6 +1033,7 @@ void feature_detection() {
     }
   }
   send_message(report_message);
+  send_debug_info(200, message_type);
 }
 
 template <size_t N> void send_message(const uint8_t (&message)[N]) {
@@ -1094,4 +1118,8 @@ void module_new() {
 
 void module_data() {
   module_data_i(command_buffer, packet_length);
+}
+
+void sensor_new() {
+  sensor_new_i(command_buffer, packet_length);
 }
