@@ -1,0 +1,22 @@
+################################################
+# Syntax Coloring Map For Optical Encoder Library
+################################################
+
+################################################
+# Datatypes (KEYWORD1)
+################################################
+
+OpticalEncoder 	KEYWORD1
+
+################################################
+# Methods and Functions (KEYWORD2)
+################################################
+
+setup	KEYWORD2
+handleInterrupt	KEYWORD2
+getSpeed	KEYWORD2
+getPin	KEYWORD2
+getPosition	KEYWORD2
+resetPosition	KEYWORD2
+getDirection	KEYWORD2
+setDirection KEYWORD2
