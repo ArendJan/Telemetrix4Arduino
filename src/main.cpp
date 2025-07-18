@@ -760,7 +760,6 @@ void scan_sonars() {
       // send_debug_info(10, sonar_current_millis);
       sonar_previous_millis += sonar_scan_interval;
       auto ping = sonars[last_sonar_visited].usonic->ping();
-      send_debug_info(123, ping);
       distance = ping / US_ROUNDTRIP_CM;
       if (ping == 0) {
         distance = 0xFFFE;
@@ -958,6 +957,7 @@ void loop() {
   // keep processing incoming commands
   get_next_command();
   upd_modules();
+  readSensors();
   static decltype(millis()) last_scan = 0;
   static decltype(millis()) scan_delay = 10;
   if (!stop_reports) { // stop reporting
@@ -1100,7 +1100,6 @@ void ping() {
                    special_num, random, 0, 0, 0, 0};
   // out[0] = out.size() - 1; // dont count the packet length
   // send_debug_info(1, special_num);
-  // send_debug_info(2, random);
   // // Serial2.println("Pinging...");
 
   send_message(out);

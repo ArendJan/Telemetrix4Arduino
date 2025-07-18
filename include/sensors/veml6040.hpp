@@ -12,6 +12,7 @@ public:
     if (settings_size > 0) {
       i2c_port = settings[0]; // Assuming first byte is I2C port
     }
+    this->i2c_addr = 0x10; // Default I2C address for VEML6040
     init_sequence();
   }
   void readSensor() {
@@ -39,14 +40,22 @@ public:
     }
   }
   void resetSensor(){};
+  static Sensor *create(uint8_t *data, size_t size) {
+    if (size < 1) {
+      return nullptr; // Not enough data to create sensor
+    }
+    return new VEML6040_Sensor(data, size);
+  }
 
 private:
   void init_sequence() {
     uint8_t data[2] = {0, 0x21};
     bool ok = write_i2c(this->i2c_port, this->i2c_addr, data, 2);
-    delay(10);
+    // send_debug_info(181, ok);
+    delayMicroseconds(100);
     data[1] = 0x20; // 0x20 = 0b0010'0000, 100 time, no stop bit
     ok &= write_i2c(this->i2c_port, this->i2c_addr, data, 2);
+    // send_debug_info(182, ok);
     if (!ok) {
       this->stop = true;
     }

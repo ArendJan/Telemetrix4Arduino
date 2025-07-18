@@ -29,6 +29,11 @@ public:
   virtual void resetSensor() = 0;
   bool stop = false;
   void writeSensorData(const uint8_t data[], size_t size);
+  static Sensor *create(uint8_t *data, size_t size) {
+    // This function is used to create a sensor object based on the type
+    // and data provided. It should be overridden in derived classes.
+    return nullptr;
+  }
   int num;
   SENSOR_TYPES type = SENSOR_TYPES::MAX_SENSORS;
 };

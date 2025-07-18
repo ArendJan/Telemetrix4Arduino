@@ -270,23 +270,3 @@ time in ms.
 ```py
 [ 2, 0, enabled]
 ```
-
-
-
-
-# TODO:
-Check (done with pico arduino):
-- sonar ✅, TODO: no value
-- servo✅
-- motor driver
-- analog in✅
-- analog out TODO: geen pins lijst ofzo, gewoon alles ok doen✅
-- intensity sens✅
-- keypad✅
-- encoders, single
-- (modules?)
-- i2c todo!
-
-
-# TODO:
-- check with pico code
